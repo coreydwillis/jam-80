@@ -1,8 +1,17 @@
-[gd_scene format=3 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=3 format=3 uid="uid://dup0vwkmki6wl"]
+
+[ext_resource type="PackedScene" uid="uid://c7lkchv3axj1m" path="res://scenes/game/characters/Player.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="2_0wfyh"]
 
 [node name="Main" type="Node2D"]
 
 [node name="World" type="Node2D" parent="."]
+
+[node name="Player" parent="World" instance=ExtResource("1_o5qli")]
+
+[node name="Bunny" parent="World" node_paths=PackedStringArray("player") instance=ExtResource("2_0wfyh")]
+position = Vector2(50, 40)
+player = NodePath("../Player")
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
