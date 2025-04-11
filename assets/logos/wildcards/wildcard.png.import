@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dok8sulu7tlya"
-path="res://.godot/imported/wildcards_placeholder.png-51fb642f8612f2a3bb6fe4c0969ad85c.ctex"
+uid="uid://cefgybp6jc5ed"
+path="res://.godot/imported/wildcard.png-6fb760559d737e10242bde8b38415a81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/logos/wildcards/wildcards_placeholder.png"
-dest_files=["res://.godot/imported/wildcards_placeholder.png-51fb642f8612f2a3bb6fe4c0969ad85c.ctex"]
+source_file="res://assets/logos/wildcards/wildcard.png"
+dest_files=["res://.godot/imported/wildcard.png-6fb760559d737e10242bde8b38415a81.ctex"]
 
 [params]
 
