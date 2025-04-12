@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=10 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="PackedScene" uid="uid://c7lkchv3axj1m" path="res://scenes/game/characters/Player.tscn" id="2_8ra5a"]
 [ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="3_bq26l"]
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
+[ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="5_8ra5a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jyhfs"]
 texture = ExtResource("4_u2c82")
@@ -354,3 +355,35 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Debug UI" type="Node" parent="."]
+script = ExtResource("5_8ra5a")
+
+[node name="SaveBTN Test" type="Button" parent="Debug UI"]
+offset_left = 540.0
+offset_top = 376.0
+offset_right = 687.0
+offset_bottom = 467.0
+text = "Save"
+
+[node name="DaysLabel" type="Label" parent="Debug UI"]
+offset_left = 201.0
+offset_top = -335.0
+offset_right = 349.0
+offset_bottom = -266.0
+theme_override_font_sizes/font_size = 50
+text = "Day: 1"
+
+[node name="RunLabel" type="Label" parent="Debug UI"]
+offset_left = 411.0
+offset_top = -339.0
+offset_right = 546.0
+offset_bottom = -270.0
+theme_override_font_sizes/font_size = 50
+text = "Longest run: 0"
+
+[node name="DayTimer" type="Timer" parent="Debug UI"]
+wait_time = 3.0
+autostart = true
+
+[connection signal="pressed" from="Debug UI/SaveBTN Test" to="." method="_on_save_btn_test_pressed"]
