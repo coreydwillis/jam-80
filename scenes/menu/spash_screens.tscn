@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkq4uxka87wmh"]
+
+[ext_resource type="Texture2D" uid="uid://s7omhv3wpx4j" path="res://assets/logos/godot_wild_jam_logo.svg" id="1_kn8ss"]
+[ext_resource type="Script" uid="uid://bqrw4wah4l0jg" path="res://scenes/menu/spash_screens.gd" id="1_ktti7"]
+[ext_resource type="Texture2D" uid="uid://cefgybp6jc5ed" path="res://assets/logos/wildcards/wildcard.png" id="2_wso26"]
+
+[node name="SpashScreens" type="Node2D"]
+script = ExtResource("1_ktti7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.884
+anchor_bottom = 16.373
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 149.64
+offset_bottom = 87.08
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="GodotWildJamLogo" type="Sprite2D" parent="."]
+position = Vector2(668, 369)
+scale = Vector2(0.524, 0.524)
+texture = ExtResource("1_kn8ss")
+
+[node name="Wildcard" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(655, 376)
+scale = Vector2(0.34513, 0.34513)
+texture = ExtResource("2_wso26")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
