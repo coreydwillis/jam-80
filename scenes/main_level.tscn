@@ -308,26 +308,46 @@ tile_set = SubResource("TileSet_o6xl0")
 z_index = 1
 position = Vector2(120, 40)
 player = NodePath("../../Player")
+scared_speed = 100
+scared_accel = 40
+hop_delay = 5
+hop_speed = 60
 
 [node name="Bunny2" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(191, -23)
 player = NodePath("../../Player")
+scared_speed = 100
+scared_accel = 40
+hop_delay = 5
+hop_speed = 60
 
 [node name="Bunny3" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(246, 45)
 player = NodePath("../../Player")
+scared_speed = 100
+scared_accel = 40
+hop_delay = 5
+hop_speed = 60
 
 [node name="Bunny4" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(103, 137)
 player = NodePath("../../Player")
+scared_speed = 100
+scared_accel = 40
+hop_delay = 5
+hop_speed = 60
 
 [node name="Bunny5" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(200, 118)
 player = NodePath("../../Player")
+scared_speed = 100
+scared_accel = 40
+hop_delay = 5
+hop_speed = 60
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
