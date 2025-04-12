@@ -11,6 +11,7 @@ motion_mode = 1
 script = ExtResource("1_pv13c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.2, 1, 1, 1)
 scale = Vector2(20, 20)
 texture = SubResource("PlaceholderTexture2D_pv13c")
 
