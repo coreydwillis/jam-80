@@ -16,6 +16,7 @@ scared_accel = 60
 hop_delay = 3
 hop_speed = 80
 hop_duration = 1.0
+enter_speed = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 2.38419e-07)
