@@ -283,9 +283,8 @@ texture = ExtResource("4_u2c82")
 [sub_resource type="TileSet" id="TileSet_o6xl0"]
 sources/0 = SubResource("TileSetAtlasSource_tefeu")
 
-[node name="Main" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="Main" type="Node2D"]
 script = ExtResource("1_qmak7")
-player = NodePath("World/Player")
 centering_factor = Vector2(575, 360)
 
 [node name="World" type="Node2D" parent="."]
@@ -306,46 +305,41 @@ tile_set = SubResource("TileSet_o6xl0")
 
 [node name="Bunnies" type="Node" parent="World"]
 
-[node name="Bunny" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
+[node name="Bunny" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(120, 40)
-player = NodePath("../../Player")
 scared_speed = 100
 scared_accel = 40
 hop_delay = 5
 hop_speed = 60
 
-[node name="Bunny2" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
+[node name="Bunny2" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(191, -23)
-player = NodePath("../../Player")
 scared_speed = 100
 scared_accel = 40
 hop_delay = 5
 hop_speed = 60
 
-[node name="Bunny3" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
+[node name="Bunny3" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(246, 45)
-player = NodePath("../../Player")
 scared_speed = 100
 scared_accel = 40
 hop_delay = 5
 hop_speed = 60
 
-[node name="Bunny4" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
+[node name="Bunny4" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(103, 137)
-player = NodePath("../../Player")
 scared_speed = 100
 scared_accel = 40
 hop_delay = 5
 hop_speed = 60
 
-[node name="Bunny5" parent="World/Bunnies" node_paths=PackedStringArray("player") instance=ExtResource("3_bq26l")]
+[node name="Bunny5" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(200, 118)
-player = NodePath("../../Player")
 scared_speed = 100
 scared_accel = 40
 hop_delay = 5
@@ -398,6 +392,15 @@ offset_right = 546.0
 offset_bottom = -270.0
 theme_override_font_sizes/font_size = 50
 text = "Longest run: 0"
+
+[node name="BunniesLabel" type="Label" parent="Debug UI"]
+offset_left = -63.0
+offset_top = -327.0
+offset_right = 185.0
+offset_bottom = -240.0
+theme_override_font_sizes/font_size = 30
+text = "Bunnies in pen: 0
+Total bunnies: 0"
 
 [node name="DayTimer" type="Timer" parent="Debug UI"]
 wait_time = 3.0

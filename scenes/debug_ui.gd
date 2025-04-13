@@ -5,10 +5,12 @@ extends Node
 var firstPass = true
 
 func _ready():
-	Game.days = 1
 	$RunLabel.text = "Longest Run: %d" % Game.longest_run
 	day_timer.timeout.connect(_on_timer_timeout)
 	setDaysLabel()
+
+func _process(_delta):
+	$BunniesLabel.text = "Bunnies in pen: %d\nTotal bunnies: %d" % [Game.bunnies_in_pen, Game.total_bunnies]
 
 func _on_timer_timeout():
 	Game.days += 1

@@ -1,5 +1,4 @@
 class_name Bunny extends CharacterBody2D
-@export var player: CharacterBody2D # point to the player
 @export_group("Behavior")
 @export var scared_speed = 100 # max speed while scared
 @export var scared_radius = 75 # distance to player where bunny turns scared
@@ -14,7 +13,8 @@ class_name Bunny extends CharacterBody2D
 @export var escape_speed = 60 # speed when attempting escape
 @export var escape_chance = 0.4 # chance an escape attempt is successful
 
-@onready var ray = find_child("RayCast2D")
+@onready var ray = $RayCast2D
+@onready var player = $"/root/Main/World/Player"
 
 enum BunnyState {
 	FREE,		# out of pen, not moving (> HOPPING, SCARED)
@@ -31,6 +31,9 @@ var state = BunnyState.FREE
 var timer = 0 # time spent in current state (when necessary)
 var direction # direction of current movement (when necessary)
 var run_speed = 0 # current speed, only used while scared
+
+func _ready():
+	Game.total_bunnies += 1
 
 func _process(delta):
 	match state:
@@ -137,9 +140,10 @@ func process_escaping(_delta):
 	pass
 
 func enter_trapped():
+	Game.bunnies_in_pen += 1
 	state = BunnyState.TRAPPED
 func exit_trapped():
-	pass
+	Game.bunnies_in_pen -= 1
 func process_trapped(_delta):
 	pass
 
