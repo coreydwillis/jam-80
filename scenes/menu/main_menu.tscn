@@ -83,13 +83,13 @@ theme_override_font_sizes/font_size = 40
 text = "Music Volume"
 horizontal_alignment = 1
 
-[node name="sfxVolSlider3" type="HSlider" parent="CenterContainer/SettingsMenu"]
+[node name="sfxVolSlider" type="HSlider" parent="CenterContainer/SettingsMenu"]
 custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 
-[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/sfxVolSlider3"]
+[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/sfxVolSlider"]
 custom_minimum_size = Vector2(484, 55)
 layout_mode = 0
 offset_top = -16.0
@@ -133,6 +133,6 @@ text = "Back"
 [connection signal="toggled" from="CenterContainer/SettingsMenu/fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/mainVolSlider" to="." method="_on_main_vol_slider_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SettingsMenu/musicVolSlider" to="." method="_on_music_vol_slider_value_changed"]
-[connection signal="value_changed" from="CenterContainer/SettingsMenu/sfxVolSlider3" to="." method="_on_sfx_vol_slider_3_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SettingsMenu/sfxVolSlider" to="." method="_on_sfx_vol_slider_3_value_changed"]
 [connection signal="pressed" from="CenterContainer/SettingsMenu/back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CenterContainer/CreditsMenu/Back" to="." method="_on_back_pressed"]
