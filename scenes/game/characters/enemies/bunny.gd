@@ -9,147 +9,204 @@ class_name Bunny extends CharacterBody2D
 @export var enter_speed = 40 # speed while entering pen
 @export var enter_duration = 0.7 # time it takes to enter pen
 @export var centerpoint = Vector2(0,0) # point bunny hops to in pen
-@export var escape_delay = 2 # time between escape attempts in seconds
+@export var escape_delay = 2.5 # time between escape attempts in seconds
 @export var escape_speed = 60 # speed when attempting escape
 @export var escape_chance = 0.4 # chance an escape attempt is successful
+@export var roam_speed = 30 # speed while roaming in the pen
+@export var roam_on_duration = 0.4 # seconds moving per roam cycle
+@export var roam_off_duration = 0.3 # seconds still per roam cycle
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
 
 enum BunnyState {
+	NULL,		# should never show up
 	FREE,		# out of pen, not moving (> HOPPING, SCARED)
 	HOPPING,	# out of pen, hopping (> FREE)
 	SCARED,		# out of pen, running from player (> FREE, ENTERING)
 	ENTERING,	# jumping into pen (> TRAPPED)
 	EXITING,	# jumping out of pen (> FREE)
 	ESCAPING,	# in pen, attempting escape (> TRAPPED, EXITING)
-	TRAPPED,	# in pen, not moving (> ESCAPING)
+	TRAPPED,	# in pen, roaming (> ESCAPING)
 	GRABBED		# grabbed by player's ability (> FREE, TRAPPED)
 }
 
-var state = BunnyState.FREE
-var timer = 0 # time spent in current state (when necessary)
-var direction # direction of current movement (when necessary)
-var run_speed = 0 # current speed, only used while scared
+var states_dict = {
+	BunnyState.FREE: StateFree.new(self),
+	BunnyState.HOPPING: StateHopping.new(self),
+	BunnyState.SCARED: StateScared.new(self),
+	BunnyState.ENTERING: StateEntering.new(self),
+	BunnyState.EXITING: StateExiting.new(self),
+	BunnyState.ESCAPING: StateEscaping.new(self),
+	BunnyState.TRAPPED: StateTrapped.new(self),
+	BunnyState.GRABBED: StateGrabbed.new(self)
+}
+const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING]
+
+var state_id = BunnyState.FREE
+var state_obj = states_dict[state_id]
+var timer = 0 # time spent in current state
+var direction = Vector2(0, 1) # direction of current movement
+var speed = 0 # speed of current movement
 
 func _ready():
 	Game.total_bunnies += 1
 
 func _process(delta):
-	match state:
-		BunnyState.FREE:
-			process_free(delta)
-		BunnyState.HOPPING:
-			process_hopping(delta)
-		BunnyState.SCARED:
-			process_scared(delta)
-		BunnyState.ENTERING:
-			process_entering(delta)
-		BunnyState.EXITING:
-			process_exiting(delta)
-		BunnyState.TRAPPED:
-			process_trapped(delta)
-		BunnyState.GRABBED:
-			process_grabbed(delta)
-		_:
-			print("Unknown BunnyState occurred and I don't know how to handle it! Halp! ", state)
-
-func enter_free():
-	state = BunnyState.FREE
-func exit_free():
-	timer = 0
-func process_free(delta):
-	if position.distance_to(player.position) <= scared_radius:
-		exit_free()
-		enter_scared()
-		return
-	timer += delta
-	if timer >= hop_delay:
-		exit_free()
-		enter_hopping()
-
-func enter_hopping():
-	direction = Vector2.from_angle(randf() * TAU) # choose a random angle between 0 and tau radians to hop in
-	state = BunnyState.HOPPING
-func exit_hopping():
-	velocity = Vector2(0,0)
-	timer = 0
-func process_hopping(delta):
-	var t = timer / hop_duration
-	var speed = (t - t*2) * hop_speed # should be cubic ease in out, looks a bit subtle though
-	velocity = direction * speed
-	timer += delta
+	state_obj._process(delta)
+	velocity = speed * direction
 	move_and_slide()
-	if timer >= hop_duration:
-		exit_hopping()
-		enter_free()
+	timer += delta
 
-func enter_scared():
-	state = BunnyState.SCARED
-func exit_scared():
-	pass
-func process_scared(delta):
-	if position.distance_to(player.position) >= scared_radius * 1.02: # small buffer to prevent rapid switching
-		exit_scared()
-		enter_free()
-		return
-	if run_speed < scared_speed: # ramp up to max scared_speed
-		run_speed += scared_accel * delta
-		if run_speed > scared_speed:
-			run_speed = scared_speed
-	direction = -position.direction_to(player.position)
-	velocity = direction * run_speed
-	if move_and_slide(): # if collided
-		for c in get_slide_collision_count():
-			var collider = get_slide_collision(c).get_collider()
+func switch_state(new_state: BunnyState):
+	timer = 0
+	state_obj._exit()
+	if state_id in IN_PEN_STATES: Game.bunnies_in_pen -= 1
+	if new_state in IN_PEN_STATES: Game.bunnies_in_pen += 1
+	state_id = new_state
+	state_obj = states_dict[state_id]
+	state_obj._enter()
+
+func point_to_center(reverse=false):
+	var d = position.direction_to(centerpoint)
+	if reverse: d = -d
+	direction = d
+
+func point_random(): # choose a random angle between 0 and tau radians to point in
+	direction = Vector2.from_angle(randf() * TAU)
+
+class State:
+	var state: BunnyState
+	var bunny: Bunny
+	func _init(b: Bunny):
+		state = BunnyState.NULL
+		bunny = b
+	func _exit():
+		pass
+	func _enter():
+		pass
+	func _process(_delta):
+		print("A null state? in my bunny game? it's more likely than you think. free PC check")
+
+class StateFree extends State:
+	func _init(b: Bunny):
+		state = BunnyState.FREE
+		bunny = b
+	func _enter():
+		bunny.speed = 0
+	func _process(_delta):
+		if bunny.position.distance_to(bunny.player.position) <= bunny.scared_radius:
+			bunny.switch_state(BunnyState.SCARED)
+		elif bunny.timer >= bunny.hop_delay:
+			bunny.switch_state(BunnyState.HOPPING)
+
+class StateHopping extends State:
+	func _init(b: Bunny):
+		state = BunnyState.HOPPING
+		bunny = b
+	func _enter():
+		bunny.point_random()
+	func _process(_delta):
+		if bunny.timer >= bunny.hop_duration:
+			bunny.switch_state(BunnyState.FREE)
+			return
+		var t = bunny.timer / bunny.hop_duration
+		bunny.speed = (t - t*2) * bunny.hop_speed # should be cubic ease in out, looks a bit subtle though
+
+class StateScared extends State:
+	func _init(b: Bunny):
+		state = BunnyState.SCARED
+		bunny = b
+	func _process(delta):
+		if bunny.position.distance_to(bunny.player.position) >= bunny.scared_radius * 1.02: # small buffer to prevent rapid switching
+			bunny.switch_state(BunnyState.FREE)
+			return
+		if bunny.speed < bunny.scared_speed: # ramp up to max scared_speed
+			bunny.speed += bunny.scared_accel * delta
+			if bunny.speed > bunny.scared_speed:
+				bunny.speed = bunny.scared_speed
+		bunny.direction = -bunny.position.direction_to(bunny.player.position)
+		for c in range(bunny.get_slide_collision_count()):
+			var collider = bunny.get_slide_collision(c).get_collider()
 			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
-				exit_scared()
-				enter_entering()
+				bunny.switch_state(BunnyState.ENTERING)
 				return
 
-func enter_entering():
-	state = BunnyState.ENTERING
-	direction = position.direction_to(centerpoint)
-	collision_layer = 0
-	collision_mask = 0
-func exit_entering():
-	timer = 0
-	collision_layer = 1
-	collision_mask = 1
-	velocity = Vector2(0,0)
-func process_entering(delta):
-	velocity = direction * enter_speed
-	timer += delta
-	move_and_slide()
-	if timer >= enter_duration:
-		exit_entering()
-		enter_trapped()
+class StateEntering extends State:
+	func _init(b: Bunny):
+		state = BunnyState.ENTERING
+		bunny = b
+	func _enter():
+		bunny.point_to_center()
+		bunny.speed = bunny.enter_speed
+		bunny.collision_layer = 0
+		bunny.collision_mask = 0
+	func _exit():
+		bunny.collision_layer = 1
+		bunny.collision_mask = 1
+	func _process(_delta):
+		if bunny.timer >= bunny.enter_duration:
+			bunny.switch_state(BunnyState.TRAPPED)
 
-func enter_exiting():
-	state = BunnyState.EXITING
-func exit_exiting():
-	pass
-func process_exiting(_delta):
-	pass
+class StateExiting extends State:
+	func _init(b: Bunny):
+		state = BunnyState.EXITING
+		bunny = b
+	func _enter():
+		bunny.point_to_center(true)
+		bunny.speed = bunny.enter_speed
+		bunny.collision_layer = 0
+		bunny.collision_mask = 0
+	func _exit():
+		bunny.collision_layer = 1
+		bunny.collision_mask = 1
+	func _process(_delta):
+		if bunny.timer >= bunny.enter_duration:
+			bunny.switch_state(BunnyState.FREE)
 
-func enter_escaping():
-	state = BunnyState.ESCAPING
-func exit_escaping():
-	pass
-func process_escaping(_delta):
-	pass
+class StateEscaping extends State:
+	func _init(b: Bunny):
+		state = BunnyState.ESCAPING
+		bunny = b
+	func _enter():
+		bunny.point_random()
+		bunny.speed = bunny.escape_speed
+	func _process(_delta):
+		for c in range(bunny.get_slide_collision_count()):
+			var collider = bunny.get_slide_collision(c).get_collider()
+			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
+				if randf() < bunny.escape_chance:
+					bunny.switch_state(BunnyState.EXITING)
+				else:
+					bunny.switch_state(BunnyState.TRAPPED)
+				return
 
-func enter_trapped():
-	Game.bunnies_in_pen += 1
-	state = BunnyState.TRAPPED
-func exit_trapped():
-	Game.bunnies_in_pen -= 1
-func process_trapped(_delta):
-	pass
+class StateTrapped extends State:
+	var roam_timer = 0
+	var roam_active = true
+	func _init(b: Bunny):
+		state = BunnyState.TRAPPED
+		bunny = b
+	func _enter():
+		bunny.point_to_center()
+		roam_timer = 0
+		roam_active = true
+	func _process(delta):
+		if bunny.timer >= bunny.escape_delay:
+			bunny.switch_state(BunnyState.ESCAPING)
+			return
+		roam_timer += delta
+		if roam_active and roam_timer >= bunny.roam_on_duration:
+			roam_active = false
+			bunny.speed = 0
+			roam_timer = 0
+		elif !roam_active and roam_timer >= bunny.roam_off_duration:
+			roam_active = true
+			bunny.point_random()
+			bunny.speed = bunny.roam_speed
+			roam_timer = 0
 
-func enter_grabbed():
-	state = BunnyState.GRABBED
-func exit_grabbed():
-	pass
-func process_grabbed(_delta):
-	pass
+class StateGrabbed extends State:
+	func _init(b: Bunny):
+		state = BunnyState.GRABBED
+		bunny = b

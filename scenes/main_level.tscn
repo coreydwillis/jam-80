@@ -308,42 +308,22 @@ tile_set = SubResource("TileSet_o6xl0")
 [node name="Bunny" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(120, 40)
-scared_speed = 100
-scared_accel = 40
-hop_delay = 5
-hop_speed = 60
 
 [node name="Bunny2" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(191, -23)
-scared_speed = 100
-scared_accel = 40
-hop_delay = 5
-hop_speed = 60
 
 [node name="Bunny3" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(246, 45)
-scared_speed = 100
-scared_accel = 40
-hop_delay = 5
-hop_speed = 60
 
 [node name="Bunny4" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(103, 137)
-scared_speed = 100
-scared_accel = 40
-hop_delay = 5
-hop_speed = 60
 
 [node name="Bunny5" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
 position = Vector2(200, 118)
-scared_speed = 100
-scared_accel = 40
-hop_delay = 5
-hop_speed = 60
 
 [node name="Fences" type="Node" parent="World"]
 

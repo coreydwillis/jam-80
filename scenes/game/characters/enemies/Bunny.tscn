@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnvpseuy58pf0"]
 
-[ext_resource type="Script" uid="uid://ck0fdfvpt11oq" path="res://scenes/game/characters/enemies/bunny.gd" id="1_e0ilf"]
+[ext_resource type="Script" uid="uid://dw7gmsbuhvcu5" path="res://scenes/game/characters/enemies/bunny.gd" id="1_e0ilf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_e0ilf"]
 
@@ -11,12 +11,12 @@ height = 24.0
 [node name="Bunny" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_e0ilf")
-scared_speed = 120
 scared_accel = 60
 hop_delay = 3
 hop_speed = 80
-hop_duration = 1.0
+hop_duration = 1.2
 enter_speed = 60
+escape_delay = 3.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 2.38419e-07)
