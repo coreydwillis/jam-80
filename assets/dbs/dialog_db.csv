@@ -1,5 +1,36 @@
 alien,1,1,1,Hello fellow human. I hope you find some rare earth items you wish to purchase.
 alien,1,25,1,How does my costu-- I mean outfit look?
+alien,1,1,2,You survived another cycle around the sun. Earth days are short and dim as a Bruckheimer movie
+alien,1,1,1,I can't believe they made a Mineshaft movie. A new low for Hollywood's withering creativity.
+alien,1,1,1,My favorite movie is Citizen Kane.
+alien,1,1,1,You should buy my memoire. It's called The Horrendous Hubris of Hollywood Hallucinations.
+alien,1,1,1,I remember when the Coen Brothers were good.
+alien,1,1,1,I've heard tales that {Game.renguy_name} is actually from the Renaissance period and traveled here using his time machine!
+bunnylady,1,1,1,Russian Roulette is still my favorite Red Velvet album.
+bunnylady,1,3,4,"Women of few words, aren't you?"
+bunnylady,1,1,1,“Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.” – Suho (EXO)
+bunnylady,1,1,1,"“You're an artwork, not a pair of eyes.” – Baekhyun (EXO)"
+bunnylady,1,1,1,“I need you like the air I breathe.” – Irene (Red Velvet)
+bunnylady,1,1,1,“Friends are our chosen family.” – RM (BTS)
+bunnylady,1,1,1,Can you believe that Citizen Kane is actually {Game.alien_name) favorite movie? Talk about predictable.
+renguy,1,1,1,"“Art is never finished, only abandoned.” – Leonardo da Vinci"
+renguy,1,1,1,“The art of medicine consists of amusing the patient while nature cures the disease.” – Galileo Galilei
+renguy,1,1,1,"“The artist is nothing without the gift, but the gift is nothing without work.” – Emile Zola"
+renguy,1,1,1,“The only way to do great work is to love what you do.” – Steve Jobs
+renguy,1,1,1,Welcome! Welcome! One and all to The Nighfaire!
+renguy,1,1,1,"I don't understand what the rabbits have to do with The Nightfaire, but take a gander at my wonderful wares!"
+renguy,1,25,1,"Oh shit, where am I? What am I doing here?"
+renguy,1,15,1,Aaaaahhh!!!!
 alien,2,1,1,I can't even see the planet Glorpnorp from here.
-alien,1,1,2,You survived another cycle around the sun. Earth days are so short and boring.
-farmer,1,1,1,Howdy partner!
+alien,2,1,5,"Believe me, dying isn't fun. I've tried it before. Zero stars."
+bunnylady,2,5,1,I don't think I'll ever know what they see in you.
+bunnylady,2,1,1,"I told {Game.alien_name} that {Game.renguy_name} traveled here from the past, and I think he actually believed me."
+alien,3,1,1,I can't believe she lied to me...
+renguy,3,1,1,"I don't mean to judge, but there's something off about the other vendors here."
+alien,4,1,5,"Given the unpredictability of these timelines, I'm sure most of what I say makes no sense to you."
+alien,4,1,5,I wish I could tell my family that I love them.
+bunnylady,4,1,1,I feel bad for lying to {Game.alien_name}. They're just so gullible and I love a good joke. I don't think they thought it was funny.
+alien,5,1,1,Has {Game.bunnylady_name} brought me up before?
+bunnylady,5,1,1,Has {Game.alien_name} mentioned me?
+renguy,1,1,1,{Game.alien_name} must have bought their costume online...
+renguy,10,1,1,I cannot believe {Game.alien_name} said that to her.

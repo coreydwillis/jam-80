@@ -1,6 +1,6 @@
 extends Node
 
-const save_location = "user://RabbitSave10.json"
+const save_location = "user://RabbitSave666.json"
 
 var contents_to_save: Dictionary = {
 	"runs": 1,
