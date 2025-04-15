@@ -13,7 +13,10 @@ var music_volume: float
 var sfx_volume: float
 var fullscreen: bool
 
-# Character Vars
+# Character/Story Vars
 var alien_name: String
 var bunnylady_name: String
 var renguy_name: String
+var deity_name: String
+var scripture_name = "Lagomorphicon"
+var bazaar_name = "The Nightfaire"
