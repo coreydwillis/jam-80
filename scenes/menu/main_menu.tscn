@@ -1,138 +1,105 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnppfpokdqeob"]
+[gd_scene load_steps=6 format=3 uid="uid://bxroi0e1f7wuh"]
 
-[ext_resource type="Script" uid="uid://bdyis0ycs7yk0" path="res://scenes/menu/main_menu.gd" id="1_nl8w3"]
-[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="2_3rkf3"]
+[ext_resource type="Script" uid="uid://4dju4l6a141n" path="res://scenes/menu/main_menu.gd" id="1_nl8w3"]
+[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_3rkf3"]
+[ext_resource type="Texture2D" uid="uid://0ryxtv6wks8a" path="res://assets/sprites/placeholder_art/rabbit-1882699.jpg" id="2_kiqgm"]
+[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="3_247la"]
+[ext_resource type="AudioStream" uid="uid://ce82uhe3xuv7l" path="res://assets/audio/music/beta/music_main.mp3" id="5_hj162"]
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_nl8w3")
 
-[node name="Title" type="Label" parent="."]
-offset_right = 1920.0
-offset_bottom = 500.0
-theme_override_font_sizes/font_size = 220
-text = "Rabbit Herding"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="menu_background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kiqgm")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-offset_top = 500.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme = ExtResource("2_3rkf3")
+text = "Lagomorphicon"
+horizontal_alignment = 1
 
-[node name="MainButtons" type="VBoxContainer" parent="CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
+alignment = 1
 
-[node name="play" type="Button" parent="CenterContainer/MainButtons"]
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Play_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(32, 100)
+layout_mode = 2
+theme = ExtResource("3_247la")
 text = "Play"
 
-[node name="settings" type="Button" parent="CenterContainer/MainButtons"]
+[node name="Seperator4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Settings"
 
-[node name="credits" type="Button" parent="CenterContainer/MainButtons"]
+[node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(250, 100)
 layout_mode = 2
+theme = ExtResource("3_247la")
+text = "Options"
+
+[node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Credits_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(225, 100)
+layout_mode = 2
+theme = ExtResource("3_247la")
 text = "Credits"
 
-[node name="quit" type="Button" parent="CenterContainer/MainButtons"]
+[node name="Seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quit"
 
-[node name="SettingsMenu" type="VBoxContainer" parent="CenterContainer"]
-visible = false
+[node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-theme_override_constants/separation = 16
+theme = ExtResource("3_247la")
+text = "Exit"
 
-[node name="fullscreen" type="CheckBox" parent="CenterContainer/SettingsMenu"]
-layout_mode = 2
-text = "Fullscreen"
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hj162")
+autoplay = true
+bus = &"Music"
 
-[node name="mainVolSlider" type="HSlider" parent="CenterContainer/SettingsMenu"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-
-[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/mainVolSlider"]
-custom_minimum_size = Vector2(484, 55)
-layout_mode = 0
-offset_top = -16.0
-offset_right = 484.0
-offset_bottom = 39.0
-scale = Vector2(0.735, 0.735)
-theme_override_font_sizes/font_size = 40
-text = "Main Volume"
-horizontal_alignment = 1
-
-[node name="musicVolSlider" type="HSlider" parent="CenterContainer/SettingsMenu"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-
-[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/musicVolSlider"]
-custom_minimum_size = Vector2(484, 55)
-layout_mode = 0
-offset_top = -16.0
-offset_right = 484.0
-offset_bottom = 39.0
-scale = Vector2(0.735, 0.735)
-theme_override_font_sizes/font_size = 40
-text = "Music Volume"
-horizontal_alignment = 1
-
-[node name="sfxVolSlider" type="HSlider" parent="CenterContainer/SettingsMenu"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-max_value = 1.0
-step = 0.001
-
-[node name="Label" type="Label" parent="CenterContainer/SettingsMenu/sfxVolSlider"]
-custom_minimum_size = Vector2(484, 55)
-layout_mode = 0
-offset_top = -16.0
-offset_right = 484.0
-offset_bottom = 39.0
-scale = Vector2(0.735, 0.735)
-theme_override_font_sizes/font_size = 40
-text = "SFX Volume"
-horizontal_alignment = 1
-
-[node name="back" type="Button" parent="CenterContainer/SettingsMenu"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 75
-text = "Back"
-
-[node name="CreditsMenu" type="VBoxContainer" parent="CenterContainer"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="CenterContainer/CreditsMenu"]
-custom_minimum_size = Vector2(1000, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 90
-text = "Game by the team"
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="Back" type="Button" parent="CenterContainer/CreditsMenu"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Back"
-
-[connection signal="pressed" from="CenterContainer/MainButtons/play" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="CenterContainer/MainButtons/settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="CenterContainer/MainButtons/credits" to="." method="_on_credits_pressed"]
-[connection signal="pressed" from="CenterContainer/MainButtons/quit" to="." method="_on_quit_button_pressed"]
-[connection signal="toggled" from="CenterContainer/SettingsMenu/fullscreen" to="." method="_on_fullscreen_toggled"]
-[connection signal="value_changed" from="CenterContainer/SettingsMenu/mainVolSlider" to="." method="_on_main_vol_slider_value_changed"]
-[connection signal="value_changed" from="CenterContainer/SettingsMenu/musicVolSlider" to="." method="_on_music_vol_slider_value_changed"]
-[connection signal="value_changed" from="CenterContainer/SettingsMenu/sfxVolSlider" to="." method="_on_sfx_vol_slider_3_value_changed"]
-[connection signal="pressed" from="CenterContainer/SettingsMenu/back" to="." method="_on_back_pressed"]
-[connection signal="pressed" from="CenterContainer/CreditsMenu/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Credits_Button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_button_pressed"]
