@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://dxoee2ntjdead"
+
+[deps]
+
+files=["res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.Hello fellow human. I hope you find some rare earth items you wish to purchase..translation"]
+
+source_file="res://assets/dbs/dialog_db.csv"
+dest_files=["res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.Hello fellow human. I hope you find some rare earth items you wish to purchase..translation"]
+
+[params]
+
+compress=true
+delimiter=0
