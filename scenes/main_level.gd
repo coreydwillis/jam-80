@@ -4,6 +4,12 @@ extends Node2D
 @onready var viewport: Viewport = get_viewport()
 @onready var player = $"World/Player"
 @onready var ui = $"Debug UI"
+#var night_shader: Material
+#var day_shader: Material
+
+func _ready():
+	SignalBus.day_started.connect(night_shader_disable)
+	SignalBus.night_started.connect(night_shader_enable)
 
 func _process(_delta):
 	var offset = -player.position * player_weight + centering_factor
@@ -15,6 +21,8 @@ func _on_save_btn_test_pressed():
 	SaveLoad.contents_to_save.longest_run = 1
 	SaveLoad._save()
 
+func night_shader_enable():
+	material.set_shader_parameter("light_mul", 0.4)
 
-func start_sleeping() -> void:
-	pass # Replace with function body.
+func night_shader_disable():
+	material.set_shader_parameter("light_mul", 1.0)

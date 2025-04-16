@@ -10,6 +10,8 @@ var total_bunnies: int = 0
 var night_length: int = 20
 var day_length_base: int = 10
 var day_length_inc: int = 20
+var centerpoint = Vector2(0,0)
+var pen_radius = 40.0
 
 # Settings Vars #
 var master_volume: float

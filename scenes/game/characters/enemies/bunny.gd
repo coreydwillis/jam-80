@@ -8,7 +8,6 @@ class_name Bunny extends CharacterBody2D
 @export var hop_duration = 2.5 # hop duration in seconds
 @export var enter_speed = 40 # speed while entering pen
 @export var enter_duration = 0.7 # time it takes to enter pen
-@export var centerpoint = Vector2(0,0) # point bunny hops to in pen
 @export var escape_delay = 2.5 # time between escape attempts in seconds
 @export var escape_speed = 60 # speed when attempting escape
 @export var escape_chance = 0.4 # chance an escape attempt is successful
@@ -18,6 +17,7 @@ class_name Bunny extends CharacterBody2D
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
+var bunny_resource = preload("res://scenes/game/characters/enemies/Bunny.tscn")
 
 enum BunnyState {
 	NULL,		# should never show up
@@ -49,7 +49,7 @@ var states_dict = {
 }
 const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING, BunnyState.HEALING, BunnyState.SLEEPING]
 
-var state_id = BunnyState.FREE
+var state_id = BunnyState.ESCAPING
 var state_obj = states_dict[state_id]
 var timer = 0 # time spent in current state
 var direction = Vector2(0, 1) # direction of current movement
@@ -76,12 +76,18 @@ func switch_state(new_state: BunnyState):
 	state_obj._enter()
 
 func point_to_center(reverse=false):
-	var d = position.direction_to(centerpoint)
+	var d = position.direction_to(Game.centerpoint)
 	if reverse: d = -d
 	direction = d
 
 func point_random(): # choose a random angle between 0 and tau radians to point in
 	direction = Vector2.from_angle(randf() * TAU)
+
+func point_roaming():
+	if position.distance_to(Game.centerpoint) <= Game.pen_radius / 2:
+		point_random()
+	else:
+		point_to_center()
 
 class State:
 	var state: BunnyState
@@ -163,10 +169,8 @@ class StateExiting extends State:
 	func _enter():
 		bunny.point_to_center(true)
 		bunny.speed = bunny.enter_speed
-		bunny.collision_layer = 0
 		bunny.collision_mask = 0
 	func _exit():
-		bunny.collision_layer = 1
 		bunny.collision_mask = 1
 	func _process(_delta):
 		if bunny.timer >= bunny.enter_duration:
@@ -210,7 +214,7 @@ class StateTrapped extends State:
 			roam_timer = 0
 		elif !roam_active and roam_timer >= bunny.roam_off_duration:
 			roam_active = true
-			bunny.point_random()
+			bunny.point_roaming()
 			bunny.speed = bunny.roam_speed
 			roam_timer = 0
 
@@ -223,11 +227,22 @@ class StateSleeping extends State:
 	func _init(b: Bunny):
 		state = BunnyState.GRABBED
 		bunny = b
+	func _enter():
+		bunny.speed = bunny.roam_speed
+		bunny.point_roaming()
 	func _process(_delta):
-		pass
+		if bunny.speed > 0 and bunny.timer >= bunny.roam_on_duration * 2:
+			bunny.speed = 0
 
 func start_sleeping():
-	switch_state(BunnyState.SLEEPING)
+	if state_id in IN_PEN_STATES:
+		switch_state(BunnyState.SLEEPING)
+		var baby = bunny_resource.instantiate()
+		$"..".add_child(baby)
+		baby.switch_state(BunnyState.SLEEPING)
+	else:
+		Game.total_bunnies -= 1
+		queue_free()
 
 func stop_sleeping():
 	switch_state(BunnyState.ESCAPING)
