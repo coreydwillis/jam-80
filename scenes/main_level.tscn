@@ -285,7 +285,7 @@ sources/0 = SubResource("TileSetAtlasSource_tefeu")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_qmak7")
-centering_factor = Vector2(575, 360)
+centering_factor = Vector2(900, 500)
 
 [node name="World" type="Node2D" parent="."]
 
@@ -347,7 +347,9 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Debug UI" type="Node" parent="."]
+[node name="Debug UI" type="CanvasLayer" parent="."]
+offset = Vector2(800, 400)
+transform = Transform2D(1, 0, 0, 1, 800, 400)
 script = ExtResource("5_8ra5a")
 
 [node name="SaveBTN Test" type="Button" parent="Debug UI"]
@@ -382,8 +384,16 @@ theme_override_font_sizes/font_size = 30
 text = "Bunnies in pen: 0
 Total bunnies: 0"
 
+[node name="TimerLabel" type="Label" parent="Debug UI"]
+offset_left = -571.0
+offset_top = -329.0
+offset_right = -82.0
+offset_bottom = -188.0
+theme_override_font_sizes/font_size = 50
+text = "Time until night: 30s"
+
 [node name="DayTimer" type="Timer" parent="Debug UI"]
-wait_time = 3.0
+wait_time = 10.0
 autostart = true
 
 [connection signal="pressed" from="Debug UI/SaveBTN Test" to="." method="_on_save_btn_test_pressed"]

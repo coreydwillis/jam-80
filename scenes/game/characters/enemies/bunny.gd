@@ -24,11 +24,14 @@ enum BunnyState {
 	FREE,		# out of pen, not moving (> HOPPING, SCARED)
 	HOPPING,	# out of pen, hopping (> FREE)
 	SCARED,		# out of pen, running from player (> FREE, ENTERING)
-	ENTERING,	# jumping into pen (> TRAPPED)
+	ENTERING,	# jumping into pen (> TRAPPED, HEALING)
 	EXITING,	# jumping out of pen (> FREE)
 	ESCAPING,	# in pen, attempting escape (> TRAPPED, EXITING)
 	TRAPPED,	# in pen, roaming (> ESCAPING)
-	GRABBED		# grabbed by player's ability (> FREE, TRAPPED)
+	GRABBED,	# grabbed by player's ability (> FREE, TRAPPED)
+	RETREATING,	# health reduced to 0, retreating to pen (> ENTERING)
+	HEALING,	# resting in pen before escape attempts (> TRAPPED)
+	SLEEPING	# sleeping during the night (> ESCAPING)
 }
 
 var states_dict = {
@@ -39,9 +42,12 @@ var states_dict = {
 	BunnyState.EXITING: StateExiting.new(self),
 	BunnyState.ESCAPING: StateEscaping.new(self),
 	BunnyState.TRAPPED: StateTrapped.new(self),
-	BunnyState.GRABBED: StateGrabbed.new(self)
+	BunnyState.GRABBED: StateGrabbed.new(self),
+	BunnyState.RETREATING: State.new(self),
+	BunnyState.HEALING: State.new(self),
+	BunnyState.SLEEPING: StateSleeping.new(self)
 }
-const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING]
+const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING, BunnyState.HEALING, BunnyState.SLEEPING]
 
 var state_id = BunnyState.FREE
 var state_obj = states_dict[state_id]
@@ -51,6 +57,8 @@ var speed = 0 # speed of current movement
 
 func _ready():
 	Game.total_bunnies += 1
+	SignalBus.day_started.connect(stop_sleeping)
+	SignalBus.night_started.connect(start_sleeping)
 
 func _process(delta):
 	state_obj._process(delta)
@@ -210,3 +218,16 @@ class StateGrabbed extends State:
 	func _init(b: Bunny):
 		state = BunnyState.GRABBED
 		bunny = b
+
+class StateSleeping extends State:
+	func _init(b: Bunny):
+		state = BunnyState.GRABBED
+		bunny = b
+	func _process(_delta):
+		pass
+
+func start_sleeping():
+	switch_state(BunnyState.SLEEPING)
+
+func stop_sleeping():
+	switch_state(BunnyState.ESCAPING)

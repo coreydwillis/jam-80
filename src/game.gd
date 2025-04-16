@@ -2,10 +2,14 @@ extends Node
 
 #Gameplay Vars
 var days: int = 1
+var is_day = true
 var runs: int
 var longest_run: int
 var bunnies_in_pen: int = 0
 var total_bunnies: int = 0
+var night_length: int = 20
+var day_length_base: int = 10
+var day_length_inc: int = 20
 
 # Settings Vars #
 var master_volume: float

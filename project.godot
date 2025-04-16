@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SaveLoad="*res://src/SaveLoad.gd"
 Game="*res://src/game.gd"
+SignalBus="*res://src/signal_bus.gd"
 
 [display]
 
