@@ -1,3 +1,95 @@
-[gd_scene format=3 uid="uid://c5xb0d5hcgwff"]
+[gd_scene load_steps=6 format=3 uid="uid://dejeb358jsx7j"]
 
-[node name="PauseMenu" type="Node2D"]
+[ext_resource type="Script" uid="uid://cqhwlbfcmccth" path="res://scenes/menu/pause_menu.gd" id="1_xtxec"]
+[ext_resource type="Texture2D" uid="uid://0ryxtv6wks8a" path="res://assets/sprites/placeholder_art/rabbit-1882699.jpg" id="2_dfex3"]
+[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_h61jo"]
+[ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="4_msl3b"]
+[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="5_tw6eu"]
+
+[node name="Pause_Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xtxec")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dfex3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Seperator" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme = ExtResource("3_h61jo")
+theme_override_font_sizes/font_size = 0
+text = "Paused"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Resume_Button" type="Button" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("5_tw6eu")
+text = "Resume"
+
+[node name="Options_Button" type="Button" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("5_tw6eu")
+text = "Options"
+
+[node name="Main_Button" type="Button" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("5_tw6eu")
+text = "Main Menu"
+
+[node name="Quit_Button" type="Button" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("5_tw6eu")
+text = "Quit"
+
+[node name="Options_Menu" parent="." instance=ExtResource("4_msl3b")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/Seperator/Resume_Button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Seperator/Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Seperator/Main_Button" to="." method="_on_main_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Seperator/Quit_Button" to="." method="_on_quit_button_pressed"]

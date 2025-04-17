@@ -4,6 +4,8 @@ extends Node2D
 @onready var viewport: Viewport = get_viewport()
 @onready var player = $"World/Player"
 @onready var ui = $"Debug UI"
+@onready var pause_menu_canvas = $PauseMenuCanvas
+var pause_menu_scene = load("uid://dejeb358jsx7j")
 #var night_shader: Material
 #var day_shader: Material
 
@@ -12,8 +14,15 @@ func _ready():
 	SignalBus.night_started.connect(night_shader_enable)
 
 func _process(_delta):
-	var offset = -player.position * player_weight + centering_factor
-	viewport.canvas_transform = Transform2D(0, offset)
+	# Using a Camera2D instead so we're not moving the canvas around and causing UI issues. Also allows us to have smoothing and nother nice features.
+	#var offset = -player.position * player_weight + centering_factor
+	#viewport.canvas_transform = Transform2D(0, offset)
+	
+	## Pause Menu ##
+	# We can probably put this somewhere better later
+	if Input.is_action_just_pressed("pause"):
+		var pause_menu_instance = pause_menu_scene.instantiate()
+		pause_menu_canvas.add_child(pause_menu_instance)
 
 func _on_save_btn_test_pressed():
 	SaveLoad.contents_to_save.days = 1

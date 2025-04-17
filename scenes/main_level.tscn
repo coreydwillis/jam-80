@@ -411,4 +411,6 @@ text = "Time until night: 30s"
 wait_time = 10.0
 autostart = true
 
+[node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
+
 [connection signal="pressed" from="Debug UI/SaveBTN Test" to="." method="_on_save_btn_test_pressed"]
