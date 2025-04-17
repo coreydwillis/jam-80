@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://wm20d5epi3ac"]
+[gd_scene load_steps=6 format=3 uid="uid://wm20d5epi3ac"]
 
 [ext_resource type="Script" uid="uid://mo66wcw7psb8" path="res://scenes/menu/options_menus/options_menu.gd" id="1_1hy57"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_gm2gu"]
+[ext_resource type="Texture2D" uid="uid://0ryxtv6wks8a" path="res://assets/sprites/placeholder_art/rabbit-1882699.jpg" id="2_ilbgr"]
 [ext_resource type="PackedScene" uid="uid://ch6i2pe41dxxn" path="res://scenes/menu/options_menus/settings_tab_container.tscn" id="3_gm2gu"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="3_ilbgr"]
 
@@ -13,6 +14,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1hy57")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ilbgr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

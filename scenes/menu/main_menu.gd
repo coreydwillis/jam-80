@@ -13,4 +13,4 @@ func _on_credits_button_pressed():
 	print("credits")
 
 func _on_options_button_pressed():
-	get_tree().change_scene_to_file("uid://wm20d5epi3ac")
+	$Options_Menu.visible = true

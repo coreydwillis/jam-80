@@ -10,10 +10,17 @@ const RESOLUTION_DICTIONARY : Dictionary = {
 
 func _ready():
 	add_resolution_items()
+	load_data()
+
+func load_data():
+	_on_option_button_item_selected(SettingsDataContainer.get_resolution_mode_index())
+	option_button.select(SettingsDataContainer.get_resolution_mode_index())
 
 func add_resolution_items():
 	for resolution_size_text in RESOLUTION_DICTIONARY:
 		option_button.add_item(resolution_size_text)
 
 func _on_option_button_item_selected(index):
+	SignalBusSettings.emit_on_resolution_selected(index)
 	DisplayServer.window_set_size(RESOLUTION_DICTIONARY.values()[index])
+	

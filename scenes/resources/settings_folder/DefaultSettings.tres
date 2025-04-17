@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="DefaultSettingsResource" load_steps=2 format=3 uid="uid://2lajaeqibl23"]
+
+[ext_resource type="Script" uid="uid://cox3o7v2np6ea" path="res://scenes/resources/settings_folder/settings_resource.gd" id="1_52r6c"]
+
+[resource]
+script = ExtResource("1_52r6c")
+metadata/_custom_type_script = "uid://cox3o7v2np6ea"

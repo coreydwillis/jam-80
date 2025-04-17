@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cb3jjexlqe8nx"]
+[gd_scene load_steps=3 format=3 uid="uid://cb3jjexlqe8nx"]
 
+[ext_resource type="Script" uid="uid://cduvrupgnj2m3" path="res://scenes/menu/options_menus/accessibility_checkmark.gd" id="1_60vdv"]
 [ext_resource type="Theme" uid="uid://ce4mm8xf3qaqi" path="res://assets/themes/button_options.tres" id="2_1hx88"]
 
 [node name="AccessibilityCheckmark" type="Control"]
@@ -9,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_60vdv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -19,13 +21,14 @@ offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
+theme_override_constants/separation = 64
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Name_Label" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(400, 30)
 layout_mode = 2
 theme = ExtResource("2_1hx88")
-text = "ACTION"
+text = "No night shopping time limit"
 vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
@@ -35,3 +38,17 @@ theme_override_constants/separation = 200
 
 [node name="CheckButton" type="CheckButton" parent="HBoxContainer"]
 layout_mode = 2
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 200
+
+[node name="State_Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(400, 30)
+layout_mode = 2
+theme = ExtResource("2_1hx88")
+text = "Off"
+vertical_alignment = 1
+
+[connection signal="toggled" from="HBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]

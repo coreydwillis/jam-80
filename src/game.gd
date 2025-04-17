@@ -13,12 +13,6 @@ var day_length_inc: int = 20
 var centerpoint = Vector2(0,0)
 var pen_radius = 40.0
 
-# Settings Vars #
-var master_volume: float
-var music_volume: float
-var sfx_volume: float
-var fullscreen: bool
-
 # Character/Story Vars
 var alien_name: String
 var bunnylady_name: String
