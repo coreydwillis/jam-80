@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2i6bw32flvbl"]
+
+[ext_resource type="Texture2D" uid="uid://pdpyrxi1oemv" path="res://assets/sprites/placeholder_art/inventory-slot.png" id="1_4cr5p"]
+[ext_resource type="Script" uid="uid://dgh6vk62i3kaq" path="res://scenes/game/shops/inv_ui_slot.gd" id="1_hlikj"]
+
+[node name="InvUiSlot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(129, 129)
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 0.119
+offset_right = 0.360001
+offset_bottom = 0.479996
+script = ExtResource("1_hlikj")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 129.0
+texture = ExtResource("1_4cr5p")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(129, 129)
+layout_mode = 0
+offset_right = 129.0
+offset_bottom = 129.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(0.5, 0.5)

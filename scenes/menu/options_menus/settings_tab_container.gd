@@ -6,7 +6,8 @@ extends Control
 signal Exit_Options_menu
 
 func _process(_delta):
-	options_menu_input()
+	pass
+	#options_menu_input()
 
 func change_tab(tab : int) -> void:
 	tab_container.set_current_tab(tab)

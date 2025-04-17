@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=15 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
 [ext_resource type="PackedScene" uid="uid://c7lkchv3axj1m" path="res://scenes/game/characters/Player.tscn" id="2_8ra5a"]
 [ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="3_bq26l"]
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
-[ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="5_8ra5a"]
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
+[ext_resource type="Script" uid="uid://bgwjxxvxjckq4" path="res://scenes/resources/stores/store_inventory_test.gd" id="7_u2c82"]
+[ext_resource type="Resource" uid="uid://c105vaje7d5hb" path="res://scenes/resources/stores/store_inventory.tres" id="8_k5pu3"]
+[ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -365,7 +367,6 @@ offset_bottom = 40.0
 [node name="Debug UI" type="CanvasLayer" parent="."]
 offset = Vector2(800, 400)
 transform = Transform2D(1, 0, 0, 1, 800, 400)
-script = ExtResource("5_8ra5a")
 
 [node name="SaveBTN Test" type="Button" parent="Debug UI"]
 offset_left = 540.0
@@ -411,6 +412,13 @@ text = "Time until night: 30s"
 wait_time = 10.0
 autostart = true
 
+[node name="StoreInventoryTest" type="Node" parent="Debug UI"]
+script = ExtResource("7_u2c82")
+inv = ExtResource("8_k5pu3")
+
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
+
+[node name="InvUi" parent="PauseMenuCanvas" instance=ExtResource("9_iqu8w")]
+visible = false
 
 [connection signal="pressed" from="Debug UI/SaveBTN Test" to="." method="_on_save_btn_test_pressed"]

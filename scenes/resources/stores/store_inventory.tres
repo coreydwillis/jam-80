@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://c105vaje7d5hb"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_f47eo"]
+[ext_resource type="Script" uid="uid://cman03nrsntw1" path="res://scenes/resources/stores/inventory.gd" id="2_bxufq"]
+[ext_resource type="Resource" uid="uid://bdvrw1s8mx3xd" path="res://scenes/resources/stores/items/turkey_leg.tres" id="2_euy2d"]
+
+[resource]
+script = ExtResource("2_bxufq")
+items = Array[ExtResource("1_f47eo")]([null, ExtResource("2_euy2d"), null, ExtResource("2_euy2d")])
+metadata/_custom_type_script = "uid://cman03nrsntw1"

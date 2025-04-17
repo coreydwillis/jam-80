@@ -1,0 +1,132 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd3an4hgxrir7"]
+
+[ext_resource type="Script" uid="uid://cv71kg58hdb7k" path="res://scenes/game/shops/inv_ui.gd" id="1_dl177"]
+[ext_resource type="Texture2D" uid="uid://df4yb0n6ika6g" path="res://assets/sprites/placeholder_art/inventory-background.png" id="2_tnxdt"]
+[ext_resource type="Texture2D" uid="uid://kuob4fthlrcc" path="res://assets/sprites/shop_keepers/notarabbitears1.png" id="3_bj0kd"]
+[ext_resource type="PackedScene" uid="uid://b2i6bw32flvbl" path="res://scenes/game/shops/inv_UI_slot.tscn" id="3_dxee8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxee8"]
+
+[node name="InvUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dl177")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.415686, 0.415686, 0.415686, 0.733333)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -290.5
+offset_top = -223.0
+offset_right = 290.5
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tnxdt")
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="Control" type="Control" parent="NinePatchRect"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Control"]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 35.0
+offset_right = 566.0
+offset_bottom = 208.0
+
+[node name="HSeparator3" type="HSeparator" parent="NinePatchRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dxee8")
+
+[node name="shop_keeper_art" type="TextureRect" parent="NinePatchRect/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("3_bj0kd")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="NinePatchRect/Control/VBoxContainer"]
+custom_minimum_size = Vector2(550, 0)
+layout_mode = 2
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 34
+text = "Not a Rabbit Lady for Sure Now"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator4" type="HSeparator" parent="NinePatchRect/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dxee8")
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Control/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 61.125)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.74978, 0.74978, 0.74978, 1)
+
+[node name="Label2" type="Label" parent="NinePatchRect/Control/VBoxContainer/ColorRect"]
+layout_mode = 2
+offset_left = 15.0
+offset_top = 4.0
+offset_right = 542.0
+offset_bottom = 53.0
+text = "This is a bunch of story that is very exciting and also charming, and funny. But also kind of dark."
+autowrap_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -129.0
+offset_right = 264.0
+grow_horizontal = 2
+grow_vertical = 0
+columns = 4
+
+[node name="InvUiSlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
+layout_mode = 2
+
+[node name="InvUiSlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
+layout_mode = 2
+
+[node name="InvUiSlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
+layout_mode = 2
+
+[node name="InvUiSlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="NinePatchRect/GridContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+theme_override_styles/separator = SubResource("StyleBoxEmpty_dxee8")
