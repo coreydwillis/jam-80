@@ -1,12 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dejeb358jsx7j"]
+[gd_scene load_steps=7 format=3 uid="uid://cuxauu0yk4tcp"]
 
-[ext_resource type="Script" uid="uid://cqhwlbfcmccth" path="res://scenes/menu/pause_menu.gd" id="1_xtxec"]
-[ext_resource type="Texture2D" uid="uid://0ryxtv6wks8a" path="res://assets/sprites/placeholder_art/rabbit-1882699.jpg" id="2_dfex3"]
-[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_h61jo"]
-[ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="4_msl3b"]
-[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="5_tw6eu"]
+[ext_resource type="Script" uid="uid://g7yynt6vykxy" path="res://scenes/menu/game_over_menu/game_over_menu.gd" id="1_gv1r1"]
+[ext_resource type="Texture2D" uid="uid://0ryxtv6wks8a" path="res://assets/sprites/placeholder_art/rabbit-1882699.jpg" id="2_bxybo"]
+[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_k5lcj"]
+[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="4_8fprv"]
+[ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="5_whxtc"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2yk66"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv1r1"]
 
 [node name="Pause_Menu" type="Control"]
 process_mode = 3
@@ -16,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xtxec")
+script = ExtResource("1_gv1r1")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -25,7 +25,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_dfex3")
+texture = ExtResource("2_bxybo")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -45,39 +45,31 @@ theme_override_constants/separation = 64
 
 [node name="Label" type="Label" parent="MarginContainer/Seperator"]
 layout_mode = 2
-theme = ExtResource("3_h61jo")
+theme = ExtResource("3_k5lcj")
 theme_override_font_sizes/font_size = 0
-text = "Paused"
+text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Seperator"]
 layout_mode = 2
 theme_override_constants/separation = 100
-theme_override_styles/separator = SubResource("StyleBoxEmpty_2yk66")
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gv1r1")
 
-[node name="Resume_Button" type="Button" parent="MarginContainer/Seperator"]
+[node name="NewRun_Button" type="Button" parent="MarginContainer/Seperator"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("5_tw6eu")
-text = "Resume"
-
-[node name="Options_Button" type="Button" parent="MarginContainer/Seperator"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("5_tw6eu")
-text = "Options"
+theme = ExtResource("4_8fprv")
+text = "New Run"
 
 [node name="Main_Button" type="Button" parent="MarginContainer/Seperator"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("5_tw6eu")
+theme = ExtResource("4_8fprv")
 text = "Main Menu"
 
 [node name="Quit_Button" type="Button" parent="MarginContainer/Seperator"]
@@ -85,14 +77,13 @@ custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("5_tw6eu")
+theme = ExtResource("4_8fprv")
 text = "Quit"
 
-[node name="Options_Menu" parent="." instance=ExtResource("4_msl3b")]
+[node name="Options_Menu" parent="." instance=ExtResource("5_whxtc")]
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="MarginContainer/Seperator/Resume_Button" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="MarginContainer/Seperator/Options_Button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Seperator/NewRun_Button" to="." method="_on_new_run_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Seperator/Main_Button" to="." method="_on_main_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Seperator/Quit_Button" to="." method="_on_quit_button_pressed"]
