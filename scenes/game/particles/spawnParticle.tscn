@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://vgbfcc5tikeq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_by0i6"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 108.01
+initial_velocity_max = 0.5
+gravity = Vector3(0, 100, 0)
+scale_min = 0.2
+scale_max = 3.0
+
+[node name="SpawnParticle" type="GPUParticles2D"]
+amount = 100
+interp_to_end = 0.155
+preprocess = 1.1
+speed_scale = 0.54
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_by0i6")

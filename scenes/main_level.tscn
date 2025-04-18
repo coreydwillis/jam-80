@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=18 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="7_5fr2l"]
+[ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
 [ext_resource type="Script" uid="uid://bgwjxxvxjckq4" path="res://scenes/resources/stores/store_inventory_test.gd" id="7_u2c82"]
 [ext_resource type="Resource" uid="uid://c105vaje7d5hb" path="res://scenes/resources/stores/store_inventory.tres" id="8_k5pu3"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
@@ -359,6 +360,9 @@ rotation = 1.5708
 [node name="Fence4" parent="World/Fences" instance=ExtResource("5_bq26l")]
 position = Vector2(0, -90)
 rotation = 1.5708
+
+[node name="Bazaar" parent="World" instance=ExtResource("7_fkrx8")]
+visible = false
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3

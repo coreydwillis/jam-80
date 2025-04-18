@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://0s7omtqifhkj"]
+
+[ext_resource type="Texture2D" uid="uid://cfvj0ui3xn8cl" path="res://assets/sprites/npcs/alienmanidle.png" id="1_4h1cc"]
+[ext_resource type="Script" uid="uid://ctld854k86dqd" path="res://scenes/game/characters/npcs/npc.gd" id="1_y18q0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y18q0"]
+atlas = ExtResource("1_4h1cc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pg6m"]
+atlas = ExtResource("1_4h1cc")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kbvnm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y18q0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pg6m")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[node name="Npc" type="Node2D"]
+script = ExtResource("1_y18q0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kbvnm")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.186033

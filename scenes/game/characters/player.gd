@@ -9,4 +9,5 @@ func _process(_delta):
 
 	direction = direction.normalized()
 	velocity = direction * speed
+	#temporary code for player sprites
 	move_and_slide()

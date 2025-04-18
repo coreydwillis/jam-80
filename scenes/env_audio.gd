@@ -132,5 +132,3 @@ func fade_out(audio_to_fade: AudioStreamPlayer, fade_duration: float = 3.0, auto
 func fadeComplete(removeAudio):
 	if removeAudio != null:
 		removeAudio.queue_free()
-		print("queue_free")
-		print(removeAudio)
