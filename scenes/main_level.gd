@@ -15,6 +15,7 @@ func _ready():
 	SignalBus.day_started.connect(night_shader_disable)
 	SignalBus.night_started.connect(night_shader_enable)
 	SignalBus.game_over.connect(game_over)
+	SignalBus.main_level.emit()
 
 func _process(_delta):
 	var offset = -player.position * player_weight + centering_factor

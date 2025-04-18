@@ -15,6 +15,10 @@ run/main_scene="uid://bxroi0e1f7wuh"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://scenes/audio/default_bus_layout.tres"
+
 [autoload]
 
 SaveLoad="*res://src/SaveLoad.gd"
@@ -23,6 +27,7 @@ SignalBus="*res://src/signal_bus.gd"
 SettingsDataContainer="*res://src/settings_data_container.gd"
 SignalBusSettings="*res://src/signal_bus_settings.gd"
 SaveManager="*res://src/save_manager.gd"
+MusicPlayer="*res://src/music_player.gd"
 
 [display]
 

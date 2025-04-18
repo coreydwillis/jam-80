@@ -5,3 +5,7 @@ extends Node
 signal night_started
 signal day_started
 signal game_over
+
+# Audio Signals #
+signal main_menu
+signal main_level
