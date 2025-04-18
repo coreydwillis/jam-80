@@ -14,9 +14,8 @@ func _ready():
 	SignalBus.night_started.connect(night_shader_enable)
 
 func _process(_delta):
-	# Using a Camera2D instead so we're not moving the canvas around and causing UI issues. Also allows us to have smoothing and nother nice features.
-	#var offset = -player.position * player_weight + centering_factor
-	#viewport.canvas_transform = Transform2D(0, offset)
+	var offset = -player.position * player_weight + centering_factor
+	viewport.canvas_transform = Transform2D(0, offset)
 	
 	## Pause Menu ##
 	# We can probably put this somewhere better later
