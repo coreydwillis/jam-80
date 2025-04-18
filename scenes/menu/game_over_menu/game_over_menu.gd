@@ -18,5 +18,8 @@ func _on_quit_button_pressed():
 	get_tree().quit()
 
 func _on_new_run_button_pressed():
+	#Temp reset of game vars.
+	Game.days = 1
 	get_tree().paused = false
-	# Probably emit a signal for resetting run vars and relaunch main level #
+	viewport.canvas_transform = Transform2D(0, Vector2(0,0))
+	get_tree().change_scene_to_file("uid://cacgvoe8aqiva")

@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://cacgvoe8aqiva"]
+
+[ext_resource type="Script" uid="uid://c53s7g2ctap76" path="res://scenes/menu/new_run/new_run_menu.gd" id="1_j0cn7"]
+[ext_resource type="Texture2D" uid="uid://cmvfu8dy1drdh" path="res://assets/sprites/npcs/bunnygof.png" id="3_j0cn7"]
+[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_ug83a"]
+[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="4_ax34s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wn0wm"]
+atlas = ExtResource("3_j0cn7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfjqf"]
+atlas = ExtResource("3_j0cn7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0r8d6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wn0wm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfjqf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.5
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm2nu"]
+
+[sub_resource type="SystemFont" id="SystemFont_vm2nu"]
+font_names = PackedStringArray("Forte")
+font_italic = true
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j0cn7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.604658, 0.842774, 0.959007, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="Seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PageTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_ug83a")
+text = "New Cycle"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+position = Vector2(694, 426)
+scale = Vector2(7.76, 7.76)
+sprite_frames = SubResource("SpriteFrames_0r8d6")
+autoplay = "default"
+frame_progress = 0.187934
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 500
+theme_override_styles/separator = SubResource("StyleBoxEmpty_vm2nu")
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_vm2nu")
+theme_override_font_sizes/font_size = 40
+text = "All lagomorph doth require more than mere carrots to sustain life and happiness."
+
+[node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Begin_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("4_ax34s")
+text = "Begin Cycle"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Begin_Button" to="." method="_on_play_button_pressed"]

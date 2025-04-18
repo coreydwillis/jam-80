@@ -105,7 +105,6 @@ visible = false
 layout_mode = 1
 
 [node name="Credits_Menu" parent="." instance=ExtResource("6_isoef")]
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]

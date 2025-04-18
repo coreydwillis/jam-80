@@ -1,5 +1,8 @@
-[gd_resource type="Theme" format=3 uid="uid://tt3lcvk2vksd"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://tt3lcvk2vksd"]
+
+[sub_resource type="SystemFont" id="SystemFont_30fw4"]
 
 [resource]
 default_font_size = 50
 Button/font_sizes/font_size = 50
+Button/fonts/font = SubResource("SystemFont_30fw4")

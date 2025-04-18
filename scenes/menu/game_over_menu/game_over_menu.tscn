@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuxauu0yk4tcp"]
+[gd_scene load_steps=6 format=3 uid="uid://cuxauu0yk4tcp"]
 
 [ext_resource type="Script" uid="uid://g7yynt6vykxy" path="res://scenes/menu/game_over_menu/game_over_menu.gd" id="1_gv1r1"]
-[ext_resource type="Texture2D" uid="uid://0ryxtv6wks8a" path="res://assets/sprites/placeholder_art/rabbit-1882699.jpg" id="2_bxybo"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_k5lcj"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="4_8fprv"]
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="5_whxtc"]
@@ -18,14 +17,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gv1r1")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_bxybo")
+color = Color(0.964249, 0.626852, 0.568051, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -46,7 +45,7 @@ theme_override_constants/separation = 64
 [node name="Label" type="Label" parent="MarginContainer/Seperator"]
 layout_mode = 2
 theme = ExtResource("3_k5lcj")
-theme_override_font_sizes/font_size = 0
+theme_override_font_sizes/font_size = 300
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1

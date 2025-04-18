@@ -1,4 +1,4 @@
-class_name OptionsMenu
+class_name CreditsMenu
 extends Control
 
 @onready var back_button = $MarginContainer/Seperator/Back_Button
