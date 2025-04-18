@@ -49,8 +49,8 @@ var states_dict = {
 }
 const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING, BunnyState.HEALING, BunnyState.SLEEPING]
 
-var state_id = BunnyState.ESCAPING
-var state_obj = states_dict[state_id]
+var state_id = BunnyState.NULL
+var state_obj = State.new(self)
 var timer = 0 # time spent in current state
 var direction = Vector2(0, 1) # direction of current movement
 var speed = 0 # speed of current movement
@@ -59,6 +59,7 @@ func _ready():
 	Game.total_bunnies += 1
 	SignalBus.day_started.connect(stop_sleeping)
 	SignalBus.night_started.connect(start_sleeping)
+	switch_state(BunnyState.ESCAPING)
 
 func _process(delta):
 	state_obj._process(delta)
