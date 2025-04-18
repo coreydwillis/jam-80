@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=17 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bgwjxxvxjckq4" path="res://scenes/resources/stores/store_inventory_test.gd" id="7_u2c82"]
 [ext_resource type="Resource" uid="uid://c105vaje7d5hb" path="res://scenes/resources/stores/store_inventory.tres" id="8_k5pu3"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
+[ext_resource type="Script" uid="uid://8nrtylapekyj" path="res://scenes/env_audio.gd" id="10_2sb77"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -417,6 +418,9 @@ autostart = true
 [node name="StoreInventoryTest" type="Node" parent="Debug UI"]
 script = ExtResource("7_u2c82")
 inv = ExtResource("8_k5pu3")
+
+[node name="EnvAudio_SFX" type="Node" parent="."]
+script = ExtResource("10_2sb77")
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 

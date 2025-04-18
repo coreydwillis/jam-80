@@ -1,11 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd3an4hgxrir7"]
+[gd_scene load_steps=11 format=3 uid="uid://bd3an4hgxrir7"]
 
 [ext_resource type="Script" uid="uid://cv71kg58hdb7k" path="res://scenes/game/shops/inv_ui.gd" id="1_dl177"]
 [ext_resource type="Texture2D" uid="uid://df4yb0n6ika6g" path="res://assets/sprites/placeholder_art/inventory-background.png" id="2_tnxdt"]
 [ext_resource type="Texture2D" uid="uid://kuob4fthlrcc" path="res://assets/sprites/shop_keepers/notarabbitears1.png" id="3_bj0kd"]
 [ext_resource type="PackedScene" uid="uid://b2i6bw32flvbl" path="res://scenes/game/shops/inv_UI_slot.tscn" id="3_dxee8"]
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="5_tbc8i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxee8"]
+
+[sub_resource type="Resource" id="Resource_tbc8i"]
+script = ExtResource("5_tbc8i")
+name = ""
+metadata/_custom_type_script = "uid://d0ljahill12nl"
+
+[sub_resource type="Resource" id="Resource_05dc7"]
+script = ExtResource("5_tbc8i")
+name = ""
+metadata/_custom_type_script = "uid://d0ljahill12nl"
+
+[sub_resource type="Resource" id="Resource_3dlh6"]
+script = ExtResource("5_tbc8i")
+name = ""
+metadata/_custom_type_script = "uid://d0ljahill12nl"
+
+[sub_resource type="Resource" id="Resource_hccqv"]
+script = ExtResource("5_tbc8i")
+name = ""
+metadata/_custom_type_script = "uid://d0ljahill12nl"
 
 [node name="InvUi" type="Control"]
 layout_mode = 3
@@ -116,15 +137,19 @@ columns = 4
 
 [node name="InvUiSlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
+item = SubResource("Resource_tbc8i")
 
 [node name="InvUiSlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
+item = SubResource("Resource_05dc7")
 
 [node name="InvUiSlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
+item = SubResource("Resource_3dlh6")
 
 [node name="InvUiSlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
+item = SubResource("Resource_hccqv")
 
 [node name="HSeparator" type="HSeparator" parent="NinePatchRect/GridContainer"]
 layout_mode = 2

@@ -99,6 +99,7 @@ text = "Exit"
 stream = ExtResource("5_hj162")
 autoplay = true
 bus = &"Music"
+parameters/looping = true
 
 [node name="Options_Menu" parent="." instance=ExtResource("6_xn6kt")]
 visible = false
