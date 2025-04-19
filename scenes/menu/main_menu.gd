@@ -1,8 +1,11 @@
 extends Control
 
+@onready var longest_run = $MarginContainer/HBoxContainer/VBoxContainer/LongestRun
+
+
 func _ready():
 	reset_vars()
-	
+	longest_run.text = "Longest Run: %d\nTotal Runs: %d" % [Game.longest_run, Game.runs]
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("uid://cacgvoe8aqiva")

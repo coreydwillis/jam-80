@@ -1,6 +1,6 @@
 extends Node
 
-const save_location = "user://RabbitSave666.json"
+const save_location = "user://RabbitSave.json"
 
 var contents_to_save: Dictionary = {
 	"runs": 1,
@@ -9,15 +9,17 @@ var contents_to_save: Dictionary = {
 
 func _ready():
 	_load()
+	SignalBus.game_over.connect(_save)
 
 func _save():
 	_fillSaveData()
 	var file  = FileAccess.open(save_location, FileAccess.WRITE)
 	file.store_var(contents_to_save.duplicate())
 	file.close()
+	_load()
 	
 func _fillSaveData():
-	contents_to_save.runs = Game.runs
+	contents_to_save.runs = Game.runs + 1
 	if Game.days > Game.longest_run:
 		contents_to_save.longest_run = Game.days
 	

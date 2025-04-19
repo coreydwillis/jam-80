@@ -12,7 +12,7 @@ var longest_run: int
 var bunnies_in_pen: int = 0
 var total_bunnies: int = 0
 var bunnies_needed: int = 2
-var bunnies_needed_inc: int = 4
+var bunnies_needed_inc: int = 1
 var night_length: int = 20
 var day_length_base: int = 10
 var day_length_inc: int = 20

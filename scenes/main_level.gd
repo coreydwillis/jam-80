@@ -35,7 +35,6 @@ func _on_save_btn_test_pressed():
 	SaveLoad._save()
 
 func increase_requirement():
-	print("Does it go here a bunch or something?")
 	Game.bunnies_needed = Game.bunnies_needed + Game.bunnies_needed_inc
 
 func night_shader_enable():
