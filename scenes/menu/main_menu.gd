@@ -1,6 +1,6 @@
 extends Control
 
-@onready var longest_run = $MarginContainer/HBoxContainer/VBoxContainer/LongestRun
+@onready var longest_run = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LongestRun
 
 
 func _ready():
