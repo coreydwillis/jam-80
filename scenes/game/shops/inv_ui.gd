@@ -15,7 +15,7 @@ func update_slots():
 		slots[i].update(inv.slots[i])
 
 func _process(_delta):
-	if Input.is_action_just_pressed("store"):
+	if Input.is_action_just_pressed("store") and not Game.is_day:
 		if is_open:
 			close()
 		else:

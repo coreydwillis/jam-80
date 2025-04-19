@@ -31,3 +31,4 @@ func _process(delta):
 	   	 Input.get_action_strength("down") - Input.get_action_strength("up")
 		).normalized()
 		velocity = direction * speed
+	move_and_slide()
