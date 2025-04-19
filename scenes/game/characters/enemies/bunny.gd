@@ -28,7 +28,7 @@ enum BunnyState {
 	EXITING,	# jumping out of pen (> FREE)
 	ESCAPING,	# in pen, attempting escape (> TRAPPED, EXITING)
 	TRAPPED,	# in pen, roaming (> ESCAPING)
-	GRABBED,	# grabbed by player's ability (> FREE, TRAPPED)
+	STUNNED,	# affected by player's ability (> FREE, TRAPPED)
 	RETREATING,	# health reduced to 0, retreating to pen (> ENTERING)
 	HEALING,	# resting in pen before escape attempts (> TRAPPED)
 	SLEEPING	# sleeping during the night (> ESCAPING)
@@ -42,7 +42,7 @@ var states_dict = {
 	BunnyState.EXITING: StateExiting.new(self),
 	BunnyState.ESCAPING: StateEscaping.new(self),
 	BunnyState.TRAPPED: StateTrapped.new(self),
-	BunnyState.GRABBED: StateGrabbed.new(self),
+	BunnyState.STUNNED: StateStunned.new(self),
 	BunnyState.RETREATING: State.new(self),
 	BunnyState.HEALING: State.new(self),
 	BunnyState.SLEEPING: StateSleeping.new(self)
@@ -66,6 +66,9 @@ func _process(delta):
 	velocity = speed * direction
 	move_and_slide()
 	timer += delta
+
+func is_in_pen():
+	return abs(position.x) <= Game.pen_radius and abs(position.y) <= Game.pen_radius
 
 func switch_state(new_state: BunnyState):
 	timer = 0
@@ -219,14 +222,28 @@ class StateTrapped extends State:
 			bunny.speed = bunny.roam_speed
 			roam_timer = 0
 
-class StateGrabbed extends State:
+class StateStunned extends State:
+	var knockback_strength = 0
+	var knockback_decay = 0
+	var stun_duration = 0
 	func _init(b: Bunny):
-		state = BunnyState.GRABBED
+		state = BunnyState.STUNNED
 		bunny = b
+	
+	func _process(delta):
+		if bunny.timer >= stun_duration:
+			if bunny.is_in_pen():
+				bunny.switch_state(BunnyState.TRAPPED)
+			else:
+				bunny.switch_state(BunnyState.FREE)
+			return
+		if knockback_strength > 0:
+			bunny.speed = knockback_strength
+			knockback_strength -= delta * knockback_decay
 
 class StateSleeping extends State:
 	func _init(b: Bunny):
-		state = BunnyState.GRABBED
+		state = BunnyState.SLEEPING
 		bunny = b
 	func _enter():
 		bunny.speed = bunny.roam_speed
