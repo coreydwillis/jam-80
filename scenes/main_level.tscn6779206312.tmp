@@ -379,23 +379,28 @@ offset = Vector2(800, 400)
 transform = Transform2D(1, 0, 0, 1, 800, 400)
 script = ExtResource("7_5fr2l")
 
+[node name="RunLabel" type="Label" parent="Debug UI"]
+offset_left = -781.0
+offset_top = 596.0
+offset_right = -437.0
+offset_bottom = 665.0
+theme_override_font_sizes/font_size = 50
+text = "Longest run: 0"
+
 [node name="BunniesLabel" type="Label" parent="Debug UI"]
-offset_left = 761.0
-offset_top = 530.0
-offset_right = 1094.0
-offset_bottom = 670.0
+offset_left = 850.0
+offset_top = 550.0
+offset_right = 1098.0
+offset_bottom = 637.0
 theme_override_font_sizes/font_size = 30
 text = "Bunnies in pen: 0
-Total bunnies: 0
-Required Bunnnies: 0"
-horizontal_alignment = 2
+Total bunnies: 0"
 
 [node name="TimerLabel" type="Label" parent="Debug UI"]
-visible = false
-offset_left = -651.0
-offset_top = -25.0
-offset_right = -162.0
-offset_bottom = 116.0
+offset_left = -565.0
+offset_top = -215.0
+offset_right = -76.0
+offset_bottom = -74.0
 theme_override_font_sizes/font_size = 50
 text = "Time until night: 30s"
 
@@ -412,40 +417,33 @@ script = ExtResource("10_2sb77")
 
 [node name="MainUI" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="MainUI"]
-offset_left = -44.0
-offset_right = 1939.0
-offset_bottom = 82.0
-color = Color(0.877376, 0.626482, 0.673454, 1)
-
 [node name="BunnyBar" parent="MainUI" instance=ExtResource("13_mwgft")]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -600.0
-offset_top = 20.0
+offset_top = 51.0
 offset_right = 600.0
-offset_bottom = 60.0
+offset_bottom = 91.0
 grow_horizontal = 2
 
 [node name="TimeCountdown" parent="MainUI" instance=ExtResource("14_adxub")]
-offset_left = 57.0
-offset_top = -17.0
-offset_right = 57.0
-offset_bottom = -17.0
+offset_left = 19.0
+offset_top = 15.0
+offset_right = 19.0
+offset_bottom = 15.0
 
 [node name="DayNightGraphic" parent="MainUI" instance=ExtResource("14_ff0s2")]
-offset_left = -114.0
-offset_top = -4.0
-offset_right = -114.0
-offset_bottom = -4.0
-scale = Vector2(0.815, 0.815)
+offset_left = -12.0
+offset_top = 11.0
+offset_right = -12.0
+offset_bottom = 11.0
 
 [node name="DaysLabel" type="Label" parent="MainUI"]
-offset_left = 1574.0
-offset_top = 7.0
-offset_right = 1722.0
-offset_bottom = 76.0
+offset_left = 1652.0
+offset_top = 32.0
+offset_right = 1800.0
+offset_bottom = 101.0
 theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 2

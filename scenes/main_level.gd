@@ -14,6 +14,7 @@ var game_over_menu_scene = load("uid://cuxauu0yk4tcp")
 func _ready():
 	SignalBus.day_started.connect(night_shader_disable)
 	SignalBus.night_started.connect(night_shader_enable)
+	SignalBus.requirement_increment.connect(increase_requirement)
 	SignalBus.game_over.connect(game_over)
 	SignalBus.main_level.emit()
 
@@ -32,6 +33,10 @@ func _on_save_btn_test_pressed():
 	SaveLoad.contents_to_save.runs = 1
 	SaveLoad.contents_to_save.longest_run = 1
 	SaveLoad._save()
+
+func increase_requirement():
+	print("Does it go here a bunch or something?")
+	Game.bunnies_needed = Game.bunnies_needed + Game.bunnies_needed_inc
 
 func night_shader_enable():
 	material.set_shader_parameter("light_mul", 0.4)

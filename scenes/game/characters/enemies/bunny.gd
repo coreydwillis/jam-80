@@ -74,6 +74,7 @@ func switch_state(new_state: BunnyState):
 	state_obj._exit()
 	if state_id in IN_PEN_STATES: Game.bunnies_in_pen -= 1
 	if new_state in IN_PEN_STATES: Game.bunnies_in_pen += 1
+	SignalBus.bunny_count_change.emit()
 	state_id = new_state
 	state_obj = states_dict[state_id]
 	state_obj._enter()
