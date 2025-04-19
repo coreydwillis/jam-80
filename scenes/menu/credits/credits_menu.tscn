@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://8lg3plf2v0jy"]
+
+[ext_resource type="Script" uid="uid://0x04hbu070g7" path="res://scenes/menu/credits/credits_menu.gd" id="1_hkhy4"]
+[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_5cbp3"]
+[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="4_u440d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lieme"]
+
+[node name="Credits_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hkhy4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.615849, 0.85384, 0.783249, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Seperator" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme = ExtResource("2_5cbp3")
+theme_override_font_sizes/font_size = 0
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_y = 5
+theme_override_font_sizes/font_size = 70
+text = "Programming by nezumi
+Music by Frogsynthesis
+Sound Effects by Xirahii / USW
+Art by Monica Maldonado (nicomo)
+Writing & Game design by Corey Willis"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lieme")
+
+[node name="Back_Button" type="Button" parent="MarginContainer/Seperator"]
+layout_mode = 2
+size_flags_vertical = 10
+theme = ExtResource("4_u440d")
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/Seperator/Back_Button" to="." method="_on_back_button_pressed"]

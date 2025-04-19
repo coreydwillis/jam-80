@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbctson6ga28o"]
+
+[ext_resource type="PackedScene" uid="uid://0s7omtqifhkj" path="res://scenes/game/characters/npcs/npc.tscn" id="1_rldt4"]
+[ext_resource type="Texture2D" uid="uid://bv0d5b3tgg23r" path="res://assets/sprites/npcs/notarabbitidle.png" id="2_ew7x5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ec3sr"]
+atlas = ExtResource("2_ew7x5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvtv3"]
+atlas = ExtResource("2_ew7x5")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dk82g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ec3sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvtv3")
+}],
+"loop": true,
+"name": &"ide",
+"speed": 2.0
+}]
+
+[node name="NpcBunnyLady" instance=ExtResource("1_rldt4")]
+scale = Vector2(2.5, 2.5)
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_dk82g")
+animation = &"ide"
+autoplay = "ide"
+frame_progress = 0.408557

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=22 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -7,9 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="7_5fr2l"]
+[ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
 [ext_resource type="Script" uid="uid://bgwjxxvxjckq4" path="res://scenes/resources/stores/store_inventory_test.gd" id="7_u2c82"]
 [ext_resource type="Resource" uid="uid://c105vaje7d5hb" path="res://scenes/resources/stores/store_inventory.tres" id="8_k5pu3"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
+[ext_resource type="Script" uid="uid://8nrtylapekyj" path="res://scenes/env_audio.gd" id="10_2sb77"]
+[ext_resource type="PackedScene" uid="uid://cd6g81lp2pfuf" path="res://scenes/ui_elements/bunny_bar.tscn" id="13_mwgft"]
+[ext_resource type="PackedScene" uid="uid://dbq6lcxgmuwot" path="res://scenes/ui_elements/time_countdown.tscn" id="14_adxub"]
+[ext_resource type="PackedScene" uid="uid://5o8jkeg1bakd" path="res://scenes/ui_elements/day_night_graphic.tscn" id="14_ff0s2"]
+[ext_resource type="Script" uid="uid://bm12gtd4axpm3" path="res://scenes/days_label.gd" id="15_uk2yf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -302,7 +308,7 @@ use_parent_material = true
 [node name="Player" parent="World" instance=ExtResource("2_8ra5a")]
 z_index = 10
 use_parent_material = true
-position = Vector2(-265, -26)
+position = Vector2(-289, -133)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="World"]
 use_parent_material = true
@@ -359,6 +365,9 @@ rotation = 1.5708
 position = Vector2(0, -90)
 rotation = 1.5708
 
+[node name="Bazaar" parent="World" instance=ExtResource("7_fkrx8")]
+visible = false
+
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -370,43 +379,23 @@ offset = Vector2(800, 400)
 transform = Transform2D(1, 0, 0, 1, 800, 400)
 script = ExtResource("7_5fr2l")
 
-[node name="SaveBTN Test" type="Button" parent="Debug UI"]
-offset_left = 540.0
-offset_top = 376.0
-offset_right = 687.0
-offset_bottom = 467.0
-text = "Save"
-
-[node name="DaysLabel" type="Label" parent="Debug UI"]
-offset_left = 201.0
-offset_top = -335.0
-offset_right = 349.0
-offset_bottom = -266.0
-theme_override_font_sizes/font_size = 50
-text = "Day: 1"
-
-[node name="RunLabel" type="Label" parent="Debug UI"]
-offset_left = 411.0
-offset_top = -339.0
-offset_right = 546.0
-offset_bottom = -270.0
-theme_override_font_sizes/font_size = 50
-text = "Longest run: 0"
-
 [node name="BunniesLabel" type="Label" parent="Debug UI"]
-offset_left = -63.0
-offset_top = -327.0
-offset_right = 185.0
-offset_bottom = -240.0
+offset_left = 761.0
+offset_top = 530.0
+offset_right = 1094.0
+offset_bottom = 670.0
 theme_override_font_sizes/font_size = 30
 text = "Bunnies in pen: 0
-Total bunnies: 0"
+Total bunnies: 0
+Required Bunnnies: 0"
+horizontal_alignment = 2
 
 [node name="TimerLabel" type="Label" parent="Debug UI"]
-offset_left = -571.0
-offset_top = -329.0
-offset_right = -82.0
-offset_bottom = -188.0
+visible = false
+offset_left = -651.0
+offset_top = -25.0
+offset_right = -162.0
+offset_bottom = 116.0
 theme_override_font_sizes/font_size = 50
 text = "Time until night: 30s"
 
@@ -418,9 +407,51 @@ autostart = true
 script = ExtResource("7_u2c82")
 inv = ExtResource("8_k5pu3")
 
+[node name="EnvAudio_SFX" type="Node" parent="."]
+script = ExtResource("10_2sb77")
+
+[node name="MainUI" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="MainUI"]
+offset_left = -44.0
+offset_right = 1939.0
+offset_bottom = 82.0
+color = Color(0.877376, 0.626482, 0.673454, 1)
+
+[node name="BunnyBar" parent="MainUI" instance=ExtResource("13_mwgft")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -600.0
+offset_top = 20.0
+offset_right = 600.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="TimeCountdown" parent="MainUI" instance=ExtResource("14_adxub")]
+offset_left = 57.0
+offset_top = -17.0
+offset_right = 57.0
+offset_bottom = -17.0
+
+[node name="DayNightGraphic" parent="MainUI" instance=ExtResource("14_ff0s2")]
+offset_left = -114.0
+offset_top = -4.0
+offset_right = -114.0
+offset_bottom = -4.0
+scale = Vector2(0.815, 0.815)
+
+[node name="DaysLabel" type="Label" parent="MainUI"]
+offset_left = 1574.0
+offset_top = 7.0
+offset_right = 1722.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 50
+text = "1"
+horizontal_alignment = 2
+script = ExtResource("15_uk2yf")
+
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
 [node name="InvUi" parent="PauseMenuCanvas" instance=ExtResource("9_iqu8w")]
 visible = false
-
-[connection signal="pressed" from="Debug UI/SaveBTN Test" to="." method="_on_save_btn_test_pressed"]

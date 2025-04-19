@@ -1,10 +1,29 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://c105vaje7d5hb"]
+[gd_resource type="Resource" script_class="Inv" load_steps=7 format=3 uid="uid://c105vaje7d5hb"]
 
-[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_f47eo"]
 [ext_resource type="Script" uid="uid://cman03nrsntw1" path="res://scenes/resources/stores/inventory.gd" id="2_bxufq"]
-[ext_resource type="Resource" uid="uid://bdvrw1s8mx3xd" path="res://scenes/resources/stores/items/turkey_leg.tres" id="2_euy2d"]
+[ext_resource type="Script" uid="uid://b0ob6qbmpx1fg" path="res://scenes/game/shops/inv_slot.gd" id="2_f47eo"]
+
+[sub_resource type="Resource" id="Resource_bxufq"]
+script = ExtResource("2_f47eo")
+amount = 0
+metadata/_custom_type_script = "uid://b0ob6qbmpx1fg"
+
+[sub_resource type="Resource" id="Resource_euy2d"]
+script = ExtResource("2_f47eo")
+amount = 0
+metadata/_custom_type_script = "uid://b0ob6qbmpx1fg"
+
+[sub_resource type="Resource" id="Resource_1pg6w"]
+script = ExtResource("2_f47eo")
+amount = 0
+metadata/_custom_type_script = "uid://b0ob6qbmpx1fg"
+
+[sub_resource type="Resource" id="Resource_h80xl"]
+script = ExtResource("2_f47eo")
+amount = 0
+metadata/_custom_type_script = "uid://b0ob6qbmpx1fg"
 
 [resource]
 script = ExtResource("2_bxufq")
-items = Array[ExtResource("1_f47eo")]([null, ExtResource("2_euy2d"), null, ExtResource("2_euy2d")])
+slots = Array[ExtResource("2_f47eo")]([SubResource("Resource_bxufq"), SubResource("Resource_euy2d"), SubResource("Resource_1pg6w"), SubResource("Resource_h80xl")])
 metadata/_custom_type_script = "uid://cman03nrsntw1"

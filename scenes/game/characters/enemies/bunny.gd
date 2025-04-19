@@ -14,6 +14,8 @@ class_name Bunny extends CharacterBody2D
 @export var roam_speed = 30 # speed while roaming in the pen
 @export var roam_on_duration = 0.4 # seconds moving per roam cycle
 @export var roam_off_duration = 0.3 # seconds still per roam cycle
+@onready var animator = $AnimatedSprite2D
+
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
@@ -75,6 +77,7 @@ func switch_state(new_state: BunnyState):
 	state_obj._exit()
 	if state_id in IN_PEN_STATES: Game.bunnies_in_pen -= 1
 	if new_state in IN_PEN_STATES: Game.bunnies_in_pen += 1
+	SignalBus.bunny_count_change.emit()
 	state_id = new_state
 	state_obj = states_dict[state_id]
 	state_obj._enter()

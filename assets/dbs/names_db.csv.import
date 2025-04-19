@@ -1,17 +1,18 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://vb1qqp5pj3t2"
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+uid="uid://bv2adxuhye52i"
+path="res://.godot/imported/names_db.csv-50a07062a49f89ef7010ae7f8e00dff3.res"
 
 [deps]
 
-files=["res://assets/dbs/names_db.First.translation", "res://assets/dbs/names_db.Fem.translation", "res://assets/dbs/names_db.5.translation"]
-
 source_file="res://assets/dbs/names_db.csv"
-dest_files=["res://assets/dbs/names_db.First.translation", "res://assets/dbs/names_db.Fem.translation", "res://assets/dbs/names_db.5.translation"]
+dest_files=["res://.godot/imported/names_db.csv-50a07062a49f89ef7010ae7f8e00dff3.res"]
 
 [params]
 
-compress=true
 delimiter=0
+headers=true
+detect_numbers=true
+force_float=true

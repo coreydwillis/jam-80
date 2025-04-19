@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d35wo3s1laxx5"]
+
+[ext_resource type="PackedScene" uid="uid://0s7omtqifhkj" path="res://scenes/game/characters/npcs/npc.tscn" id="1_07gw7"]
+
+[node name="NpcAlien" instance=ExtResource("1_07gw7")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(2.5, 2.5)
