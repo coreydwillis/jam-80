@@ -14,3 +14,6 @@ signal requirement_increment
 # Audio Signals #
 signal main_menu
 signal main_level
+
+# CSV Signals #
+signal request_csv_to_resource

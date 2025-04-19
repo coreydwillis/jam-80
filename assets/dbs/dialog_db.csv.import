@@ -1,17 +1,18 @@
 [remap]
 
-importer="csv_translation"
-type="Translation"
-uid="uid://dxoee2ntjdead"
+importer="com.timothyqiu.godot-csv-importer"
+type="Resource"
+uid="uid://dnw6x8e5c2y64"
+path="res://.godot/imported/dialog_db.csv-a52f168551f419e53850b23199b40706.res"
 
 [deps]
 
-files=["res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.Hello fellow human. I hope you find some rare earth items you wish to purchase..translation"]
-
 source_file="res://assets/dbs/dialog_db.csv"
-dest_files=["res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.1.translation", "res://assets/dbs/dialog_db.Hello fellow human. I hope you find some rare earth items you wish to purchase..translation"]
+dest_files=["res://.godot/imported/dialog_db.csv-a52f168551f419e53850b23199b40706.res"]
 
 [params]
 
-compress=true
 delimiter=0
+headers=true
+detect_numbers=true
+force_float=true

@@ -15,9 +15,6 @@ func _on_play_button_pressed():
 func _on_exit_button_pressed():
 	get_tree().quit()
 
-func _on_credits_button_pressed():
-	print("credits")
-
 func _on_options_button_pressed():
 	$Options_Menu.visible = true
 
@@ -26,7 +23,6 @@ func set_verse():
 
 func rand_verse():
 	var rand_verse_text = verse_text_strings[random_number(verse_text_strings.size() - 1)]
-	print (verse_text_strings.size)
 	
 	return rand_verse_text
 

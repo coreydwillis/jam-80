@@ -26,3 +26,6 @@ var renguy_name: String
 var deity_name: String
 var scripture_name = "Lagomorphicon"
 var bazaar_name = "The Nightfaire"
+
+var name_db: Resource
+var diag_db: Resource
