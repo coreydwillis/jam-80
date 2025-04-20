@@ -30,11 +30,13 @@ func setup_tracks():
 	menu_music_stream.play()
 
 func night_music():
-	fade_out(day_music_stream)
-	await get_tree().create_timer(1.5).timeout
-	night_music_stream.volume_db = 0.5
-	night_music_stream.volume_linear = 0.5
-	night_music_stream.play()
+	await get_tree().create_timer(0.5).timeout
+	if !Game.game_over:
+		fade_out(day_music_stream)
+		await get_tree().create_timer(1.5).timeout
+		night_music_stream.volume_db = 0.5
+		night_music_stream.volume_linear = 0.5
+		night_music_stream.play()
 	
 func day_music():
 	fade_out(night_music_stream)

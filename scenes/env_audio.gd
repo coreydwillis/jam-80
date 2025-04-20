@@ -19,22 +19,24 @@ func dayAudioStart():
 	createAudioStreamPlayer(birbsStreamAsset, true, true, true, true, false, 0.1, 1, "SFX")
 	
 func nightAudioStart():
-	var owl1StreamAsset = load("res://assets/audio/sfx/env/night/Owl Call 1.wav")
-	createAudioStreamPlayer(owl1StreamAsset, false, false, false, true, false, 10.0, 1.0, "SFX")
-	var clothStreamAsset = load("res://assets/audio/sfx/env/night/Cloth Flapping.wav")
-	createAudioStreamPlayer(clothStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
-	var crowdStreamAsset = load("res://assets/audio/sfx/env/night/Crowd.wav")
-	createAudioStreamPlayer(crowdStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
-	var fireStreamAsset = load("res://assets/audio/sfx/env/night/Fireplace Main.wav")
-	createAudioStreamPlayer(fireStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
-	var owl2StreamAsset = load("res://assets/audio/sfx/env/night/Owl Call 2.wav")
-	createAudioStreamPlayer(owl2StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
-	var twig1StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
-	createAudioStreamPlayer(twig1StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
-	var twig2StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
-	createAudioStreamPlayer(twig2StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
-	var twig3StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
-	createAudioStreamPlayer(twig3StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
+	await get_tree().create_timer(0.1).timeout
+	if !Game.game_over:
+		var owl1StreamAsset = load("res://assets/audio/sfx/env/night/Owl Call 1.wav")
+		createAudioStreamPlayer(owl1StreamAsset, false, false, false, true, false, 10.0, 1.0, "SFX")
+		var clothStreamAsset = load("res://assets/audio/sfx/env/night/Cloth Flapping.wav")
+		createAudioStreamPlayer(clothStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
+		var crowdStreamAsset = load("res://assets/audio/sfx/env/night/Crowd.wav")
+		createAudioStreamPlayer(crowdStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
+		var fireStreamAsset = load("res://assets/audio/sfx/env/night/Fireplace Main.wav")
+		createAudioStreamPlayer(fireStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
+		var owl2StreamAsset = load("res://assets/audio/sfx/env/night/Owl Call 2.wav")
+		createAudioStreamPlayer(owl2StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
+		var twig1StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
+		createAudioStreamPlayer(twig1StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
+		var twig2StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
+		createAudioStreamPlayer(twig2StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
+		var twig3StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
+		createAudioStreamPlayer(twig3StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
 	
 	
 func timePeriodAudioEnd():

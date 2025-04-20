@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://cuxauu0yk4tcp"]
+[gd_scene load_steps=7 format=3 uid="uid://cuxauu0yk4tcp"]
 
 [ext_resource type="Script" uid="uid://g7yynt6vykxy" path="res://scenes/menu/game_over_menu/game_over_menu.gd" id="1_gv1r1"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_k5lcj"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="4_8fprv"]
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="5_whxtc"]
+
+[sub_resource type="SystemFont" id="SystemFont_g64rs"]
+font_names = PackedStringArray("Britannic")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv1r1"]
 
@@ -42,7 +45,7 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme_override_constants/separation = 64
 
-[node name="Label" type="Label" parent="MarginContainer/Seperator"]
+[node name="title" type="Label" parent="MarginContainer/Seperator"]
 layout_mode = 2
 theme = ExtResource("3_k5lcj")
 theme_override_font_sizes/font_size = 300
@@ -50,9 +53,18 @@ text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Description" type="Label" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_g64rs")
+theme_override_font_sizes/font_size = 50
+text = "You have failed to keep my children inside their pen. This timeilne has beeen shattered."
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/Seperator"]
 layout_mode = 2
-theme_override_constants/separation = 100
 theme_override_styles/separator = SubResource("StyleBoxEmpty_gv1r1")
 
 [node name="NewRun_Button" type="Button" parent="MarginContainer/Seperator"]

@@ -4,6 +4,7 @@ extends Control
 
 func _ready():
 	get_tree().paused = true
+	Game.game_over = true
 
 func _on_resume_button_pressed():
 	get_tree().paused = false

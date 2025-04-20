@@ -11,6 +11,7 @@ const TOTAL_BUNNIES_DEFAULT = 5
 const BUNNIES_IN_PEN_DEFAULT = 5
 
 #Gameplay Vars
+var game_over: bool = false
 var days: int = 1
 var is_day = true
 var runs: int
