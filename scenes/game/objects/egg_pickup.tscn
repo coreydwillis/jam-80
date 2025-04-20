@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://dstkfu6aumtii"]
+[gd_scene load_steps=7 format=3 uid="uid://dstkfu6aumtii"]
 
 [ext_resource type="Texture2D" uid="uid://bt4j61tl0rch7" path="res://assets/sprites/objects/egg1.png" id="1_4hnb4"]
 [ext_resource type="Script" uid="uid://dacyn4wpt7fry" path="res://scenes/game/objects/egg_pickup.gd" id="1_iy5e4"]
+[ext_resource type="AudioStream" uid="uid://by1fq7jjiqkq5" path="res://assets/audio/sfx/abilities/Snap1.wav" id="3_ae4mh"]
+[ext_resource type="AudioStream" uid="uid://bmbysxodt2mp5" path="res://assets/audio/sfx/abilities/Snap2.wav" id="4_spjua"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iy5e4"]
 radius = 16.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_i4dms"]
+random_volume_offset_db = 1.0
+streams_count = 2
+stream_0/stream = ExtResource("3_ae4mh")
+stream_1/stream = ExtResource("4_spjua")
 
 [node name="EggPickup" type="Node2D"]
 use_parent_material = true
@@ -23,5 +31,10 @@ use_parent_material = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 use_parent_material = true
 shape = SubResource("CircleShape2D_iy5e4")
+
+[node name="EggSound" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_i4dms")
+volume_db = 5.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

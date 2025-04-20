@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=56 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -26,6 +26,21 @@
 [ext_resource type="Texture2D" uid="uid://g5o21p66bfdo" path="res://assets/sprites/objects/gravestones.png" id="16_iycfq"]
 [ext_resource type="Texture2D" uid="uid://cvgj4c401bqds" path="res://assets/sprites/rainbow.png" id="17_6nivd"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="23_nc5r2"]
+[ext_resource type="Texture2D" uid="uid://3rm2x55ooswe" path="res://assets/sprites/objects/upgrades/cape.png" id="26_cssx7"]
+[ext_resource type="Shader" uid="uid://0wgc01h1cmnp" path="res://scenes/menu/dash.gdshader" id="26_pfmml"]
+[ext_resource type="Script" uid="uid://bojxd7dl3rdl7" path="res://scenes/abilities/dash_ability_status.gd" id="27_1irq3"]
+[ext_resource type="Texture2D" uid="uid://b3mwnv2p17h7c" path="res://assets/sprites/objects/upgrades/magnet.png" id="28_gr2jy"]
+[ext_resource type="Script" uid="uid://ccj3wxjed518b" path="res://scenes/abilities/magnet_ability_status.gd" id="28_iycfq"]
+[ext_resource type="Shader" uid="uid://dx1mkrgmhbbb7" path="res://scenes/menu/lasso.gdshader" id="29_7ul7a"]
+[ext_resource type="Texture2D" uid="uid://dnmiwp84t0vmr" path="res://assets/sprites/objects/boombox.png" id="29_hdbb3"]
+[ext_resource type="Shader" uid="uid://cjpcgjatqqkq" path="res://scenes/menu/magnet.gdshader" id="29_kxeow"]
+[ext_resource type="Script" uid="uid://cmmcfwgud2roa" path="res://scenes/abilities/hammer_ability_status.gd" id="29_rcrbw"]
+[ext_resource type="Shader" uid="uid://de80lfyxg12bd" path="res://scenes/menu/boombox.gdshader" id="29_uxuvg"]
+[ext_resource type="Script" uid="uid://xke6t7o3dc85" path="res://scenes/abilities/boombox_ability_status.gd" id="29_yl4j0"]
+[ext_resource type="Texture2D" uid="uid://cmv5663drl66e" path="res://assets/sprites/objects/upgrades/hammer_solo.png" id="30_3iae7"]
+[ext_resource type="Script" uid="uid://dg72wvox1prd7" path="res://scenes/abilities/lasso_ability_status.gd" id="30_c88u2"]
+[ext_resource type="Texture2D" uid="uid://b20brakaxdsa0" path="res://assets/sprites/objects/upgrades/lasso_solo.png" id="32_cycrt"]
+[ext_resource type="Shader" uid="uid://dio2emc4iy3cy" path="res://scenes/menu/hammer.gdshader" id="32_gwyuf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -319,6 +334,26 @@ size = Vector2(40, 67)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcrbw"]
 size = Vector2(40, 81)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxeow"]
+shader = ExtResource("26_pfmml")
+shader_parameter/light_mul = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eokwq"]
+shader = ExtResource("29_uxuvg")
+shader_parameter/light_mul = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yl4j0"]
+shader = ExtResource("29_kxeow")
+shader_parameter/light_mul = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdbb3"]
+shader = ExtResource("32_gwyuf")
+shader_parameter/light_mul = 1.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gwyuf"]
+shader = ExtResource("29_7ul7a")
+shader_parameter/light_mul = 1.2
+
 [node name="Main" type="Node2D"]
 material = SubResource("ShaderMaterial_k5pu3")
 script = ExtResource("1_qmak7")
@@ -550,6 +585,56 @@ theme = ExtResource("23_nc5r2")
 text = "End Night"
 
 [node name="convert_csv" type="Node" parent="MainUI"]
+
+[node name="DashAbilityStatus" type="TextureRect" parent="MainUI"]
+material = SubResource("ShaderMaterial_kxeow")
+offset_left = -7.0
+offset_top = 985.0
+offset_right = 313.0
+offset_bottom = 1305.0
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("26_cssx7")
+script = ExtResource("27_1irq3")
+
+[node name="BoomboxAbilityStatus" type="TextureRect" parent="MainUI"]
+material = SubResource("ShaderMaterial_eokwq")
+offset_left = 68.0
+offset_top = 985.0
+offset_right = 388.0
+offset_bottom = 1305.0
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("29_hdbb3")
+script = ExtResource("29_yl4j0")
+
+[node name="MagnetAbilityStatus" type="TextureRect" parent="MainUI"]
+material = SubResource("ShaderMaterial_yl4j0")
+offset_left = 126.0
+offset_top = 961.0
+offset_right = 446.0
+offset_bottom = 1281.0
+scale = Vector2(0.465, 0.465)
+texture = ExtResource("28_gr2jy")
+script = ExtResource("28_iycfq")
+
+[node name="HammerAbilityStatus" type="TextureRect" parent="MainUI"]
+material = SubResource("ShaderMaterial_hdbb3")
+offset_left = 252.0
+offset_top = 1006.0
+offset_right = 572.0
+offset_bottom = 1326.0
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("30_3iae7")
+script = ExtResource("29_rcrbw")
+
+[node name="LassoAbilityStatus" type="TextureRect" parent="MainUI"]
+material = SubResource("ShaderMaterial_gwyuf")
+offset_left = 322.0
+offset_top = 1008.0
+offset_right = 642.0
+offset_bottom = 1328.0
+scale = Vector2(0.205, 0.205)
+texture = ExtResource("32_cycrt")
+script = ExtResource("30_c88u2")
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
