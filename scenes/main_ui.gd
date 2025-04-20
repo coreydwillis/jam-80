@@ -14,6 +14,8 @@ func _process(_delta):
 
 func _on_timer_timeout():
 	if Game.is_day:
+		if Game.bunnies_in_pen < Game.bunnies_needed:
+			SignalBus.game_over.emit()
 		Game.is_day = false
 		SignalBus.night_started.emit()
 	else:
@@ -21,7 +23,9 @@ func _on_timer_timeout():
 		SignalBus.day_started.emit()
 
 func start_night():
-	Game.is_day = false
+	Game.is_day = false	
+	if Game.days == 8:
+		SignalBus.check_win.emit()
 	if !Game.night_timer:
 		start(Game.night_length)
 	else:
@@ -30,4 +34,5 @@ func start_night():
 func start_day():
 	Game.is_day = true
 	Game.days += 1
+	SignalBus.day_increment.emit()
 	start(Game.day_length_base + (Game.days * Game.day_length_inc))

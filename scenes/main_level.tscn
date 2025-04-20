@@ -377,19 +377,19 @@ rotation = 1.5708
 [node name="Eggs" type="Node" parent="World"]
 
 [node name="EggPickup" parent="World/Eggs" instance=ExtResource("9_6nivd")]
-position = Vector2(179, -150)
+position = Vector2(660, -392)
 
 [node name="EggPickupGreen" parent="World/Eggs" instance=ExtResource("9_al56o")]
-position = Vector2(-113, -238)
+position = Vector2(-381, -413)
 
 [node name="EggPickupGold" parent="World/Eggs" instance=ExtResource("10_1bmon")]
-position = Vector2(-267, 67)
+position = Vector2(-835, 206)
 
 [node name="EggPickupPaintedVar" parent="World/Eggs" instance=ExtResource("11_siio1")]
-position = Vector2(50, -243)
+position = Vector2(210, -420)
 
 [node name="EggPickupRainbow" parent="World/Eggs" instance=ExtResource("12_ndwfr")]
-position = Vector2(217, 136)
+position = Vector2(787, 453)
 
 [node name="Bazaar" parent="World" instance=ExtResource("7_fkrx8")]
 visible = false

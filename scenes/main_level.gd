@@ -6,20 +6,20 @@ extends Node2D
 @onready var pause_menu_canvas = $PauseMenuCanvas
 @onready var end_night_button = $MainUI/EndNightButton
 
-
 var pause_menu_scene = load("uid://dejeb358jsx7j")
 var game_over_menu_scene = load("uid://cuxauu0yk4tcp")
-
+var game_win_menu_scene = load("uid://ci2p2maigufey")
 
 func _ready():
 	SignalBus.day_started.connect(night_shader_disable)
 	SignalBus.night_started.connect(night_shader_enable)
 	SignalBus.night_started.connect(increase_requirement)
+	SignalBus.check_win.connect(check_win_condition)
 	SignalBus.game_over.connect(game_over)
+	SignalBus.game_win.connect(game_win)
 	SignalBus.night_started.connect(turn_on_night_button)
 	SignalBus.main_level.emit()
 	Game.game_started = true
-	
 
 func _process(_delta):
 	var offset = -player.position * player_weight + centering_factor
@@ -49,6 +49,10 @@ func night_shader_disable():
 func game_over():
 	var game_over_menu = game_over_menu_scene.instantiate()
 	pause_menu_canvas.add_child(game_over_menu)
+	
+func game_win():
+	var game_win_menu = game_win_menu_scene.instantiate()
+	pause_menu_canvas.add_child(game_win_menu)
 
 func _on_end_night_pressed():
 	SignalBus.day_started.emit()
@@ -56,3 +60,7 @@ func _on_end_night_pressed():
 
 func turn_on_night_button():
 	end_night_button.visible = true
+
+func check_win_condition():
+	if Game.bunnies_in_pen >= Game.bunnies_needed:
+		SignalBus.game_win.emit()
