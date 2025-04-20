@@ -167,12 +167,6 @@ animations = [{
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_e0ilf")
-scared_accel = 60
-hop_delay = 3
-hop_speed = 80
-hop_duration = 1.2
-enter_speed = 60
-escape_delay = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

@@ -1,7 +1,10 @@
 class_name Bunny extends CharacterBody2D
+@export var speed_mul = 1.0
+@export var delay_mul = 1.0
+@export var scared_radius = 75
+@export var escape_chance = 0.4
 @export_group("Behavior")
 @export var scared_speed = 100 # max speed while scared
-@export var scared_radius = 75 # distance to player where bunny turns scared
 @export var scared_accel = 40 # acceleration while scared
 @export var hop_delay = 5 # delay between hops in seconds
 @export var hop_speed = 60 # top speed while hopping
@@ -10,10 +13,10 @@ class_name Bunny extends CharacterBody2D
 @export var enter_duration = 0.7 # time it takes to enter pen
 @export var escape_delay = 2.5 # time between escape attempts in seconds
 @export var escape_speed = 60 # speed when attempting escape
-@export var escape_chance = 0.4 # chance an escape attempt is successful
 @export var roam_speed = 30 # speed while roaming in the pen
 @export var roam_on_duration = 0.4 # seconds moving per roam cycle
 @export var roam_off_duration = 0.3 # seconds still per roam cycle
+
 @onready var animator = $AnimatedSprite2D
 @onready var bunny_sounds = $BunnySounds
 
@@ -90,6 +93,30 @@ func init(s: BunnyState, t: BunnyType):
 	switch_state(s)
 	type = t
 	modulate = Game.bunny_colors[type]
+	match type:
+		BunnyType.BUFF:
+			speed_mul = 0.7
+			delay_mul = 1.2
+		BunnyType.MAGIC:
+			delay_mul = 1.6
+		BunnyType.HYPER:
+			speed_mul = 1.8
+			delay_mul = 0.7
+			escape_chance *= 1.5
+			scared_radius *= 1.25
+
+func calc_behavior():
+	scared_speed *= speed_mul
+	scared_accel *= speed_mul
+	hop_delay *= delay_mul
+	hop_speed *= speed_mul
+	enter_speed *= speed_mul
+	enter_duration /= speed_mul
+	escape_delay *= delay_mul
+	escape_speed *= speed_mul
+	roam_speed *= speed_mul
+	roam_on_duration /= delay_mul
+	roam_off_duration *= delay_mul
 
 func is_in_pen():
 	return abs(position.x) <= Game.pen_radius and abs(position.y) <= Game.pen_radius

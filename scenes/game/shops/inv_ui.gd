@@ -38,6 +38,7 @@ func switch_shop(v: Game.Vendor):
 
 func _ready():
 	shop.inv.update.connect(update_slots)
+	SignalBus.day_started.connect(finish_night)
 	update_slots()
 	close()
 
@@ -53,3 +54,7 @@ func open(v):
 func close():
 	visible = false
 	is_open = false
+
+func finish_night():
+	if is_open:
+		close()

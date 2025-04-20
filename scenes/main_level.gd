@@ -3,18 +3,15 @@ extends Node2D
 @export var player_weight = 0.5
 @onready var viewport: Viewport = get_viewport()
 @onready var player = $"World/Player"
-@onready var ui = $"Debug UI"
 @onready var pause_menu_canvas = $PauseMenuCanvas
 var pause_menu_scene = load("uid://dejeb358jsx7j")
 var game_over_menu_scene = load("uid://cuxauu0yk4tcp")
 
-#var night_shader: Material
-#var day_shader: Material
 
 func _ready():
 	SignalBus.day_started.connect(night_shader_disable)
 	SignalBus.night_started.connect(night_shader_enable)
-	SignalBus.requirement_increment.connect(increase_requirement)
+	SignalBus.night_started.connect(increase_requirement)
 	SignalBus.game_over.connect(game_over)
 	SignalBus.main_level.emit()
 

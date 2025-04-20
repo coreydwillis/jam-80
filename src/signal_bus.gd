@@ -11,7 +11,6 @@ signal end_danger_time
 # Bunny Signals
 signal bunny_count_change
 signal time_increment
-signal requirement_increment
 
 # Audio Signals #
 signal main_menu

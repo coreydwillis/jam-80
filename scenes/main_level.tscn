@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
 [ext_resource type="Script" uid="uid://dlwu1jth0nyyf" path="res://scenes/fluffle.gd" id="5_ff0s2"]
-[ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="7_5fr2l"]
+[ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/main_ui.gd" id="7_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
 [ext_resource type="Script" uid="uid://bnti8uhsme7wu" path="res://scenes/danger_mode.gd" id="8_ff0s2"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
@@ -370,45 +370,11 @@ rotation = 1.5708
 visible = false
 use_parent_material = true
 
-[node name="GUI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Debug UI" type="CanvasLayer" parent="."]
-offset = Vector2(800, 400)
-transform = Transform2D(1, 0, 0, 1, 800, 400)
-script = ExtResource("7_5fr2l")
-
-[node name="BunniesLabel" type="Label" parent="Debug UI"]
-offset_left = 761.0
-offset_top = 530.0
-offset_right = 1094.0
-offset_bottom = 670.0
-theme_override_font_sizes/font_size = 30
-text = "Bunnies in pen: 0
-Total bunnies: 0
-Required Bunnnies: 0"
-horizontal_alignment = 2
-
-[node name="TimerLabel" type="Label" parent="Debug UI"]
-visible = false
-offset_left = -651.0
-offset_top = -25.0
-offset_right = -162.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 50
-text = "Time until night: 30s"
-
-[node name="DayTimer" type="Timer" parent="Debug UI"]
-wait_time = 10.0
-autostart = true
-
 [node name="EnvAudio_SFX" type="Node" parent="."]
 script = ExtResource("10_2sb77")
 
 [node name="MainUI" type="CanvasLayer" parent="."]
+script = ExtResource("7_5fr2l")
 
 [node name="ColorRect" type="ColorRect" parent="MainUI"]
 offset_left = -44.0
@@ -456,6 +422,21 @@ offset_bottom = 40.0
 scale = Vector2(48.36, 27.48)
 color = Color(1, 0.176471, 0, 0.145098)
 script = ExtResource("8_ff0s2")
+
+[node name="BunniesLabel" type="Label" parent="MainUI"]
+offset_left = 1467.0
+offset_top = 835.0
+offset_right = 1800.0
+offset_bottom = 975.0
+theme_override_font_sizes/font_size = 30
+text = "Bunnies in pen: 0
+Total bunnies: 0
+Required Bunnnies: 0"
+horizontal_alignment = 2
+
+[node name="DayTimer" type="Timer" parent="MainUI"]
+wait_time = 10.0
+autostart = true
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
