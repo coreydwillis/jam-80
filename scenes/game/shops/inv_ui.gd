@@ -20,7 +20,7 @@ class Shop:
 	var inv: Inv
 	var vendor: Game.Vendor
 	var vendor_name: String
-	var flavor_text: String
+	var flavor_text: String = ""
 	var stock: Array[InvItem]
 	
 	func _init(v: Game.Vendor, items: Array[InvItem]):
@@ -29,13 +29,10 @@ class Shop:
 		match v:
 			Game.Vendor.BUNNYGIRL:
 				vendor_name = Game.bunnylady_name
-				flavor_text = "I know a lot about bunnies... I'm just a big fan."
 			Game.Vendor.RENGUY:
 				vendor_name = Game.renguy_name
-				flavor_text = "The faire is pretty quiet today. I have some stuff to sell though."
 			Game.Vendor.ALIEN:
 				vendor_name = Game.alien_name
-				flavor_text = "This isn't a spaceship, it's a... model plane. Work in progress."
 		for item in items:
 			if item.vendor == v:
 				stock.append(item)
@@ -52,6 +49,15 @@ class Shop:
 				var max_mod = item.max_owned
 				if max_mod < 0: max_mod = 99
 				inv.insert(item, min(max_mod, 5))
+	
+	func update_message():
+		var ids = {Game.Vendor.BUNNYGIRL: "bunnylady", Game.Vendor.ALIEN: "alien", Game.Vendor.RENGUY: "renguy"}
+		var options = Game.dialog_db.filter(
+			func(d): return d["dayNum"] <= Game.days and d["min_run"] <= Game.runs and d["character"] == ids[vendor]
+		)
+		var rarities = Game.get_column(options, "rarity").map(func(i): return 1.0/i)
+		var text = Game.get_column(options, "dialog")
+		flavor_text = text[Game.rng.rand_weighted(rarities)]
 
 func switch_shop(v: Game.Vendor):
 	vendor = v
@@ -62,6 +68,7 @@ func switch_shop(v: Game.Vendor):
 	$"NinePatchRect/Control/VBoxContainer/Name".text = shop.vendor_name
 
 func _ready():
+	SignalBus.night_started.connect(start_night)
 	SignalBus.day_started.connect(finish_night)
 	update_slots()
 	close()
@@ -78,6 +85,10 @@ func open(v):
 func close():
 	visible = false
 	is_open = false
+
+func start_night():
+	for s in shops.values():
+		s.update_message()
 
 func finish_night():
 	if is_open:

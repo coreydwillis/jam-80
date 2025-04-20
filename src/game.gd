@@ -16,7 +16,7 @@ var danger_time: bool = false
 var days: int = 1
 var is_day = true
 var game_started: bool = false
-var runs: int
+var runs: int = 1
 var longest_run: int
 var bunnies_in_pen: int = 0
 var total_bunnies: int = 0
@@ -55,7 +55,7 @@ var bunny_colors = { # TEMP
 	Bunny.BunnyType.HYPER: Color(0.1, 0.8, 0.2),
 	Bunny.BunnyType.GOLDEN: Color(0.8, 0.7, 0.1)
 }
-var rng
+var rng = RandomNumberGenerator.new()
 var eggs = 0
 
 # Accessibility Vars
@@ -84,7 +84,6 @@ func randname(db):
 	return str(get_column(db, "Name")[rng.rand_weighted(get_column(db, "Rarity"))])
 
 func _ready():
-	rng = RandomNumberGenerator.new()
 	var first_names = name_db.filter(func(n): return n["NameType"] == "First")
 	var middle_names = name_db.filter(func(n): return n["NameType"] == "Middle")
 	var last_names = name_db.filter(func(n): return n["NameType"] == "Last")
