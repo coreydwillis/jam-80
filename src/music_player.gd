@@ -2,7 +2,7 @@ extends Node
 
 const MUSIC_MAIN = preload("res://assets/audio/music/beta/music_main.mp3")
 const DAY_TIME = preload("res://assets/audio/music/DaytimeIdea2MIxed.mp3")
-const NIGHT_TIME_IDEA = preload("res://assets/audio/music/beta/creepy-256824.mp3")
+const NIGHT_TIME_IDEA = preload("res://assets/audio/music/night_music.mp3")
 const DANGER_TIME = preload("res://assets/audio/music/InDanger.wav")
 
 #audio transition vars
@@ -44,8 +44,8 @@ func night_music():
 	if !Game.game_over:
 		fade_out(day_music_stream)
 		await get_tree().create_timer(1.5).timeout
-		night_music_stream.volume_db = 0.1
-		night_music_stream.volume_linear = 0.1
+		night_music_stream.volume_db = 1
+		night_music_stream.volume_linear = 1
 		night_music_stream.play()
 	
 func day_music():
