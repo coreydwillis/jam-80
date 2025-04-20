@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://dlwu1jth0nyyf" path="res://scenes/fluffle.gd" id="5_ff0s2"]
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="7_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
+[ext_resource type="Script" uid="uid://bnti8uhsme7wu" path="res://scenes/danger_mode.gd" id="8_ff0s2"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
 [ext_resource type="Script" uid="uid://8nrtylapekyj" path="res://scenes/env_audio.gd" id="10_2sb77"]
 [ext_resource type="PackedScene" uid="uid://cd6g81lp2pfuf" path="res://scenes/ui_elements/bunny_bar.tscn" id="13_mwgft"]
@@ -446,6 +447,14 @@ theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 2
 script = ExtResource("15_uk2yf")
+
+[node name="DangerMode" type="ColorRect" parent="MainUI"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(48.36, 27.48)
+color = Color(1, 0.176471, 0, 0.145098)
+script = ExtResource("8_ff0s2")
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 

@@ -17,6 +17,9 @@ class_name Bunny extends CharacterBody2D
 @onready var animator = $AnimatedSprite2D
 @onready var bunny_sounds = $BunnySounds
 
+# Sound files
+const BUNNY_SCREAM = preload("res://assets/audio/sfx/rabbits/Bunny Scream.wav")
+
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
 
@@ -160,6 +163,8 @@ class StateScared extends State:
 		state = BunnyState.SCARED
 		bunny = b
 	func _enter():
+		bunny.bunny_sounds.set_stream(BUNNY_SCREAM)
+		bunny.bunny_sounds.play()
 		bunny.set_animation("scared_side")
 		await bunny.get_tree().create_timer(1).timeout
 		bunny.set_animation("walk_side")

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://fe5y3q5axqhc"
+path="res://.godot/imported/Bunny Scream.wav-4bb77824e5fe97be4864c47a1bd0eae6.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/rabbits/Bunny Scream.wav"
+dest_files=["res://.godot/imported/Bunny Scream.wav-4bb77824e5fe97be4864c47a1bd0eae6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
