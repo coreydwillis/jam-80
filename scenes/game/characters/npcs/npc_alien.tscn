@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://d35wo3s1laxx5"]
+[gd_scene load_steps=3 format=3 uid="uid://d35wo3s1laxx5"]
 
 [ext_resource type="PackedScene" uid="uid://0s7omtqifhkj" path="res://scenes/game/characters/npcs/npc.tscn" id="1_07gw7"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07gw7"]
+size = Vector2(23, 61)
+
 [node name="NpcAlien" instance=ExtResource("1_07gw7")]
+use_parent_material = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+use_parent_material = true
 scale = Vector2(2.5, 2.5)
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-1.5, -5.5)
+shape = SubResource("RectangleShape2D_07gw7")

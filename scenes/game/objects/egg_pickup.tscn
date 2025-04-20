@@ -7,17 +7,21 @@
 radius = 16.0
 
 [node name="EggPickup" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_iy5e4")
 egg_type = "Standard"
 egg_value = 1
 egg_type_graphic = ExtResource("1_4hnb4")
 
 [node name="EggGraphic" type="Sprite2D" parent="."]
+use_parent_material = true
 scale = Vector2(0.18125, 0.18125)
 
 [node name="Area2D" type="Area2D" parent="."]
+use_parent_material = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+use_parent_material = true
 shape = SubResource("CircleShape2D_iy5e4")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

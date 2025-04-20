@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=36 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
 [ext_resource type="Script" uid="uid://dlwu1jth0nyyf" path="res://scenes/fluffle.gd" id="5_ff0s2"]
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/main_ui.gd" id="7_5fr2l"]
-[ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
 [ext_resource type="Script" uid="uid://bnti8uhsme7wu" path="res://scenes/danger_mode.gd" id="8_ff0s2"]
 [ext_resource type="PackedScene" uid="uid://dstkfu6aumtii" path="res://scenes/game/objects/egg_pickup.tscn" id="9_6nivd"]
 [ext_resource type="PackedScene" uid="uid://bj75b7v85w5ix" path="res://scenes/game/objects/egg_pickup_green.tscn" id="9_al56o"]
@@ -19,9 +18,12 @@
 [ext_resource type="PackedScene" uid="uid://bp6svwigqtjpk" path="res://scenes/game/objects/egg_pickup_rainbow.tscn" id="12_ndwfr"]
 [ext_resource type="PackedScene" uid="uid://cd6g81lp2pfuf" path="res://scenes/ui_elements/bunny_bar.tscn" id="13_mwgft"]
 [ext_resource type="PackedScene" uid="uid://dbq6lcxgmuwot" path="res://scenes/ui_elements/time_countdown.tscn" id="14_adxub"]
+[ext_resource type="Texture2D" uid="uid://cvqirfdwhta1a" path="res://assets/sprites/objects/gravestones2.png" id="14_cssx7"]
 [ext_resource type="PackedScene" uid="uid://5o8jkeg1bakd" path="res://scenes/ui_elements/day_night_graphic.tscn" id="14_ff0s2"]
+[ext_resource type="Texture2D" uid="uid://b2pejddlihmg6" path="res://assets/sprites/objects/gravestones3.png" id="15_1irq3"]
 [ext_resource type="Script" uid="uid://bm12gtd4axpm3" path="res://scenes/days_label.gd" id="15_uk2yf"]
 [ext_resource type="Script" uid="uid://4bpf7brwsyrv" path="res://scenes/eggs.gd" id="16_0e4v7"]
+[ext_resource type="Texture2D" uid="uid://g5o21p66bfdo" path="res://assets/sprites/objects/gravestones.png" id="16_iycfq"]
 [ext_resource type="Texture2D" uid="uid://cvgj4c401bqds" path="res://assets/sprites/rainbow.png" id="17_6nivd"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="23_nc5r2"]
 
@@ -305,6 +307,18 @@ texture = ExtResource("4_u2c82")
 [sub_resource type="TileSet" id="TileSet_o6xl0"]
 sources/0 = SubResource("TileSetAtlasSource_tefeu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cssx7"]
+size = Vector2(59, 71.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1irq3"]
+size = Vector2(40, 63)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iycfq"]
+size = Vector2(40, 67)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcrbw"]
+size = Vector2(40, 81)
+
 [node name="Main" type="Node2D"]
 material = SubResource("ShaderMaterial_k5pu3")
 script = ExtResource("1_qmak7")
@@ -327,35 +341,30 @@ tile_set = SubResource("TileSet_o6xl0")
 
 [node name="Player" parent="World" instance=ExtResource("2_8ra5a")]
 z_index = 21
-use_parent_material = true
-position = Vector2(-289, -133)
+position = Vector2(0, -146)
 
-[node name="Bunnies" type="Node" parent="World"]
+[node name="Bunnies" type="Node2D" parent="World"]
+use_parent_material = true
 script = ExtResource("5_ff0s2")
 
 [node name="Bunny" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
-use_parent_material = true
 position = Vector2(-42, -50)
 
 [node name="Bunny2" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
-use_parent_material = true
 position = Vector2(55, -52)
 
 [node name="Bunny3" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
-use_parent_material = true
 position = Vector2(57, 22)
 
 [node name="Bunny4" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
-use_parent_material = true
 position = Vector2(-28, 45)
 
 [node name="Bunny5" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
-use_parent_material = true
 position = Vector2(21, -19)
 
 [node name="Fences" type="Node" parent="World"]
@@ -374,7 +383,8 @@ rotation = 1.5708
 position = Vector2(0, -90)
 rotation = 1.5708
 
-[node name="Eggs" type="Node" parent="World"]
+[node name="Eggs" type="Node2D" parent="World"]
+use_parent_material = true
 
 [node name="EggPickup" parent="World/Eggs" instance=ExtResource("9_6nivd")]
 position = Vector2(660, -392)
@@ -389,10 +399,64 @@ position = Vector2(-835, 206)
 position = Vector2(210, -420)
 
 [node name="EggPickupRainbow" parent="World/Eggs" instance=ExtResource("12_ndwfr")]
-position = Vector2(787, 453)
+position = Vector2(-910, -383)
 
-[node name="Bazaar" parent="World" instance=ExtResource("7_fkrx8")]
-visible = false
+[node name="Graveyard" type="Node2D" parent="World"]
+use_parent_material = true
+
+[node name="Gravestones2" type="Sprite2D" parent="World/Graveyard"]
+z_index = 22
+use_parent_material = true
+position = Vector2(-704, -358)
+texture = ExtResource("14_cssx7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/Graveyard/Gravestones2"]
+position = Vector2(704, 358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Graveyard/Gravestones2/StaticBody2D"]
+position = Vector2(-876.5, -329.75)
+shape = SubResource("RectangleShape2D_cssx7")
+
+[node name="Gravestones4" type="Sprite2D" parent="World/Graveyard"]
+z_index = 22
+use_parent_material = true
+position = Vector2(-807, -332)
+texture = ExtResource("14_cssx7")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="World/Graveyard/Gravestones4"]
+position = Vector2(807, 332)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Graveyard/Gravestones4/StaticBody2D2"]
+position = Vector2(-807, -305.5)
+shape = SubResource("RectangleShape2D_1irq3")
+
+[node name="Gravestones3" type="Sprite2D" parent="World/Graveyard"]
+z_index = 22
+use_parent_material = true
+position = Vector2(-759, -375)
+texture = ExtResource("15_1irq3")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="World/Graveyard/Gravestones3"]
+position = Vector2(759, 375)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Graveyard/Gravestones3/StaticBody2D3"]
+position = Vector2(-759, -344.5)
+shape = SubResource("RectangleShape2D_iycfq")
+
+[node name="Gravestones" type="Sprite2D" parent="World/Graveyard"]
+z_index = 22
+use_parent_material = true
+position = Vector2(-877, -358)
+texture = ExtResource("16_iycfq")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="World/Graveyard/Gravestones"]
+position = Vector2(877, 358)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Graveyard/Gravestones/StaticBody2D4"]
+position = Vector2(-704, -323.5)
+shape = SubResource("RectangleShape2D_rcrbw")
+
+[node name="BazaarHolder" type="Node2D" parent="World"]
 use_parent_material = true
 
 [node name="EnvAudio_SFX" type="Node" parent="."]

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 var bunny_resource = preload("res://scenes/game/characters/enemies/Bunny.tscn")
 var rng
 

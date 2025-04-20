@@ -5,7 +5,11 @@ extends Node2D
 @onready var inv_ui = $/root/Main/PauseMenuCanvas/InvUi
 
 func _process(_delta):
-	if Input.is_action_just_pressed("store") and position.distance_to(player.position) < 80:
+	if position.distance_to(player.position) < 80:
+		$OpenStoreText.visible = true
+	else:
+		$OpenStoreText.visible = false
+	if Input.is_action_just_pressed("use") and position.distance_to(player.position) < 80:
 		if inv_ui.is_open:
 			inv_ui.close()
 		else:

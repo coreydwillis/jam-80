@@ -9,11 +9,15 @@ extends Node2D
 var pause_menu_scene = load("uid://dejeb358jsx7j")
 var game_over_menu_scene = load("uid://cuxauu0yk4tcp")
 var game_win_menu_scene = load("uid://ci2p2maigufey")
+var bazaar_scene = load("uid://ch8cw553ruqe8")
+var bazaar_instance
 
 func _ready():
 	SignalBus.day_started.connect(night_shader_disable)
+	SignalBus.day_started.connect(unload_bazaar)
 	SignalBus.night_started.connect(night_shader_enable)
 	SignalBus.night_started.connect(increase_requirement)
+	SignalBus.night_started.connect(load_bazaar)
 	SignalBus.check_win.connect(check_win_condition)
 	SignalBus.game_over.connect(game_over)
 	SignalBus.game_win.connect(game_win)
@@ -41,7 +45,7 @@ func increase_requirement():
 	Game.bunnies_needed = Game.bunnies_needed + Game.bunnies_needed_inc
 
 func night_shader_enable():
-	material.set_shader_parameter("light_mul", 0.4)
+	material.set_shader_parameter("light_mul", 0.6)
 
 func night_shader_disable():
 	material.set_shader_parameter("light_mul", 1.0)
@@ -60,6 +64,13 @@ func _on_end_night_pressed():
 
 func turn_on_night_button():
 	end_night_button.visible = true
+	
+func load_bazaar():
+	bazaar_instance = bazaar_scene.instantiate()
+	$World/BazaarHolder.add_child(bazaar_instance)
+	
+func unload_bazaar():
+	bazaar_instance.queue_free()
 
 func check_win_condition():
 	if Game.bunnies_in_pen >= Game.bunnies_needed:

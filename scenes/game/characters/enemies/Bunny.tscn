@@ -8,6 +8,7 @@ radius = 8.0
 height = 24.0
 
 [node name="Bunny" type="CharacterBody2D"]
+use_parent_material = true
 collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_e0ilf")
@@ -19,6 +20,7 @@ shape = SubResource("CapsuleShape2D_kpdx7")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 sprite_frames = ExtResource("2_nfee8")
 animation = &"walk_side"
 autoplay = "idle_side"
