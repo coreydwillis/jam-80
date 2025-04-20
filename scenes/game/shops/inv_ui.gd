@@ -28,13 +28,13 @@ class Shop:
 		inv = Inv.new()
 		match v:
 			Game.Vendor.BUNNYGIRL:
-				vendor_name = "Bunnygirl"
+				vendor_name = Game.bunnylady_name
 				flavor_text = "I know a lot about bunnies... I'm just a big fan."
 			Game.Vendor.RENGUY:
-				vendor_name = "Renguy"
+				vendor_name = Game.renguy_name
 				flavor_text = "The faire is pretty quiet today. I have some stuff to sell though."
 			Game.Vendor.ALIEN:
-				vendor_name = "Alien"
+				vendor_name = Game.alien_name
 				flavor_text = "This isn't a spaceship, it's a... model plane. Work in progress."
 		for item in items:
 			if item.vendor == v:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=30 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -24,7 +24,6 @@
 [ext_resource type="Script" uid="uid://4bpf7brwsyrv" path="res://scenes/eggs.gd" id="16_0e4v7"]
 [ext_resource type="Texture2D" uid="uid://cvgj4c401bqds" path="res://assets/sprites/rainbow.png" id="17_6nivd"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="23_nc5r2"]
-[ext_resource type="Script" uid="uid://b7pxdxt5y8ap0" path="res://scenes/csv_importer/csv_to_import.gd" id="24_sjhni"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -488,7 +487,6 @@ theme = ExtResource("23_nc5r2")
 text = "End Night"
 
 [node name="convert_csv" type="Node" parent="MainUI"]
-script = ExtResource("24_sjhni")
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
