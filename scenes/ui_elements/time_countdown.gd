@@ -14,8 +14,6 @@ func _ready():
 	SignalBus.time_increment.connect(increment_time)
 
 func increment_time(time_left_for_clock):
-	if !Game.is_day:
-		print("time")
 	time = time_left_for_clock
 	seconds = fmod(time, 60)
 	minutes = fmod(time, 3600) / 60
