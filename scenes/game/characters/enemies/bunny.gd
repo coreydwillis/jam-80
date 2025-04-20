@@ -19,7 +19,6 @@ class_name Bunny extends CharacterBody2D
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
-var bunny_resource = preload("res://scenes/game/characters/enemies/Bunny.tscn")
 
 enum BunnyState {
 	NULL,		# should never show up
@@ -34,6 +33,16 @@ enum BunnyState {
 	RETREATING,	# health reduced to 0, retreating to pen (> ENTERING)
 	HEALING,	# resting in pen before escape attempts (> TRAPPED)
 	SLEEPING	# sleeping during the night (> ESCAPING)
+}
+
+enum BunnyType {
+	BASIC,		# basic bunny, no special effects (breeds into other bunnies)
+	KILLER,		# stuns player on contact, gives 2x eggs
+	BUFF,		# damages fences, especially on failed escapes, kb/stun resistance. gives 2x eggs
+	MAGIC,		# teleports instead of hopping, gives 3x eggs
+	GUNNER,		# shoots projectiles that stun player and damage fences, gives 3x eggs
+	HYPER,		# moves faster, hops more often, escapes easier, gives 3x eggs
+	GOLDEN		# basic bunny but gives 5x eggs (never reproduces)
 }
 
 var states_dict = {
@@ -56,12 +65,13 @@ var state_obj = State.new(self)
 var timer = 0 # time spent in current state
 var direction = Vector2(0, 1) # direction of current movement
 var speed = 0 # speed of current movement
+var type: BunnyType
 
 func _ready():
 	Game.total_bunnies += 1
 	SignalBus.day_started.connect(stop_sleeping)
 	SignalBus.night_started.connect(start_sleeping)
-	switch_state(BunnyState.ESCAPING)
+	init(BunnyState.ESCAPING, BunnyType.BASIC)
 
 func _process(delta):
 	state_obj._process(delta)
@@ -72,6 +82,11 @@ func _process(delta):
 		animator.flip_h = false
 	elif direction.x > 0:
 		animator.flip_h = true
+
+func init(s: BunnyState, t: BunnyType):
+	switch_state(s)
+	type = t
+	modulate = Game.bunny_colors[type]
 
 func is_in_pen():
 	return abs(position.x) <= Game.pen_radius and abs(position.y) <= Game.pen_radius
@@ -280,9 +295,6 @@ class StateSleeping extends State:
 func start_sleeping():
 	if state_id in IN_PEN_STATES:
 		switch_state(BunnyState.SLEEPING)
-		var baby = bunny_resource.instantiate()
-		$"..".add_child(baby)
-		baby.switch_state(BunnyState.SLEEPING)
 	else:
 		Game.total_bunnies -= 1
 		queue_free()

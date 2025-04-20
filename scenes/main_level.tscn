@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=21 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="3_bq26l"]
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
+[ext_resource type="Script" uid="uid://dlwu1jth0nyyf" path="res://scenes/fluffle.gd" id="5_ff0s2"]
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/debug_ui.gd" id="7_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
@@ -321,6 +322,7 @@ tile_map_data = PackedByteArray("AAAFAPv/AAAKAAQAAAAFAPz/AAAKAAQAAAAFAP3/AAAKAAQ
 tile_set = SubResource("TileSet_o6xl0")
 
 [node name="Bunnies" type="Node" parent="World"]
+script = ExtResource("5_ff0s2")
 
 [node name="Bunny" parent="World/Bunnies" instance=ExtResource("3_bq26l")]
 z_index = 1
