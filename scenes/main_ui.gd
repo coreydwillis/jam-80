@@ -9,7 +9,7 @@ func _ready():
 	SignalBus.day_started.connect(start_day)
 
 func _process(_delta):
-	if Game.is_day or (Game.night_timer and !Game.is_day):
+	if Game.is_day or (!Game.night_timer and !Game.is_day):
 		SignalBus.time_increment.emit(time_left)
 
 func _on_timer_timeout():
@@ -22,7 +22,7 @@ func _on_timer_timeout():
 
 func start_night():
 	Game.is_day = false
-	if Game.night_timer:
+	if !Game.night_timer:
 		start(Game.night_length)
 	else:
 		stop()

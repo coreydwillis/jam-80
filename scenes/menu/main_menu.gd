@@ -6,6 +6,8 @@ extends Control
 func _ready():
 	reset_vars()
 	longest_run.text = "Longest Run: %d\nTotal Runs: %d" % [Game.longest_run, Game.runs]
+	Game.game_started = false
+	print("false")
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("uid://cacgvoe8aqiva")

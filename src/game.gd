@@ -15,6 +15,7 @@ var game_over: bool = false
 var danger_time: bool = false
 var days: int = 1
 var is_day = true
+var game_started: bool = false
 var runs: int
 var longest_run: int
 var bunnies_in_pen: int = 0

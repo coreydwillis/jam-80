@@ -5,9 +5,17 @@ extends Control
 
 signal Exit_Options_menu
 
+func _ready():
+	if Game.game_started:
+		$TabContainer.set_tab_disabled(3,true)
+	else:
+		$TabContainer.set_tab_disabled(3,false)
+
 func _process(_delta):
-	pass
-	#options_menu_input()
+	if Game.game_started:
+		$TabContainer.set_tab_disabled(3,true)
+	else:
+		$TabContainer.set_tab_disabled(3,false)
 
 func change_tab(tab : int) -> void:
 	tab_container.set_current_tab(tab)

@@ -18,6 +18,8 @@ func _ready():
 	SignalBus.game_over.connect(game_over)
 	SignalBus.night_started.connect(turn_on_night_button)
 	SignalBus.main_level.emit()
+	Game.game_started = true
+	
 
 func _process(_delta):
 	var offset = -player.position * player_weight + centering_factor
