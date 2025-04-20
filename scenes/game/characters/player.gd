@@ -15,6 +15,7 @@ const PLAYER_HIT = preload("res://assets/audio/sfx/player/Player Hit.wav")
 const PLAYER_PICKUP = preload("res://assets/audio/sfx/player/pickup.wav")
 const PLAYER_ZAP = preload("res://assets/audio/sfx/abilities/Electricity Zap.wav")
 const PLAYER_DASH = preload("res://assets/audio/sfx/abilities/vanilla whoosh.wav")
+const BOOM_BOX = preload("res://assets/audio/sfx/abilities/JoJo_s Bizarre Boombox (Base).wav")
 
 var dashing = false
 var direction: Vector2
@@ -51,6 +52,8 @@ func _process(delta):
 	if Input.is_action_just_pressed("ability1") and time_since_boombox >= boombox_cooldown:
 		add_child(boombox_projectile.instantiate())
 		time_since_boombox = 0
+		player_audio.set_stream(BOOM_BOX)
+		player_audio.play()
 		SignalBus.boombox_not_ready.emit()
 		
 	
