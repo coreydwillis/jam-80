@@ -243,6 +243,11 @@ class StateStunned extends State:
 		if knockback_strength > 0:
 			bunny.speed = knockback_strength
 			knockback_strength -= delta * knockback_decay
+		for c in range(bunny.get_slide_collision_count()):
+			var collider = bunny.get_slide_collision(c).get_collider()
+			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
+				bunny.switch_state(BunnyState.ENTERING)
+				return
 
 class StateSleeping extends State:
 	func _init(b: Bunny):
