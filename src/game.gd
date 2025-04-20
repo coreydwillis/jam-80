@@ -54,6 +54,7 @@ var bunny_colors = { # TEMP
 	Bunny.BunnyType.HYPER: Color(0.1, 0.8, 0.2),
 	Bunny.BunnyType.GOLDEN: Color(0.8, 0.7, 0.1)
 }
+var eggs = 0
 
 # Character/Story Vars
 var alien_name: String

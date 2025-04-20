@@ -1,23 +1,27 @@
-extends CanvasLayer
+extends Timer
 
 var firstPass = true
 
 func _ready():
-	$DayTimer.start(Game.day_length_base + (Game.days * Game.day_length_inc))
-	$DayTimer.timeout.connect(_on_timer_timeout)
+	start(Game.day_length_base + (Game.days * Game.day_length_inc))
+	timeout.connect(_on_timer_timeout)
+	SignalBus.night_started.connect(start_night)
+	SignalBus.day_started.connect(start_day)
 
 func _process(_delta):
-	$BunniesLabel.text = "Bunnies in pen: %d\nTotal bunnies: %d \n Required bunnies: %d" % [Game.bunnies_in_pen, Game.total_bunnies, Game.bunnies_needed]
-	var time_left_for_clock = $DayTimer.time_left
-	SignalBus.time_increment.emit(time_left_for_clock)
+	SignalBus.time_increment.emit(time_left)
 
 func _on_timer_timeout():
 	if Game.is_day:
-		Game.is_day = false
-		$DayTimer.start(Game.night_length)
 		SignalBus.night_started.emit()
 	else:
-		Game.days += 1
-		Game.is_day = true
-		$DayTimer.start(Game.day_length_base + (Game.days * Game.day_length_inc))
 		SignalBus.day_started.emit()
+
+func start_night():
+	Game.is_day = false
+	start(Game.night_length)
+	
+func start_day():
+	Game.is_day = true
+	Game.days += 1
+	start(Game.day_length_base + (Game.days * Game.day_length_inc))

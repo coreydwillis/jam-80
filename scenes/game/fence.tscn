@@ -1,9 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckwvwbktb0s43"]
+[gd_scene load_steps=4 format=3 uid="uid://ckwvwbktb0s43"]
+
+[ext_resource type="Script" uid="uid://33i1svv21w8u" path="res://scenes/game/fence.gd" id="1_apk4r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5nd11"]
 size = Vector2(8, 184)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_apk4r"]
+
 [node name="Fence" type="StaticBody2D"]
+script = ExtResource("1_apk4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_5nd11")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 0.345098)
+z_index = 22
+position = Vector2(-1.49012e-07, -3.8147e-06)
+scale = Vector2(8, 184)
+texture = SubResource("PlaceholderTexture2D_apk4r")

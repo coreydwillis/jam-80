@@ -7,6 +7,7 @@ signal day_started
 signal game_over
 signal danger_time
 signal end_danger_time
+signal egg_count_change
 
 # Bunny Signals
 signal bunny_count_change

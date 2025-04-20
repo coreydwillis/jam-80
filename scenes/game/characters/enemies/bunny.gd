@@ -36,8 +36,6 @@ enum BunnyState {
 	ESCAPING,	# in pen, attempting escape (> TRAPPED, EXITING)
 	TRAPPED,	# in pen, roaming (> ESCAPING)
 	STUNNED,	# affected by player's ability (> FREE, TRAPPED)
-	RETREATING,	# health reduced to 0, retreating to pen (> ENTERING)
-	HEALING,	# resting in pen before escape attempts (> TRAPPED)
 	SLEEPING	# sleeping during the night (> ESCAPING)
 }
 
@@ -60,11 +58,9 @@ var states_dict = {
 	BunnyState.ESCAPING: StateEscaping.new(self),
 	BunnyState.TRAPPED: StateTrapped.new(self),
 	BunnyState.STUNNED: StateStunned.new(self),
-	BunnyState.RETREATING: State.new(self),
-	BunnyState.HEALING: State.new(self),
 	BunnyState.SLEEPING: StateSleeping.new(self)
 }
-const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING, BunnyState.HEALING, BunnyState.SLEEPING]
+const IN_PEN_STATES = [BunnyState.TRAPPED, BunnyState.ENTERING, BunnyState.EXITING, BunnyState.ESCAPING, BunnyState.SLEEPING]
 
 var state_id = BunnyState.NULL
 var state_obj = State.new(self)
@@ -94,16 +90,21 @@ func init(s: BunnyState, t: BunnyType):
 	type = t
 	modulate = Game.bunny_colors[type]
 	match type:
+		BunnyType.KILLER:
+			scared_radius *= 0.75
+			scared_speed *= 0.75
+			scared_accel *= 0.75
 		BunnyType.BUFF:
 			speed_mul = 0.7
 			delay_mul = 1.2
 		BunnyType.MAGIC:
-			delay_mul = 1.6
+			delay_mul = 2
 		BunnyType.HYPER:
-			speed_mul = 1.8
+			speed_mul = 1.7
 			delay_mul = 0.7
 			escape_chance *= 1.5
 			scared_radius *= 1.25
+	calc_behavior()
 
 func calc_behavior():
 	scared_speed *= speed_mul
@@ -177,7 +178,11 @@ class StateHopping extends State:
 		bunny = b
 	func _enter():
 		bunny.point_random()
-		bunny.set_animation("run_side")
+		if bunny.type == BunnyType.MAGIC:
+			bunny.position += bunny.direction * bunny.hop_speed * bunny.hop_duration
+			bunny.switch_state(BunnyState.FREE)
+		else:
+			bunny.set_animation("run_side")
 	func _process(_delta):
 		if bunny.timer >= bunny.hop_duration:
 			bunny.switch_state(BunnyState.FREE)
@@ -247,16 +252,26 @@ class StateEscaping extends State:
 		state = BunnyState.ESCAPING
 		bunny = b
 	func _enter():
-		bunny.point_random()
-		bunny.speed = bunny.escape_speed
-		bunny.set_animation("walk_side")
+		if bunny.type == BunnyType.MAGIC:
+			bunny.point_to_center(true)
+			bunny.position += bunny.direction * 80
+			bunny.switch_state(BunnyState.FREE)
+		else:
+			bunny.point_random()
+			bunny.speed = bunny.escape_speed
+			bunny.set_animation("walk_side")
 	func _process(_delta):
 		for c in range(bunny.get_slide_collision_count()):
 			var collider = bunny.get_slide_collision(c).get_collider()
 			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
-				if randf() < bunny.escape_chance:
+				if collider.is_broken or randf() < bunny.escape_chance:
 					bunny.switch_state(BunnyState.EXITING)
 				else:
+					if bunny.type == BunnyType.BUFF:
+						collider.damage(20)
+						if collider.is_broken:
+							bunny.switch_state(BunnyState.EXITING)
+							return
 					bunny.switch_state(BunnyState.TRAPPED)
 				return
 
@@ -297,14 +312,18 @@ class StateStunned extends State:
 		bunny.set_animation("idle_side")
 	
 	func _process(delta):
-		if bunny.timer >= stun_duration:
+		var sd = stun_duration
+		if bunny.type == BunnyType.BUFF: sd /= 2.0
+		if bunny.timer >= sd:
 			if bunny.is_in_pen():
 				bunny.switch_state(BunnyState.TRAPPED)
 			else:
 				bunny.switch_state(BunnyState.FREE)
 			return
-		if knockback_strength > 0:
-			bunny.speed = knockback_strength
+		var kb = knockback_strength
+		if bunny.type == BunnyType.BUFF: kb /= 2.0
+		if kb > 0:
+			bunny.speed = kb
 			knockback_strength -= delta * knockback_decay
 		for c in range(bunny.get_slide_collision_count()):
 			var collider = bunny.get_slide_collision(c).get_collider()
@@ -327,6 +346,8 @@ class StateSleeping extends State:
 func start_sleeping():
 	if state_id in IN_PEN_STATES:
 		switch_state(BunnyState.SLEEPING)
+		Game.eggs += Game.egg_rates[type]
+		SignalBus.egg_count_change.emit()
 	else:
 		Game.total_bunnies -= 1
 		queue_free()

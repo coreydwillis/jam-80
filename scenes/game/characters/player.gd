@@ -22,6 +22,7 @@ func _process(delta):
 		Game.is_day = true
 		Game.days += 1
 		SignalBus.day_started.emit()
+		$/root/Main/MainUI/DayTimer.start(Game.day_length_base + (Game.days * Game.day_length_inc))
 	
 	if stunned:
 		stun_duration -= delta

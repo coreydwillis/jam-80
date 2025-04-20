@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=24 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://dbq6lcxgmuwot" path="res://scenes/ui_elements/time_countdown.tscn" id="14_adxub"]
 [ext_resource type="PackedScene" uid="uid://5o8jkeg1bakd" path="res://scenes/ui_elements/day_night_graphic.tscn" id="14_ff0s2"]
 [ext_resource type="Script" uid="uid://bm12gtd4axpm3" path="res://scenes/days_label.gd" id="15_uk2yf"]
+[ext_resource type="Script" uid="uid://4bpf7brwsyrv" path="res://scenes/eggs.gd" id="16_0e4v7"]
+[ext_resource type="Texture2D" uid="uid://cvgj4c401bqds" path="res://assets/sprites/rainbow.png" id="17_6nivd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -374,7 +376,6 @@ use_parent_material = true
 script = ExtResource("10_2sb77")
 
 [node name="MainUI" type="CanvasLayer" parent="."]
-script = ExtResource("7_5fr2l")
 
 [node name="ColorRect" type="ColorRect" parent="MainUI"]
 offset_left = -44.0
@@ -399,17 +400,17 @@ offset_right = 57.0
 offset_bottom = -17.0
 
 [node name="DayNightGraphic" parent="MainUI" instance=ExtResource("14_ff0s2")]
-offset_left = -114.0
+offset_left = -189.0
 offset_top = -4.0
-offset_right = -114.0
-offset_bottom = -4.0
+offset_right = -189.0
+offset_bottom = -3.0
 scale = Vector2(0.815, 0.815)
 
 [node name="DaysLabel" type="Label" parent="MainUI"]
-offset_left = 1574.0
-offset_top = 7.0
-offset_right = 1722.0
-offset_bottom = 76.0
+offset_left = 1565.0
+offset_top = 6.0
+offset_right = 1649.0
+offset_bottom = 75.0
 theme_override_font_sizes/font_size = 50
 text = "1"
 horizontal_alignment = 2
@@ -423,20 +424,29 @@ scale = Vector2(48.36, 27.48)
 color = Color(1, 0.176471, 0, 0.145098)
 script = ExtResource("8_ff0s2")
 
-[node name="BunniesLabel" type="Label" parent="MainUI"]
-offset_left = 1467.0
-offset_top = 835.0
-offset_right = 1800.0
-offset_bottom = 975.0
-theme_override_font_sizes/font_size = 30
-text = "Bunnies in pen: 0
-Total bunnies: 0
-Required Bunnnies: 0"
+[node name="EggsLabel" type="Label" parent="MainUI"]
+anchors_preset = -1
+anchor_left = 0.916
+anchor_right = 0.961
+anchor_bottom = 0.069
+offset_left = 2.27991
+offset_top = 7.0
+offset_right = 1.88
+offset_bottom = 1.48
+theme_override_font_sizes/font_size = 50
+text = "0"
 horizontal_alignment = 2
+script = ExtResource("16_0e4v7")
+
+[node name="Egg" type="Sprite2D" parent="MainUI"]
+position = Vector2(1880, 41)
+scale = Vector2(0.493749, 0.493749)
+texture = ExtResource("17_6nivd")
 
 [node name="DayTimer" type="Timer" parent="MainUI"]
 wait_time = 10.0
 autostart = true
+script = ExtResource("7_5fr2l")
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 

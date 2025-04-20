@@ -8,6 +8,9 @@ func _ready():
 
 func breed():
 	var bunnies = get_children()
+	for b in bunnies:
+		if b.is_queued_for_deletion():
+			bunnies.erase(b)
 	var new_count = floor(len(bunnies) * Game.bunny_breed_rate)
 	var current_count = len(bunnies)
 	for bunny in bunnies:
