@@ -1,7 +1,7 @@
 extends Node
 
 const MUSIC_MAIN = preload("res://assets/audio/music/beta/music_main.mp3")
-const DAY_TIME_IDEA = preload("res://assets/audio/music/beta/day time idea.mp3")
+const DAY_TIME = preload("res://assets/audio/music/DaytimeIdea2MIxed.wav")
 const NIGHT_TIME_IDEA = preload("res://assets/audio/music/beta/creepy-256824.mp3")
 
 #audio transition vars
@@ -22,7 +22,7 @@ func _ready():
 func setup_tracks():
 	menu_music_stream.set_stream(MUSIC_MAIN)
 	add_child(menu_music_stream)
-	day_music_stream.set_stream(DAY_TIME_IDEA)
+	day_music_stream.set_stream(DAY_TIME)
 	add_child(day_music_stream)
 	night_music_stream.set_stream(NIGHT_TIME_IDEA)
 	add_child(night_music_stream)
@@ -39,7 +39,8 @@ func night_music():
 func day_music():
 	fade_out(night_music_stream)
 	await get_tree().create_timer(2).timeout
-	day_music_stream.volume_db = 1
+	day_music_stream.volume_db = 0.5
+	day_music_stream.volume_linear = 0.5
 	day_music_stream.play()
 
 func end_menu():

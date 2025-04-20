@@ -167,5 +167,5 @@ shape = SubResource("RectangleShape2D_7eo70")
 position = Vector2(1, 1)
 scale = Vector2(1.875, 1.875)
 sprite_frames = SubResource("SpriteFrames_pv13c")
-animation = &"idle_front"
+animation = &"new_animation"
 autoplay = "idle_front"
