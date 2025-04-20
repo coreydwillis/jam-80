@@ -5,6 +5,8 @@ extends Node
 signal night_started
 signal day_started
 signal game_over
+signal danger_time
+signal end_danger_time
 
 # Bunny Signals
 signal bunny_count_change

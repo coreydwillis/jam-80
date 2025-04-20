@@ -12,6 +12,7 @@ const BUNNIES_IN_PEN_DEFAULT = 5
 
 #Gameplay Vars
 var game_over: bool = false
+var danger_time: bool = false
 var days: int = 1
 var is_day = true
 var runs: int
@@ -21,7 +22,7 @@ var total_bunnies: int = 0
 var bunnies_needed: int = 2
 var bunnies_needed_inc: int = 1
 var night_length: int = 20
-var day_length_base: int = 10
+var day_length_base: int = 25
 var day_length_inc: int = 20
 var centerpoint = Vector2(0,0)
 var pen_radius = 40.0
