@@ -1,8 +1,8 @@
 extends Node
 
-const MUSIC_MAIN = preload("res://assets/audio/music/beta/music_main.mp3")
-const DAY_TIME = preload("res://assets/audio/music/DaytimeIdea2MIxed.mp3")
-const NIGHT_TIME_IDEA = preload("res://assets/audio/music/night_music.mp3")
+const MUSIC_MAIN = preload("res://assets/audio/music/menu_music.mp3")
+const DAY_TIME = preload("res://assets/audio/music/day_music.mp3")
+const NIGHT_TIME = preload("res://assets/audio/music/night_music.ogg")
 const DANGER_TIME = preload("res://assets/audio/music/InDanger.wav")
 
 #audio transition vars
@@ -28,7 +28,7 @@ func setup_tracks():
 	add_child(menu_music_stream)
 	day_music_stream.set_stream(DAY_TIME)
 	add_child(day_music_stream)
-	night_music_stream.set_stream(NIGHT_TIME_IDEA)
+	night_music_stream.set_stream(NIGHT_TIME)
 	add_child(night_music_stream)
 	danger_music_stream.set_stream(DANGER_TIME)
 	add_child(danger_music_stream)

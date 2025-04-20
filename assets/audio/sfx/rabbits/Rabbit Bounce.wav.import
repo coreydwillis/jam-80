@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbktclyh3vbec"
+path="res://.godot/imported/Rabbit Bounce.wav-96d57b42524e3f6ead1e320d69dc553b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/rabbits/Rabbit Bounce.wav"
+dest_files=["res://.godot/imported/Rabbit Bounce.wav-96d57b42524e3f6ead1e320d69dc553b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

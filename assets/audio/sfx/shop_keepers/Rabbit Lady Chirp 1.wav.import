@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b6bpe8scdlwcn"
+path="res://.godot/imported/Rabbit Lady Chirp 1.wav-372f005afc2a0442fa43728a9f3784a3.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/shop_keepers/Rabbit Lady Chirp 1.wav"
+dest_files=["res://.godot/imported/Rabbit Lady Chirp 1.wav-372f005afc2a0442fa43728a9f3784a3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
