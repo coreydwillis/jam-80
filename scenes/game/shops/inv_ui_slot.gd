@@ -21,7 +21,7 @@ func update(new_slot: InvSlot):
 		amount_text.visible = false
 
 func _on_hover():
-	if slot != null:
+	if slot.item != null:
 		$"../../ColorRect/Description".text = slot.item.description
 
 func _on_exit():
