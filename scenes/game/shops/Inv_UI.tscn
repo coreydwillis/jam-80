@@ -1,32 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bd3an4hgxrir7"]
+[gd_scene load_steps=6 format=3 uid="uid://bd3an4hgxrir7"]
 
 [ext_resource type="Script" uid="uid://cv71kg58hdb7k" path="res://scenes/game/shops/inv_ui.gd" id="1_dl177"]
 [ext_resource type="Texture2D" uid="uid://df4yb0n6ika6g" path="res://assets/sprites/placeholder_art/inventory-background.png" id="2_tnxdt"]
 [ext_resource type="Texture2D" uid="uid://kuob4fthlrcc" path="res://assets/sprites/shop_keepers/notarabbitears1.png" id="3_bj0kd"]
 [ext_resource type="PackedScene" uid="uid://b2i6bw32flvbl" path="res://scenes/game/shops/inv_UI_slot.tscn" id="3_dxee8"]
-[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="5_tbc8i"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxee8"]
-
-[sub_resource type="Resource" id="Resource_tbc8i"]
-script = ExtResource("5_tbc8i")
-name = ""
-metadata/_custom_type_script = "uid://d0ljahill12nl"
-
-[sub_resource type="Resource" id="Resource_05dc7"]
-script = ExtResource("5_tbc8i")
-name = ""
-metadata/_custom_type_script = "uid://d0ljahill12nl"
-
-[sub_resource type="Resource" id="Resource_3dlh6"]
-script = ExtResource("5_tbc8i")
-name = ""
-metadata/_custom_type_script = "uid://d0ljahill12nl"
-
-[sub_resource type="Resource" id="Resource_hccqv"]
-script = ExtResource("5_tbc8i")
-name = ""
-metadata/_custom_type_script = "uid://d0ljahill12nl"
 
 [node name="InvUi" type="Control"]
 layout_mode = 3
@@ -87,7 +66,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("3_bj0kd")
 
-[node name="Label" type="Label" parent="NinePatchRect/Control/VBoxContainer"]
+[node name="Name" type="Label" parent="NinePatchRect/Control/VBoxContainer"]
 custom_minimum_size = Vector2(550, 0)
 layout_mode = 2
 theme_override_constants/outline_size = 5
@@ -110,7 +89,7 @@ layout_mode = 2
 size_flags_vertical = 3
 color = Color(0.74978, 0.74978, 0.74978, 1)
 
-[node name="Label2" type="Label" parent="NinePatchRect/Control/VBoxContainer/ColorRect"]
+[node name="Flavor Text" type="Label" parent="NinePatchRect/Control/VBoxContainer/ColorRect"]
 layout_mode = 2
 offset_left = 15.0
 offset_top = 4.0
@@ -137,19 +116,15 @@ columns = 4
 
 [node name="InvUiSlot" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
-item = SubResource("Resource_tbc8i")
 
 [node name="InvUiSlot2" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
-item = SubResource("Resource_05dc7")
 
 [node name="InvUiSlot3" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
-item = SubResource("Resource_3dlh6")
 
 [node name="InvUiSlot4" parent="NinePatchRect/GridContainer" instance=ExtResource("3_dxee8")]
 layout_mode = 2
-item = SubResource("Resource_hccqv")
 
 [node name="ColorRect" type="ColorRect" parent="NinePatchRect"]
 clip_contents = true
@@ -169,7 +144,7 @@ grow_vertical = 0
 size_flags_vertical = 3
 color = Color(0.74978, 0.74978, 0.74978, 1)
 
-[node name="Label2" type="Label" parent="NinePatchRect/ColorRect"]
+[node name="Description" type="Label" parent="NinePatchRect/ColorRect"]
 layout_mode = 2
 offset_left = 15.0
 offset_top = 4.0
@@ -177,3 +152,12 @@ offset_right = 542.0
 offset_bottom = 53.0
 text = "Hover over an item to reveal a description."
 autowrap_mode = 3
+
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot" to="NinePatchRect/GridContainer/InvUiSlot" method="_on_hover"]
+[connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot" to="NinePatchRect/GridContainer/InvUiSlot" method="_on_exit"]
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot2" to="NinePatchRect/GridContainer/InvUiSlot2" method="_on_hover"]
+[connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot2" to="NinePatchRect/GridContainer/InvUiSlot2" method="_on_exit"]
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot3" to="NinePatchRect/GridContainer/InvUiSlot3" method="_on_hover"]
+[connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot3" to="NinePatchRect/GridContainer/InvUiSlot3" method="_on_exit"]
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot4" to="NinePatchRect/GridContainer/InvUiSlot4" method="_on_hover"]
+[connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot4" to="NinePatchRect/GridContainer/InvUiSlot4" method="_on_exit"]

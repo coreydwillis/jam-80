@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=7 format=3 uid="uid://c105vaje7d5hb"]
+[gd_resource type="Resource" script_class="Inv" load_steps=8 format=3 uid="uid://c105vaje7d5hb"]
 
 [ext_resource type="Script" uid="uid://cman03nrsntw1" path="res://scenes/resources/stores/inventory.gd" id="2_bxufq"]
 [ext_resource type="Script" uid="uid://b0ob6qbmpx1fg" path="res://scenes/game/shops/inv_slot.gd" id="2_f47eo"]
+[ext_resource type="Resource" uid="uid://bdvrw1s8mx3xd" path="res://scenes/resources/stores/items/turkey_leg.tres" id="3_bxufq"]
 
 [sub_resource type="Resource" id="Resource_bxufq"]
 script = ExtResource("2_f47eo")
-amount = 0
+item = ExtResource("3_bxufq")
+amount = 3
 metadata/_custom_type_script = "uid://b0ob6qbmpx1fg"
 
 [sub_resource type="Resource" id="Resource_euy2d"]

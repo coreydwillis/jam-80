@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://bdvrw1s8mx3xd"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bdvrw1s8mx3xd"]
 
 [ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_132bw"]
 [ext_resource type="Texture2D" uid="uid://cxw377nhlbbhb" path="res://assets/sprites/placeholder_art/temp_turkey.png" id="2_ii1u2"]
@@ -7,4 +7,5 @@
 script = ExtResource("1_132bw")
 name = "Turkey Leg"
 texture = ExtResource("2_ii1u2")
+description = "Just a normal turkey leg."
 metadata/_custom_type_script = "uid://d0ljahill12nl"

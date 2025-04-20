@@ -1,5 +1,11 @@
 extends Node
 
+enum Vendor {
+	RENGUY,
+	ALIEN,
+	BUNNYGIRL
+}
+
 const BUNNIES_NEEDED_DEFAULT = 2
 const TOTAL_BUNNIES_DEFAULT = 5
 const BUNNIES_IN_PEN_DEFAULT = 5

@@ -50,10 +50,12 @@ texture = ExtResource("7_u7u5k")
 [node name="NpcAlien" parent="." instance=ExtResource("9_8krt5")]
 position = Vector2(-174, 88)
 scale = Vector2(1.13, 1.13)
+vendor = 1
 
 [node name="NpcBunnyLady" parent="." instance=ExtResource("10_cion4")]
 position = Vector2(181, -76)
 scale = Vector2(2.91, 2.91)
+vendor = 2
 
 [node name="NpcRenGuy" parent="." instance=ExtResource("11_7fh1g")]
 position = Vector2(-170, -86)
