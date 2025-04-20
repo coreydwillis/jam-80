@@ -54,6 +54,7 @@ var bunny_colors = { # TEMP
 	Bunny.BunnyType.HYPER: Color(0.1, 0.8, 0.2),
 	Bunny.BunnyType.GOLDEN: Color(0.8, 0.7, 0.1)
 }
+var rng
 var eggs = 0
 
 # Accessibility Vars
@@ -67,5 +68,46 @@ var deity_name: String
 var scripture_name = "Lagomorphicon"
 var bazaar_name = "The Nightfaire"
 
-var name_db: Resource
-var dialog_db: Resource
+var name_resource = preload("res://assets/dbs/names_db.csv")
+var dialog_resource = preload("res://assets/dbs/dialog_db.csv")
+var name_db = name_resource.records
+var dialog_db = dialog_resource.records
+
+func get_column(db, id):
+	var arr = []
+	for row in db:
+		arr.append(row[id])
+	return arr
+
+func randname(db):
+	return str(get_column(db, "Name")[rng.rand_weighted(get_column(db, "Rarity"))])
+
+func _ready():
+	rng = RandomNumberGenerator.new()
+	var first_names = name_db.filter(func(n): return n["NameType"] == "First")
+	var middle_names = name_db.filter(func(n): return n["NameType"] == "Middle")
+	var last_names = name_db.filter(func(n): return n["NameType"] == "Last")
+	var na_names = first_names.filter(func(n): return n["Gender"] == "na")
+	var fem_names = first_names.filter(func(n): return n["Gender"] == "Fem") + na_names
+	var masc_names = first_names.filter(func(n): return n["Gender"] == "Masc") + na_names
+	var nb_names = first_names.filter(func(n): return n["Gender"].to_lower() == "nonbinary") + na_names
+	
+	alien_name = randname(nb_names)
+	if rng.randf() < 0.5:
+		alien_name += " " + randname(middle_names)
+	alien_name += " " + randname(last_names)
+	
+	bunnylady_name = randname(fem_names)
+	if rng.randf() < 0.5:
+		bunnylady_name += " " + randname(middle_names)
+	bunnylady_name += " " + randname(last_names)
+	
+	renguy_name = randname(masc_names)
+	if rng.randf() < 0.5:
+		renguy_name += " " + randname(middle_names)
+	renguy_name += " " + randname(last_names)
+	
+	deity_name = randname(first_names)
+	if rng.randf() < 0.5:
+		deity_name += " " + randname(middle_names)
+	deity_name += " " + randname(last_names)
