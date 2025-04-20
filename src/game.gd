@@ -22,7 +22,7 @@ var total_bunnies: int = 0
 var bunnies_needed: int = 2
 var bunnies_needed_inc: int = 1
 var night_length: int = 60
-var day_length_base: int = 40
+var day_length_base: int = 0
 var day_length_inc: int = 20
 var centerpoint = Vector2(0,0)
 var pen_radius = 40.0
@@ -55,6 +55,9 @@ var bunny_colors = { # TEMP
 	Bunny.BunnyType.GOLDEN: Color(0.8, 0.7, 0.1)
 }
 var eggs = 0
+
+# Accessibility Vars
+var night_timer: bool = true
 
 # Character/Story Vars
 var alien_name: String
