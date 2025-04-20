@@ -26,7 +26,7 @@ var day_length_base: int = 25
 var day_length_inc: int = 20
 var centerpoint = Vector2(0,0)
 var pen_radius = 40.0
-var bunny_breed_rate = 2.5 # 1 means for each bunny, add 1 new bunny. 2 means add 2 bunnies for each etc
+var bunny_breed_rate = 2.5
 var egg_rates = {
 	Bunny.BunnyType.BASIC: 1,
 	Bunny.BunnyType.KILLER: 2,
