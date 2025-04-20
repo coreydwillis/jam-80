@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bdvrw1s8mx3xd"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_132bw"]
+[ext_resource type="Texture2D" uid="uid://bl4oyxskx7f2w" path="res://assets/sprites/rabbits/baby_bunny.png" id="2_jsgad"]
+
+[resource]
+script = ExtResource("1_132bw")
+name = "Baby Bunny"
+description = "Add a basic bunny to the pen without increasing the requirement."
+texture = ExtResource("2_jsgad")
+tint = Color(0.107001, 9.62615e-08, 0.712921, 1)
+vendor = 2
+min_night = 1
+max_owned = 10
+price = 20
+price_scaling = 1.2
+rarity = 1.0
+graphic_scale = Vector2(6, 6)
+metadata/_custom_type_script = "uid://d0ljahill12nl"

@@ -1,12 +1,21 @@
 extends Control
 
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
+
 var vendor = Game.Vendor.BUNNYGIRL
 var is_open = false
 const PATH = "res://scenes/resources/stores/items/"
 var all_items: Array[InvItem] = [
 	preload(PATH+"add_bunny.tres"),
+	preload(PATH+"baby_bunny.tres"),
+	preload(PATH+"cape.tres"),
+	preload(PATH+"carrot.tres"),
 	preload(PATH+"coffee.tres"),
+	preload(PATH+"fence.tres"),
+	preload(PATH+"hammer.tres"),
+	preload(PATH+"lasso.tres"),
+	preload(PATH+"magnet.tres"),
+	preload(PATH+"pizza.tres"),
 	preload(PATH+"turkey_leg.tres")
 ]
 var shops = {
@@ -66,6 +75,20 @@ func switch_shop(v: Game.Vendor):
 	update_slots()
 	$"NinePatchRect/Control/VBoxContainer/ColorRect/Flavor Text".text = shop.flavor_text
 	$"NinePatchRect/Control/VBoxContainer/Name".text = shop.vendor_name
+	
+	match vendor:
+		Game.Vendor.ALIEN:
+			$NinePatchRect/AlienArt.visible = true
+			$NinePatchRect/RenGuyArt.visible = false
+			$NinePatchRect/BunnyArt.visible = false
+		Game.Vendor.BUNNYGIRL:
+			$NinePatchRect/AlienArt.visible = false
+			$NinePatchRect/RenGuyArt.visible = false
+			$NinePatchRect/BunnyArt.visible = true
+		Game.Vendor.RENGUY:
+			$NinePatchRect/AlienArt.visible = false
+			$NinePatchRect/RenGuyArt.visible = true
+			$NinePatchRect/BunnyArt.visible = false
 
 func _ready():
 	SignalBus.night_started.connect(start_night)
@@ -93,3 +116,6 @@ func start_night():
 func finish_night():
 	if is_open:
 		close()
+
+func _on_close_button_pressed():
+	close()

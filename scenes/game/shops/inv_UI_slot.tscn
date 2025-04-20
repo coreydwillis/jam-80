@@ -35,12 +35,27 @@ layout_mode = 2
 [node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
 scale = Vector2(0.5, 0.5)
 
-[node name="Label" type="Label" parent="CenterContainer/Panel"]
+[node name="QuantityLabel" type="Label" parent="CenterContainer/Panel"]
 layout_mode = 0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 64.0
-offset_bottom = 78.0
-theme_override_font_sizes/font_size = 60
+offset_left = -8.0
+offset_top = 25.0
+offset_right = 61.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.690196, 0.690196, 0.690196, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
 text = "99"
 horizontal_alignment = 2
+
+[node name="PriceLabel" type="Label" parent="CenterContainer/Panel"]
+layout_mode = 0
+offset_left = -59.0
+offset_top = -65.0
+offset_right = 23.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.688595, 0.688595, 0.688595, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "$10"

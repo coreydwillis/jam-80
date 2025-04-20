@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6uggtuampjhm"
-path="res://.godot/imported/hammer.png-b99b83c329ffb6ea8802326fe474ca7b.ctex"
+uid="uid://duec0umdu0eri"
+path="res://.godot/imported/lasso.png-d542c21bd0b81540a2d83634a3b8fa4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objects/hammer.png"
-dest_files=["res://.godot/imported/hammer.png-b99b83c329ffb6ea8802326fe474ca7b.ctex"]
+source_file="res://assets/sprites/objects/upgrades/lasso.png"
+dest_files=["res://.godot/imported/lasso.png-d542c21bd0b81540a2d83634a3b8fa4d.ctex"]
 
 [params]
 

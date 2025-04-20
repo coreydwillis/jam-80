@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://brxoeqtcysfx0"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_n5t2e"]
+[ext_resource type="Texture2D" uid="uid://dqur5mr01f0sj" path="res://assets/sprites/objects/food/pizza.png" id="2_n5t2e"]
+
+[resource]
+script = ExtResource("1_n5t2e")
+name = "Pizza"
+description = "Who doesn't love pizza?"
+texture = ExtResource("2_n5t2e")
+tint = Color(0.107001, 9.62615e-08, 0.712921, 1)
+vendor = 0
+min_night = 2
+max_owned = 10
+price = 5
+price_scaling = 1.2
+rarity = 1.0
+graphic_scale = Vector2(0.5, 0.5)
+metadata/_custom_type_script = "uid://d0ljahill12nl"

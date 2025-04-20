@@ -1,11 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd3an4hgxrir7"]
+[gd_scene load_steps=7 format=3 uid="uid://bd3an4hgxrir7"]
 
 [ext_resource type="Script" uid="uid://cv71kg58hdb7k" path="res://scenes/game/shops/inv_ui.gd" id="1_dl177"]
 [ext_resource type="Texture2D" uid="uid://df4yb0n6ika6g" path="res://assets/sprites/placeholder_art/inventory-background.png" id="2_tnxdt"]
 [ext_resource type="Texture2D" uid="uid://kuob4fthlrcc" path="res://assets/sprites/shop_keepers/notarabbitears1.png" id="3_bj0kd"]
 [ext_resource type="PackedScene" uid="uid://b2i6bw32flvbl" path="res://scenes/game/shops/inv_UI_slot.tscn" id="3_dxee8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dxee8"]
+[ext_resource type="Texture2D" uid="uid://dhn7rq8820u7r" path="res://assets/sprites/shop_keepers/alienman.png" id="5_tbc8i"]
+[ext_resource type="Texture2D" uid="uid://djxv58a5rr01n" path="res://assets/sprites/shop_keepers/renshopkeep.png" id="6_iboh1"]
 
 [node name="InvUi" type="Control"]
 layout_mode = 3
@@ -23,7 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.415686, 0.415686, 0.415686, 0.733333)
+color = Color(0.415686, 0.415686, 0.415686, 0.564706)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -32,9 +32,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -290.5
+offset_left = -290.0
 offset_top = -223.0
-offset_right = 290.5
+offset_right = 388.0
 offset_bottom = 223.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -46,25 +46,17 @@ patch_margin_bottom = 6
 
 [node name="Control" type="Control" parent="NinePatchRect"]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 3.0
+offset_right = 678.0
+offset_bottom = 442.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Control"]
+custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
-offset_left = 16.0
-offset_top = 10.0
-offset_right = 566.0
-offset_bottom = 208.0
-
-[node name="HSeparator3" type="HSeparator" parent="NinePatchRect/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxEmpty_dxee8")
-
-[node name="shop_keeper_art" type="TextureRect" parent="NinePatchRect/Control/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = ExtResource("3_bj0kd")
+offset_left = 59.0
+offset_top = -17.0
+offset_right = 609.0
+offset_bottom = 196.0
 
 [node name="Name" type="Label" parent="NinePatchRect/Control/VBoxContainer"]
 custom_minimum_size = Vector2(550, 0)
@@ -73,14 +65,10 @@ size_flags_vertical = 6
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 5
 theme_override_font_sizes/font_size = 34
-text = "Not a Rabbit Lady for Sure Now"
+text = "This is the longest name in the world there is no way it could be"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="HSeparator4" type="HSeparator" parent="NinePatchRect/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 5
-theme_override_styles/separator = SubResource("StyleBoxEmpty_dxee8")
+autowrap_mode = 3
 
 [node name="ColorRect" type="ColorRect" parent="NinePatchRect/Control/VBoxContainer"]
 clip_contents = true
@@ -91,9 +79,9 @@ color = Color(0.74978, 0.74978, 0.74978, 1)
 [node name="Flavor Text" type="Label" parent="NinePatchRect/Control/VBoxContainer/ColorRect"]
 layout_mode = 2
 offset_left = 15.0
-offset_top = 4.0
+offset_top = 5.0
 offset_right = 542.0
-offset_bottom = 53.0
+offset_bottom = 54.0
 text = "This is a bunch of story that is very exciting and also charming, and funny. But also kind of dark."
 autowrap_mode = 3
 
@@ -106,9 +94,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -264.0
-offset_top = -221.0
+offset_top = -226.0
 offset_right = 264.0
-offset_bottom = -63.0
+offset_bottom = -68.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 4
@@ -134,9 +122,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -273.5
+offset_left = -108.0
 offset_top = -77.0
-offset_right = 273.5
+offset_right = 323.0
 offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -152,6 +140,47 @@ offset_bottom = 53.0
 text = "Hover over an item to reveal a description."
 autowrap_mode = 3
 
+[node name="BunnyArt" type="TextureRect" parent="NinePatchRect"]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 299.0
+offset_right = 113.0
+offset_bottom = 446.0
+size_flags_horizontal = 4
+texture = ExtResource("3_bj0kd")
+
+[node name="AlienArt" type="TextureRect" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+offset_left = -21.0
+offset_top = 298.0
+offset_right = 125.0
+offset_bottom = 445.0
+size_flags_horizontal = 4
+texture = ExtResource("5_tbc8i")
+
+[node name="RenGuyArt" type="TextureRect" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+offset_left = -13.0
+offset_top = 298.0
+offset_right = 127.0
+offset_bottom = 445.0
+size_flags_horizontal = 4
+texture = ExtResource("6_iboh1")
+
+[node name="Close_Button" type="Button" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 140.0
+offset_top = -57.0
+offset_right = 190.0
+offset_bottom = -26.0
+grow_vertical = 0
+text = "Close"
+
 [connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot" to="NinePatchRect/GridContainer/InvUiSlot" method="_on_hover"]
 [connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot" to="NinePatchRect/GridContainer/InvUiSlot" method="_on_exit"]
 [connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot2" to="NinePatchRect/GridContainer/InvUiSlot2" method="_on_hover"]
@@ -160,3 +189,4 @@ autowrap_mode = 3
 [connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot3" to="NinePatchRect/GridContainer/InvUiSlot3" method="_on_exit"]
 [connection signal="mouse_entered" from="NinePatchRect/GridContainer/InvUiSlot4" to="NinePatchRect/GridContainer/InvUiSlot4" method="_on_hover"]
 [connection signal="mouse_exited" from="NinePatchRect/GridContainer/InvUiSlot4" to="NinePatchRect/GridContainer/InvUiSlot4" method="_on_exit"]
+[connection signal="pressed" from="NinePatchRect/Close_Button" to="." method="_on_close_button_pressed"]
