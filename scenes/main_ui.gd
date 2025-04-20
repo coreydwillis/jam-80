@@ -13,8 +13,10 @@ func _process(_delta):
 
 func _on_timer_timeout():
 	if Game.is_day:
+		Game.is_day = false
 		SignalBus.night_started.emit()
 	else:
+		Game.is_day = true
 		SignalBus.day_started.emit()
 
 func start_night():
