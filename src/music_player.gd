@@ -63,7 +63,6 @@ func end_menu():
 	day_music_stream.play()
 
 func danger_music():
-	print("danger")
 	fade_out(day_music_stream)
 	await get_tree().create_timer(0).timeout
 	danger_music_stream.volume_db = 0.5
@@ -71,7 +70,6 @@ func danger_music():
 	danger_music_stream.play()
 	
 func end_danger_music():
-	print("end danger")
 	fade_out(danger_music_stream, 1)
 	day_music_stream.volume_db = 0.5
 	day_music_stream.volume_linear = 0.5

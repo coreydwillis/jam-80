@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://caj0m6wlja2ms" path="res://assets/sprites/player/player.png" id="2_7eo70"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eo70"]
-size = Vector2(20, 40)
+size = Vector2(20, 24.4725)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hl45a"]
 atlas = ExtResource("2_7eo70")
@@ -160,12 +160,12 @@ motion_mode = 1
 script = ExtResource("1_pv13c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, 5.76375)
 shape = SubResource("RectangleShape2D_7eo70")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 1)
 scale = Vector2(1.875, 1.875)
 sprite_frames = SubResource("SpriteFrames_pv13c")
-animation = &"new_animation"
+animation = &"idle_front"
 autoplay = "idle_front"
