@@ -20,6 +20,9 @@ class_name Bunny extends CharacterBody2D
 @onready var animator = $AnimatedSprite2D
 @onready var bunny_sounds = $BunnySounds
 
+# Sprite Frame
+var sprite_frames : SpriteFrames
+
 # Sound files
 const BUNNY_SCREAM = preload("res://assets/audio/sfx/rabbits/Bunny Scream.wav")
 
@@ -88,18 +91,30 @@ func _process(delta):
 func init(s: BunnyState, t: BunnyType):
 	switch_state(s)
 	type = t
-	modulate = Game.bunny_colors[type]
+	#modulate = Game.bunny_colors[type]
 	match type:
 		BunnyType.KILLER:
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_anthro.tres")
+			animator.sprite_frames = sprite_frames
+			animator.play()
 			scared_radius *= 0.75
 			scared_speed *= 0.75
 			scared_accel *= 0.75
 		BunnyType.BUFF:
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_bloody.tres")
+			animator.sprite_frames = sprite_frames
+			animator.play()
 			speed_mul = 0.7
 			delay_mul = 1.2
 		BunnyType.MAGIC:
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_tophat.tres")
+			animator.sprite_frames = sprite_frames
+			animator.play()
 			delay_mul = 2
 		BunnyType.HYPER:
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_alien.tres")
+			animator.sprite_frames = sprite_frames
+			animator.play()
 			speed_mul = 1.7
 			delay_mul = 0.7
 			escape_chance *= 1.5
