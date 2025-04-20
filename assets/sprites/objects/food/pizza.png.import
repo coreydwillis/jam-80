@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctxbaoqq5rm7v"
-path="res://.godot/imported/anthroluger.png-a9b907b7fda1cab9306fffa4702368d4.ctex"
+uid="uid://dqur5mr01f0sj"
+path="res://.godot/imported/pizza.png-79327f5ac8fda3a2cb0ee4e7c5dbfe54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rabbits/anthro/anthroluger.png"
-dest_files=["res://.godot/imported/anthroluger.png-a9b907b7fda1cab9306fffa4702368d4.ctex"]
+source_file="res://assets/sprites/objects/food/pizza.png"
+dest_files=["res://.godot/imported/pizza.png-79327f5ac8fda3a2cb0ee4e7c5dbfe54.ctex"]
 
 [params]
 

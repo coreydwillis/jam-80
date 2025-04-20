@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dx7jirxghmhc3"
+path="res://.godot/imported/JoJo_s Bizarre Boombox (Base).wav-0e62004c6fd9f6eeea45a98048d6b96b.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/abilities/JoJo_s Bizarre Boombox (Base).wav"
+dest_files=["res://.godot/imported/JoJo_s Bizarre Boombox (Base).wav-0e62004c6fd9f6eeea45a98048d6b96b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

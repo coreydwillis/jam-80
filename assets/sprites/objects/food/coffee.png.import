@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctxbaoqq5rm7v"
-path="res://.godot/imported/anthroluger.png-a9b907b7fda1cab9306fffa4702368d4.ctex"
+uid="uid://byarw0684ym3"
+path="res://.godot/imported/coffee.png-8494c3723dc5fa7aa3e66164e9ee48e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rabbits/anthro/anthroluger.png"
-dest_files=["res://.godot/imported/anthroluger.png-a9b907b7fda1cab9306fffa4702368d4.ctex"]
+source_file="res://assets/sprites/objects/food/coffee.png"
+dest_files=["res://.godot/imported/coffee.png-8494c3723dc5fa7aa3e66164e9ee48e3.ctex"]
 
 [params]
 

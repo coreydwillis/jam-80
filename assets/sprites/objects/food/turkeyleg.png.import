@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctxbaoqq5rm7v"
-path="res://.godot/imported/anthroluger.png-a9b907b7fda1cab9306fffa4702368d4.ctex"
+uid="uid://dugvoth5ecea7"
+path="res://.godot/imported/turkeyleg.png-7bb842cfe0bc05575e1d9e41369e802e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/rabbits/anthro/anthroluger.png"
-dest_files=["res://.godot/imported/anthroluger.png-a9b907b7fda1cab9306fffa4702368d4.ctex"]
+source_file="res://assets/sprites/objects/food/turkeyleg.png"
+dest_files=["res://.godot/imported/turkeyleg.png-7bb842cfe0bc05575e1d9e41369e802e.ctex"]
 
 [params]
 
