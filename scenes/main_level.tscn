@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=29 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -10,8 +10,13 @@
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/main_ui.gd" id="7_5fr2l"]
 [ext_resource type="PackedScene" uid="uid://ch8cw553ruqe8" path="res://scenes/game/shops/bazaar_graphics.tscn" id="7_fkrx8"]
 [ext_resource type="Script" uid="uid://bnti8uhsme7wu" path="res://scenes/danger_mode.gd" id="8_ff0s2"]
+[ext_resource type="PackedScene" uid="uid://dstkfu6aumtii" path="res://scenes/game/objects/egg_pickup.tscn" id="9_6nivd"]
+[ext_resource type="PackedScene" uid="uid://bj75b7v85w5ix" path="res://scenes/game/objects/egg_pickup_green.tscn" id="9_al56o"]
 [ext_resource type="PackedScene" uid="uid://bd3an4hgxrir7" path="res://scenes/game/shops/Inv_UI.tscn" id="9_iqu8w"]
+[ext_resource type="PackedScene" uid="uid://4juj2f2muu4w" path="res://scenes/game/objects/egg_pickup_gold.tscn" id="10_1bmon"]
 [ext_resource type="Script" uid="uid://8nrtylapekyj" path="res://scenes/env_audio.gd" id="10_2sb77"]
+[ext_resource type="PackedScene" uid="uid://di6080al5pgmu" path="res://scenes/game/objects/egg_pickup_painted_var.tscn" id="11_siio1"]
+[ext_resource type="PackedScene" uid="uid://bp6svwigqtjpk" path="res://scenes/game/objects/egg_pickup_rainbow.tscn" id="12_ndwfr"]
 [ext_resource type="PackedScene" uid="uid://cd6g81lp2pfuf" path="res://scenes/ui_elements/bunny_bar.tscn" id="13_mwgft"]
 [ext_resource type="PackedScene" uid="uid://dbq6lcxgmuwot" path="res://scenes/ui_elements/time_countdown.tscn" id="14_adxub"]
 [ext_resource type="PackedScene" uid="uid://5o8jkeg1bakd" path="res://scenes/ui_elements/day_night_graphic.tscn" id="14_ff0s2"]
@@ -367,6 +372,23 @@ rotation = 1.5708
 [node name="Fence4" parent="World/Fences" instance=ExtResource("5_bq26l")]
 position = Vector2(0, -90)
 rotation = 1.5708
+
+[node name="Eggs" type="Node" parent="World"]
+
+[node name="EggPickup" parent="World/Eggs" instance=ExtResource("9_6nivd")]
+position = Vector2(179, -150)
+
+[node name="EggPickupGreen" parent="World/Eggs" instance=ExtResource("9_al56o")]
+position = Vector2(-113, -238)
+
+[node name="EggPickupGold" parent="World/Eggs" instance=ExtResource("10_1bmon")]
+position = Vector2(-267, 67)
+
+[node name="EggPickupPaintedVar" parent="World/Eggs" instance=ExtResource("11_siio1")]
+position = Vector2(50, -243)
+
+[node name="EggPickupRainbow" parent="World/Eggs" instance=ExtResource("12_ndwfr")]
+position = Vector2(217, 136)
 
 [node name="Bazaar" parent="World" instance=ExtResource("7_fkrx8")]
 visible = false

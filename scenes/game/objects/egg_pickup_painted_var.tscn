@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://di6080al5pgmu"]
+
+[ext_resource type="PackedScene" uid="uid://dstkfu6aumtii" path="res://scenes/game/objects/egg_pickup.tscn" id="1_3up33"]
+[ext_resource type="Texture2D" uid="uid://2jpn20yif3nm" path="res://assets/sprites/objects/egg4.png" id="2_86vqd"]
+
+[node name="EggPickupPaintedVar" instance=ExtResource("1_3up33")]
+egg_type = "PaintedVar"
+egg_value = 5
+egg_type_graphic = ExtResource("2_86vqd")

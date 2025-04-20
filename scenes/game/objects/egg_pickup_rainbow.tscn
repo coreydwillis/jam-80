@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bp6svwigqtjpk"]
+
+[ext_resource type="PackedScene" uid="uid://dstkfu6aumtii" path="res://scenes/game/objects/egg_pickup.tscn" id="1_ax30i"]
+[ext_resource type="Texture2D" uid="uid://csdyhyi82jb8f" path="res://assets/sprites/objects/egg_rainbow.png" id="2_lkynv"]
+
+[node name="EggPickupRainbow" instance=ExtResource("1_ax30i")]
+egg_type = "Rainbow"
+egg_value = 50
+egg_type_graphic = ExtResource("2_lkynv")

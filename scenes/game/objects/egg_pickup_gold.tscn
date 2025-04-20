@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://4juj2f2muu4w"]
+
+[ext_resource type="PackedScene" uid="uid://dstkfu6aumtii" path="res://scenes/game/objects/egg_pickup.tscn" id="1_u6iry"]
+[ext_resource type="Texture2D" uid="uid://j4wgx3ai7bd3" path="res://assets/sprites/objects/egg3.png" id="2_glbj6"]
+
+[node name="EggPickupGold" instance=ExtResource("1_u6iry")]
+egg_type = "Gold"
+egg_value = 25
+egg_type_graphic = ExtResource("2_glbj6")
