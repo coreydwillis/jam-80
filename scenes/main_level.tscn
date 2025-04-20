@@ -423,11 +423,10 @@ offset_right = 57.0
 offset_bottom = -17.0
 
 [node name="DayNightGraphic" parent="MainUI" instance=ExtResource("14_ff0s2")]
-offset_left = -189.0
+offset_left = -104.0
 offset_top = -4.0
-offset_right = -189.0
-offset_bottom = -3.0
-scale = Vector2(0.815, 0.815)
+offset_right = -104.0
+offset_bottom = -4.0
 
 [node name="DaysLabel" type="Label" parent="MainUI"]
 offset_left = 1565.0
