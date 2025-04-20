@@ -1,14 +1,14 @@
 extends Node
 
-var nameResource : Resource
-var diagResource : Resource
+var nameResource: Resource
+var dialogResource: Resource
 var resourceReturner
 
 func _ready():
 	var nameDB = preload("res://assets/dbs/names_db.csv")
-	var diagDB = preload("res://assets/dbs/dialog_db.csv")
+	var dialogDB = preload("res://assets/dbs/dialog_db.csv")
 	Game.name_db = return_resource(nameDB)
-	Game.diag_db = return_resource(diagDB)
+	Game.dialog_db = return_resource(dialogDB)
 
 func return_resource(csvResource):
 	resourceReturner = csvResource

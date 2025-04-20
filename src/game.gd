@@ -65,4 +65,4 @@ var scripture_name = "Lagomorphicon"
 var bazaar_name = "The Nightfaire"
 
 var name_db: Resource
-var diag_db: Resource
+var dialog_db: Resource
