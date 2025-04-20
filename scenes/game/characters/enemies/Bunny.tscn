@@ -132,6 +132,11 @@ animations = [{
 "name": &"sleep_side",
 "speed": 1.5
 }, {
+"frames": [],
+"loop": true,
+"name": &"walk_back",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_exibr")
@@ -179,4 +184,5 @@ shape = SubResource("CapsuleShape2D_kpdx7")
 sprite_frames = SubResource("SpriteFrames_e0ilf")
 animation = &"idle_front"
 autoplay = "idle_side"
-frame_progress = 0.874999
+
+[node name="BunnySounds" type="AudioStreamPlayer2D" parent="."]

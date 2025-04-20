@@ -15,7 +15,7 @@ class_name Bunny extends CharacterBody2D
 @export var roam_on_duration = 0.4 # seconds moving per roam cycle
 @export var roam_off_duration = 0.3 # seconds still per roam cycle
 @onready var animator = $AnimatedSprite2D
-
+@onready var bunny_sounds = $BunnySounds
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
@@ -68,6 +68,10 @@ func _process(delta):
 	velocity = speed * direction
 	move_and_slide()
 	timer += delta
+	if direction.x < 0:
+		animator.flip_h = false
+	elif direction.x > 0:
+		animator.flip_h = true
 
 func is_in_pen():
 	return abs(position.x) <= Game.pen_radius and abs(position.y) <= Game.pen_radius
@@ -115,6 +119,7 @@ class StateFree extends State:
 		bunny = b
 	func _enter():
 		bunny.speed = 0
+		bunny.set_animation("idle_side")
 	func _process(_delta):
 		if bunny.position.distance_to(bunny.player.position) <= bunny.scared_radius:
 			bunny.switch_state(BunnyState.SCARED)
@@ -127,6 +132,7 @@ class StateHopping extends State:
 		bunny = b
 	func _enter():
 		bunny.point_random()
+		bunny.set_animation("run_side")
 	func _process(_delta):
 		if bunny.timer >= bunny.hop_duration:
 			bunny.switch_state(BunnyState.FREE)
@@ -138,6 +144,10 @@ class StateScared extends State:
 	func _init(b: Bunny):
 		state = BunnyState.SCARED
 		bunny = b
+	func _enter():
+		bunny.set_animation("scared_side")
+		await bunny.get_tree().create_timer(1).timeout
+		bunny.set_animation("walk_side")
 	func _process(delta):
 		if bunny.position.distance_to(bunny.player.position) >= bunny.scared_radius * 1.02: # small buffer to prevent rapid switching
 			bunny.switch_state(BunnyState.FREE)
@@ -162,6 +172,7 @@ class StateEntering extends State:
 		bunny.speed = bunny.enter_speed
 		bunny.collision_layer = 0
 		bunny.collision_mask = 0
+		bunny.set_animation("run_side")
 	func _exit():
 		bunny.collision_layer = 1
 		bunny.collision_mask = 1
@@ -177,6 +188,7 @@ class StateExiting extends State:
 		bunny.point_to_center(true)
 		bunny.speed = bunny.enter_speed
 		bunny.collision_mask = 0
+		bunny.set_animation("run_side")
 	func _exit():
 		bunny.collision_mask = 1
 	func _process(_delta):
@@ -190,6 +202,7 @@ class StateEscaping extends State:
 	func _enter():
 		bunny.point_random()
 		bunny.speed = bunny.escape_speed
+		bunny.set_animation("walk_side")
 	func _process(_delta):
 		for c in range(bunny.get_slide_collision_count()):
 			var collider = bunny.get_slide_collision(c).get_collider()
@@ -210,6 +223,7 @@ class StateTrapped extends State:
 		bunny.point_to_center()
 		roam_timer = 0
 		roam_active = true
+		bunny.set_animation("walk_side")
 	func _process(delta):
 		if bunny.timer >= bunny.escape_delay:
 			bunny.switch_state(BunnyState.ESCAPING)
@@ -232,6 +246,8 @@ class StateStunned extends State:
 	func _init(b: Bunny):
 		state = BunnyState.STUNNED
 		bunny = b
+	func _enter():
+		bunny.set_animation("idle_side")
 	
 	func _process(delta):
 		if bunny.timer >= stun_duration:
@@ -249,6 +265,7 @@ class StateSleeping extends State:
 		state = BunnyState.SLEEPING
 		bunny = b
 	func _enter():
+		bunny.set_animation("sleep_side")
 		bunny.speed = bunny.roam_speed
 		bunny.point_roaming()
 	func _process(_delta):
@@ -267,3 +284,6 @@ func start_sleeping():
 
 func stop_sleeping():
 	switch_state(BunnyState.ESCAPING)
+
+func set_animation(currentAnimation: String):
+	animator.play(currentAnimation)
