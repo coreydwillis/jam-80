@@ -110,14 +110,6 @@ autowrap_mode = 3
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Begin_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("4_ax34s")
-text = "Begin Cycle"
-
 [node name="VerseText" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(1300, 0)
 layout_mode = 2
@@ -129,5 +121,13 @@ autowrap_mode = 3
 
 [node name="Seperator" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Begin_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("4_ax34s")
+text = "Begin Cycle"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Begin_Button" to="." method="_on_play_button_pressed"]
