@@ -17,7 +17,7 @@ func _process(delta):
 		if delay < 0:
 			delay = 0
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and hovered:
-		$"..".shop.attempt_buy(slot)
+		$"../../..".shop.attempt_buy(slot)
 		delay = 0.2
 
 func update(new_slot: InvSlot):
