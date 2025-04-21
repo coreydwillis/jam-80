@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cts6i3ccps4cc"]
+
+[ext_resource type="Script" uid="uid://cuobieqnpd4co" path="res://scenes/consumables_ui.gd" id="1_4uyku"]
+[ext_resource type="Texture2D" uid="uid://dgefubrnd78i6" path="res://assets/sprites/objects/food/carrot.png" id="1_tdqvl"]
+[ext_resource type="Texture2D" uid="uid://byarw0684ym3" path="res://assets/sprites/objects/food/coffee.png" id="2_24gw2"]
+[ext_resource type="Texture2D" uid="uid://dqur5mr01f0sj" path="res://assets/sprites/objects/food/pizza.png" id="3_7uqlh"]
+[ext_resource type="Texture2D" uid="uid://dajpafwgm3hsb" path="res://assets/sprites/objects/food/soup.png" id="4_vynr8"]
+[ext_resource type="Texture2D" uid="uid://dugvoth5ecea7" path="res://assets/sprites/objects/food/turkeyleg.png" id="5_vus37"]
+
+[node name="ConsumablesUI" type="Node2D"]
+script = ExtResource("1_4uyku")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -62.0
+offset_top = -56.0
+offset_right = 63.0
+offset_bottom = 69.0
+color = Color(0.394049, 0.764907, 0.84426, 1)
+
+[node name="Carrot" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_tdqvl")
+
+[node name="Coffee" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -13)
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_24gw2")
+
+[node name="Pizza" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+scale = Vector2(0.395, 0.395)
+texture = ExtResource("3_7uqlh")
+
+[node name="Soup" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.475, 0.475)
+texture = ExtResource("4_vynr8")
+
+[node name="Turkeyleg" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -5)
+scale = Vector2(0.46, 0.46)
+texture = ExtResource("5_vus37")
+
+[node name="ConsumeCount" type="Label" parent="."]
+offset_left = -19.0
+offset_top = 31.0
+offset_right = 21.0
+offset_bottom = 66.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "10"
+horizontal_alignment = 1

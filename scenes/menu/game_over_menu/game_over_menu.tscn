@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cuxauu0yk4tcp"]
+[gd_scene load_steps=10 format=3 uid="uid://cuxauu0yk4tcp"]
 
 [ext_resource type="Script" uid="uid://g7yynt6vykxy" path="res://scenes/menu/game_over_menu/game_over_menu.gd" id="1_gv1r1"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_k5lcj"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="4_8fprv"]
+[ext_resource type="Texture2D" uid="uid://cvqirfdwhta1a" path="res://assets/sprites/objects/gravestones2.png" id="5_k5lcj"]
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="5_whxtc"]
+[ext_resource type="Texture2D" uid="uid://b2pejddlihmg6" path="res://assets/sprites/objects/gravestones3.png" id="6_8fprv"]
+[ext_resource type="Texture2D" uid="uid://g5o21p66bfdo" path="res://assets/sprites/objects/gravestones.png" id="7_whxtc"]
 
 [sub_resource type="SystemFont" id="SystemFont_g64rs"]
 font_names = PackedStringArray("Britannic")
@@ -94,6 +97,30 @@ text = "Quit"
 [node name="Options_Menu" parent="." instance=ExtResource("5_whxtc")]
 visible = false
 layout_mode = 1
+
+[node name="Gravestones2" type="Sprite2D" parent="."]
+position = Vector2(1630, 659)
+scale = Vector2(5.75625, 5.75625)
+texture = ExtResource("5_k5lcj")
+
+[node name="Gravestones5" type="Sprite2D" parent="."]
+position = Vector2(1873, 855)
+scale = Vector2(4.84688, 4.39688)
+texture = ExtResource("5_k5lcj")
+
+[node name="Gravestones3" type="Sprite2D" parent="."]
+position = Vector2(151, 801)
+scale = Vector2(4.85625, 4.85625)
+texture = ExtResource("6_8fprv")
+
+[node name="Gravestones" type="Sprite2D" parent="."]
+position = Vector2(-129, 1657)
+texture = ExtResource("7_whxtc")
+
+[node name="Gravestones4" type="Sprite2D" parent="."]
+position = Vector2(458, 772)
+scale = Vector2(4.35625, 4.35625)
+texture = ExtResource("7_whxtc")
 
 [connection signal="pressed" from="MarginContainer/Seperator/NewRun_Button" to="." method="_on_new_run_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Seperator/Main_Button" to="." method="_on_main_button_pressed"]

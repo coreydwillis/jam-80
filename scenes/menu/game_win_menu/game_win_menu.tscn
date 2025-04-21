@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci2p2maigufey"]
+[gd_scene load_steps=12 format=3 uid="uid://ci2p2maigufey"]
 
 [ext_resource type="Script" uid="uid://bpt8pn1hrewrg" path="res://scenes/menu/game_win_menu/game_win_menu.gd" id="1_sgklo"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_6kr1x"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="3_p6t7g"]
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="4_mr0dw"]
+[ext_resource type="Texture2D" uid="uid://bt4j61tl0rch7" path="res://assets/sprites/objects/egg1.png" id="5_t66yi"]
+[ext_resource type="Texture2D" uid="uid://xwtci37wosa7" path="res://assets/sprites/objects/egg2.png" id="6_i0crg"]
+[ext_resource type="Texture2D" uid="uid://j4wgx3ai7bd3" path="res://assets/sprites/objects/egg3.png" id="7_sf40y"]
+[ext_resource type="Texture2D" uid="uid://2jpn20yif3nm" path="res://assets/sprites/objects/egg4.png" id="8_n4lay"]
+[ext_resource type="Texture2D" uid="uid://csdyhyi82jb8f" path="res://assets/sprites/objects/egg_rainbow.png" id="9_o7s3t"]
 
 [sub_resource type="SystemFont" id="SystemFont_g64rs"]
 font_names = PackedStringArray("Britannic")
@@ -86,6 +91,46 @@ text = "Quit"
 [node name="Options_Menu" parent="." instance=ExtResource("4_mr0dw")]
 visible = false
 layout_mode = 1
+
+[node name="Egg1" type="Sprite2D" parent="."]
+position = Vector2(177, 879)
+texture = ExtResource("5_t66yi")
+
+[node name="Egg2" type="Sprite2D" parent="."]
+position = Vector2(1251, 931)
+texture = ExtResource("5_t66yi")
+
+[node name="Egg3" type="Sprite2D" parent="."]
+position = Vector2(1812, 727)
+texture = ExtResource("6_i0crg")
+
+[node name="Egg4" type="Sprite2D" parent="."]
+position = Vector2(204, 640)
+texture = ExtResource("6_i0crg")
+
+[node name="Egg5" type="Sprite2D" parent="."]
+position = Vector2(635, 841)
+texture = ExtResource("7_sf40y")
+
+[node name="Egg6" type="Sprite2D" parent="."]
+position = Vector2(1328, 708)
+texture = ExtResource("7_sf40y")
+
+[node name="Egg7" type="Sprite2D" parent="."]
+position = Vector2(1454, 857)
+texture = ExtResource("8_n4lay")
+
+[node name="EggRainbow" type="Sprite2D" parent="."]
+position = Vector2(1658, 588)
+texture = ExtResource("9_o7s3t")
+
+[node name="EggRainbow2" type="Sprite2D" parent="."]
+position = Vector2(1650, 837)
+texture = ExtResource("9_o7s3t")
+
+[node name="EggRainbow3" type="Sprite2D" parent="."]
+position = Vector2(413, 760)
+texture = ExtResource("9_o7s3t")
 
 [connection signal="pressed" from="MarginContainer/Seperator/Main_Button" to="." method="_on_main_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Seperator/Quit_Button" to="." method="_on_quit_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=57 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" uid="uid://dg72wvox1prd7" path="res://scenes/abilities/lasso_ability_status.gd" id="30_c88u2"]
 [ext_resource type="Texture2D" uid="uid://b20brakaxdsa0" path="res://assets/sprites/objects/upgrades/lasso_solo.png" id="32_cycrt"]
 [ext_resource type="Shader" uid="uid://dio2emc4iy3cy" path="res://scenes/menu/hammer.gdshader" id="32_gwyuf"]
+[ext_resource type="PackedScene" uid="uid://cts6i3ccps4cc" path="res://scenes/consumables_ui.tscn" id="41_eokwq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")
@@ -621,6 +622,9 @@ offset_bottom = 1328.0
 scale = Vector2(0.205, 0.205)
 texture = ExtResource("32_cycrt")
 script = ExtResource("30_c88u2")
+
+[node name="ConsumablesUI" parent="MainUI" instance=ExtResource("41_eokwq")]
+position = Vector2(1843, 995)
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
