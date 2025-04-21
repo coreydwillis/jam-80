@@ -9,7 +9,7 @@ class_name Bunny extends CharacterBody2D
 @export var hop_delay = 5 # delay between hops in seconds
 @export var hop_speed = 60 # top speed while hopping
 @export var hop_duration = 2.5 # hop duration in seconds
-@export var enter_speed = 40 # speed while entering pen
+@export var enter_speed = 60 # speed while entering pen
 @export var enter_duration = 0.7 # time it takes to enter pen
 @export var escape_delay = 2.5 # time between escape attempts in seconds
 @export var escape_speed = 60 # speed when attempting escape

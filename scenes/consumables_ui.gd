@@ -33,8 +33,8 @@ var inventory = {
 	Consumable.ESPRESSO: 0,
 	Consumable.EGG_DROP: 0,
 	Consumable.STRACIATELLA: 0,
-	Consumable.CARROT: 10,
-	Consumable.GOLDEN_CARROT: 10
+	Consumable.CARROT: 0,
+	Consumable.GOLDEN_CARROT: 0
 }
 var tints = {
 	Consumable.CHICKEN: Color(1,1,1),
@@ -60,8 +60,8 @@ var tints = {
 	Consumable.CARROT: $Carrot,
 	Consumable.GOLDEN_CARROT: $Carrot
 }
-var types_owned = 2
-var selected = Consumable.GOLDEN_CARROT
+var types_owned = 0
+var selected = null
 @onready var player = $"/root/Main/World/Player"
 
 func _ready():
