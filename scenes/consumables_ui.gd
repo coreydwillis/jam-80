@@ -25,12 +25,12 @@ var consumable_names = {
 	"Golden Carrot": Consumable.GOLDEN_CARROT
 }
 var inventory = {
-	Consumable.CHICKEN: 10,
-	Consumable.TURKEY: 10,
-	Consumable.PIZZA: 10,
-	Consumable.COMBO: 10,
-	Consumable.COFFEE: 10,
-	Consumable.ESPRESSO: 10,
+	Consumable.CHICKEN: 0,
+	Consumable.TURKEY: 0,
+	Consumable.PIZZA: 0,
+	Consumable.COMBO: 0,
+	Consumable.COFFEE: 0,
+	Consumable.ESPRESSO: 0,
 	Consumable.EGG_DROP: 0,
 	Consumable.STRACIATELLA: 0,
 	Consumable.CARROT: 10,
@@ -60,8 +60,8 @@ var tints = {
 	Consumable.CARROT: $Carrot,
 	Consumable.GOLDEN_CARROT: $Carrot
 }
-var types_owned = 8
-var selected = Consumable.CHICKEN
+var types_owned = 2
+var selected = Consumable.GOLDEN_CARROT
 @onready var player = $"/root/Main/World/Player"
 
 func _ready():

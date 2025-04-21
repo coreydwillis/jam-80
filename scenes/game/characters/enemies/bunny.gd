@@ -89,12 +89,14 @@ func _ready():
 func _process(delta):
 	state_obj._process(delta)
 	velocity = speed * direction
-	move_and_slide()
 	timer += delta
 	if direction.x < 0:
 		animator.flip_h = false
 	elif direction.x > 0:
 		animator.flip_h = true
+	move_and_slide()
+	for c in range(get_slide_collision_count()):
+		process_collision(get_slide_collision(c).get_collider())
 
 func init(s: BunnyState, t: BunnyType):
 	switch_state(s)
@@ -149,6 +151,26 @@ func calc_behavior():
 func is_in_pen():
 	return abs(position.x) <= Game.pen_radius and abs(position.y) <= Game.pen_radius
 
+func process_collision(collider):
+	if collider.name.begins_with("Fence"):
+		if is_in_pen():
+			switch_state(BunnyState.ENTERING)
+		elif state_id == BunnyState.ESCAPING:
+			if collider.is_broken or randf() < escape_chance - collider.escape_reduction:
+				switch_state(BunnyState.EXITING)
+			else:
+				if type == BunnyType.BUFF:
+					collider.damage(20)
+					if collider.is_broken:
+						switch_state(BunnyState.EXITING)
+						return
+				switch_state(BunnyState.TRAPPED)
+	elif collider.name == "Player":
+		if type == BunnyType.KILLER:
+			collider.stun_duration = 5
+		elif state_id == BunnyState.HOPPING:
+			switch_state(BunnyState.SCARED)
+
 func switch_state(new_state: BunnyState):
 	timer = 0
 	state_obj._exit()
@@ -165,13 +187,17 @@ func point_to_center(reverse=false):
 	direction = d
 
 func point_random(): # choose a random angle between 0 and tau radians to point in
-	direction = Vector2.from_angle(randf() * TAU)
-
-func point_roaming():
-	if position.distance_to(Game.centerpoint) <= Game.pen_radius / 2:
-		point_random()
-	else:
-		point_to_center()
+	var collided_with_fence = true
+	var angle = 0
+	while collided_with_fence:
+		collided_with_fence = false
+		angle = randf() * TAU
+		ray.rotation = angle
+		ray.force_raycast_update()
+		if ray.is_colliding():
+			if ray.get_collider().name.begins_with("Fence"):
+				collided_with_fence = true
+	direction = Vector2.from_angle(angle)
 
 class State:
 	var state: BunnyState
@@ -241,11 +267,6 @@ class StateScared extends State:
 			bunny.direction = bunny.position.direction_to(bunny.player.position)
 		else:
 			bunny.direction = -bunny.position.direction_to(bunny.player.position)
-		for c in range(bunny.get_slide_collision_count()):
-			var collider = bunny.get_slide_collision(c).get_collider()
-			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
-				bunny.switch_state(BunnyState.ENTERING)
-				return
 
 class StateEntering extends State:
 	func _init(b: Bunny):
@@ -296,20 +317,6 @@ class StateEscaping extends State:
 			bunny.point_random()
 			bunny.speed = bunny.escape_speed
 			bunny.set_animation("walk_side")
-	func _process(_delta):
-		for c in range(bunny.get_slide_collision_count()):
-			var collider = bunny.get_slide_collision(c).get_collider()
-			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
-				if collider.is_broken or randf() < bunny.escape_chance:
-					bunny.switch_state(BunnyState.EXITING)
-				else:
-					if bunny.type == BunnyType.BUFF:
-						collider.damage(20)
-						if collider.is_broken:
-							bunny.switch_state(BunnyState.EXITING)
-							return
-					bunny.switch_state(BunnyState.TRAPPED)
-				return
 
 class StateTrapped extends State:
 	var roam_timer = 0
@@ -335,7 +342,7 @@ class StateTrapped extends State:
 			roam_timer = 0
 		elif !roam_active and roam_timer >= bunny.roam_off_duration:
 			roam_active = true
-			bunny.point_roaming()
+			bunny.point_random()
 			bunny.speed = bunny.roam_speed
 			roam_timer = 0
 
@@ -365,11 +372,6 @@ class StateStunned extends State:
 		if kb > 0:
 			bunny.speed = kb
 			knockback_strength -= delta * knockback_decay
-		for c in range(bunny.get_slide_collision_count()):
-			var collider = bunny.get_slide_collision(c).get_collider()
-			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
-				bunny.switch_state(BunnyState.ENTERING)
-				return
 
 class StateSleeping extends State:
 	func _init(b: Bunny):
@@ -378,7 +380,7 @@ class StateSleeping extends State:
 	func _enter():
 		bunny.set_animation("sleep_side")
 		bunny.speed = bunny.roam_speed
-		bunny.point_roaming()
+		bunny.point_random()
 	func _process(_delta):
 		if bunny.speed > 0 and bunny.timer >= bunny.roam_on_duration * 2:
 			bunny.speed = 0

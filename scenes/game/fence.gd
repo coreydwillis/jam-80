@@ -3,7 +3,7 @@ class_name Fence extends StaticBody2D
 var is_broken = false
 var health = 100.0
 var max_health = 100.0
-var level = 1
+var escape_reduction = 0
 
 func _ready():
 	SignalBus.item_bought.connect(_on_item_bought)
@@ -26,6 +26,6 @@ func repair(num):
 
 func _on_item_bought(n: String):
 	if n == "Fence":
-		level += 1
+		escape_reduction += 0.1
 		health += 100
 		max_health += 100
