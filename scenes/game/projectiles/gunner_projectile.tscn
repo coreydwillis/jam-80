@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dngw17am5m07o"]
+
+[ext_resource type="Script" uid="uid://cayqgp0etue6e" path="res://scenes/game/projectiles/gunner_projectile.gd" id="1_buw76"]
+[ext_resource type="Texture2D" uid="uid://c4t1pgrj4oloi" path="res://assets/sprites/projectile.png" id="2_packp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_21q7l"]
+
+[node name="GunnerProjectile" type="Area2D"]
+script = ExtResource("1_buw76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_21q7l")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+texture = ExtResource("2_packp")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

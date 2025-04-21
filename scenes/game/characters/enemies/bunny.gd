@@ -37,6 +37,8 @@ const BUNNY_STUNNED = preload("res://assets/audio/sfx/abilities/Electricity Zap.
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
 
+const GUNNER_PROJECTILE = preload("res://scenes/game/projectiles/gunner_projectile.tscn")
+
 enum BunnyState {
 	NULL,		# should never show up
 	FREE,		# out of pen, not moving (> HOPPING, SCARED)
@@ -79,6 +81,7 @@ var timer = 0 # time spent in current state
 var direction = Vector2(0, 1) # direction of current movement
 var speed = 0 # speed of current movement
 var type: BunnyType
+var bullet_timer = 0 # only used for gunner
 
 func _ready():
 	Game.total_bunnies += 1
@@ -94,6 +97,13 @@ func _process(delta):
 		animator.flip_h = false
 	elif direction.x > 0:
 		animator.flip_h = true
+	if type == BunnyType.GUNNER:
+		bullet_timer += delta
+		if bullet_timer >= 4:
+			bullet_timer = 0
+			var bullet = GUNNER_PROJECTILE.instantiate()
+			bullet.position = position
+			bullet.velocity = position.direction_to(player.position) * 120
 	move_and_slide()
 	for c in range(get_slide_collision_count()):
 		process_collision(get_slide_collision(c).get_collider())
