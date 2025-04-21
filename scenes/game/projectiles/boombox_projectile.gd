@@ -13,6 +13,12 @@ extends Area2D
 var bunnies_hit = []
 var timer = 0.0
 
+func multiply(factor):
+	knockback_start *= factor
+	knockback_end *= factor
+	stun_start *= factor
+	stun_end *= factor
+
 func _on_entered(body: Node2D):
 	if body.name.begins_with("Bunny") and body not in bunnies_hit:
 		bunnies_hit.append(body)
