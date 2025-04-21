@@ -59,6 +59,8 @@ var hammer_level = 0
 
 func _ready():
 	SignalBus.item_bought.connect(_on_item_bought)
+	SignalBus.player_drink.connect(drink_sound)
+	SignalBus.player_eat.connect(eat_sound)
 
 func _process(delta):
 	time_since_boombox += delta
@@ -228,6 +230,7 @@ func _on_item_bought(n: String):
 				magnet_cooldown = 10
 		"Boombox":
 			boombox_level += 1
+
 			if boombox_level == 1:
 				SignalBus.boombox_purchased.emit()
 			elif boombox_level == 2:
@@ -236,3 +239,9 @@ func _on_item_bought(n: String):
 			elif boombox_level == 3:
 				boombox_multiplier = 2
 				boombox_cooldown = 10
+
+func eat_sound():
+	$Eat.play()
+	
+func drink_sound():
+	$Drink.play()
