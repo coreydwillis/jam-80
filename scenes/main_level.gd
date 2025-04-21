@@ -4,7 +4,6 @@ extends Node2D
 @onready var viewport: Viewport = get_viewport()
 @onready var player = $"World/Player"
 @onready var pause_menu_canvas = $PauseMenuCanvas
-@onready var end_night_button = $MainUI/EndNightButton
 
 var pause_menu_scene = load("uid://dejeb358jsx7j")
 var game_over_menu_scene = load("uid://cuxauu0yk4tcp")
@@ -21,7 +20,6 @@ func _ready():
 	SignalBus.check_win.connect(check_win_condition)
 	SignalBus.game_over.connect(game_over)
 	SignalBus.game_win.connect(game_win)
-	SignalBus.night_started.connect(turn_on_night_button)
 	SignalBus.main_level.emit()
 	Game.game_started = true
 
@@ -57,13 +55,6 @@ func game_over():
 func game_win():
 	var game_win_menu = game_win_menu_scene.instantiate()
 	pause_menu_canvas.add_child(game_win_menu)
-
-func _on_end_night_pressed():
-	SignalBus.day_started.emit()
-	end_night_button.visible = false
-
-func turn_on_night_button():
-	end_night_button.visible = true
 	
 func load_bazaar():
 	bazaar_instance = bazaar_scene.instantiate()

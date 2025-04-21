@@ -41,11 +41,11 @@ func _process(delta):
 	time_since_hammer += delta
 	time_since_lasso += delta
 	
-	if not Game.is_day and Input.is_action_just_pressed("skip"):
-		Game.is_day = true
-		Game.days += 1
-		SignalBus.day_started.emit()
-		$/root/Main/MainUI/DayTimer.start(Game.day_length_base + (Game.days * Game.day_length_inc))
+	#if not Game.is_day and Input.is_action_just_pressed("skip"):
+		#Game.is_day = true
+		#Game.days += 1
+		#SignalBus.day_started.emit()
+		#$/root/Main/MainUI/DayTimer.start(Game.day_length_base + (Game.days * Game.day_length_inc))
 	
 	if stunned:
 		## Enable this somewhere to play a zip sound when stunned
