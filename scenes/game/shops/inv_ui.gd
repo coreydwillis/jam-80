@@ -6,16 +6,14 @@ var vendor = Game.Vendor.BUNNYGIRL
 var is_open = false
 const PATH = "res://scenes/resources/stores/items/"
 var all_items: Array[InvItem] = [
-	preload(PATH+"add_bunny.tres"),
-	preload(PATH+"cape.tres"),
-	preload(PATH+"carrot.tres"),
-	preload(PATH+"coffee.tres"),
-	preload(PATH+"fence.tres"),
-	preload(PATH+"hammer.tres"),
-	preload(PATH+"lasso.tres"),
-	preload(PATH+"magnet.tres"),
-	preload(PATH+"pizza.tres"),
-	preload(PATH+"turkey_leg.tres")
+	preload(PATH+"add_bunny.tres"), preload(PATH+"add_golden.tres"), preload(PATH+"boombox.tres"),
+	preload(PATH+"cape.tres"), preload(PATH+"carrot.tres"), preload(PATH+"chicken_leg.tres"),
+	preload(PATH+"coffee.tres"), preload(PATH+"egg_drop.tres"), preload(PATH+"espresso.tres"),
+	preload(PATH+"fence.tres"), preload(PATH+"golden_carrot.tres"), preload(PATH+"hammer.tres"),
+	preload(PATH+"lasso.tres"), preload(PATH+"magnet.tres"), preload(PATH+"mutate_up.tres"),
+	preload(PATH+"pizza.tres"), preload(PATH+"remove_buff.tres"), preload(PATH+"remove_gunner.tres"),
+	preload(PATH+"remove_hyper.tres"), preload(PATH+"remove_killer.tres"), preload(PATH+"remove_magic.tres"),
+	preload(PATH+"straciatella.tres"), preload(PATH+"turkey_leg.tres")
 ]
 var shops = {
 	Game.Vendor.RENGUY: Shop.new(Game.Vendor.RENGUY, all_items, self),
@@ -23,7 +21,7 @@ var shops = {
 	Game.Vendor.BUNNYGIRL: Shop.new(Game.Vendor.BUNNYGIRL, all_items, self)
 }
 var shop = shops[vendor]
-@onready var con_ui = $"/root/Main/MainUI/ConsumablesUI"
+@onready var fluffle = $"/root/Main/World/Bunnies"
 
 class Shop:
 	var inv: Inv
@@ -48,13 +46,43 @@ class Shop:
 			if item.vendor == v:
 				stock.append(item)
 	
+	func bunnytype_exists(type: Bunny.BunnyType):
+		var bunnies = invui.fluffle.get_children()
+		for bunny in bunnies:
+			if bunny.type == type:
+				return true
+		return false
+	
 	func create_inv():
 		var valid_stock = stock
 		for item in valid_stock:
 			if item.min_night > Game.days or item.max_owned == 0:
 				valid_stock.erase(item)
+			if vendor == Game.Vendor.BUNNYGIRL:
+				match item.name:
+					"Remove Buff Bunny":
+						if not bunnytype_exists(Bunny.BunnyType.BUFF):
+							valid_stock.erase(item)
+					"Remove Gunner Bunny":
+						if not bunnytype_exists(Bunny.BunnyType.GUNNER):
+							valid_stock.erase(item)
+					"Remove Magic Bunny":
+						if not bunnytype_exists(Bunny.BunnyType.MAGIC):
+							valid_stock.erase(item)
+					"Remove Hyper Bunny":
+						if not bunnytype_exists(Bunny.BunnyType.HYPER):
+							valid_stock.erase(item)
+					"Remove Killer Bunny":
+						if not bunnytype_exists(Bunny.BunnyType.KILLER):
+							valid_stock.erase(item)
 		if len(valid_stock) > 4:
-			pass
+			var weights = valid_stock.map(func(i): return 1.0/i.rarity)
+			for i in range(4):
+				var index = Game.rng.rand_weighted(weights)
+				weights[index] = 0
+				var max_mod = valid_stock[index].max_owned
+				if max_mod < 0: max_mod = 99
+				inv.insert(valid_stock[index], min(max_mod, 5))
 		else:
 			for item in valid_stock:
 				var max_mod = item.max_owned

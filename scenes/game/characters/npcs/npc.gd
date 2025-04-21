@@ -10,7 +10,6 @@ func _process(_delta):
 	else:
 		$OpenStoreText.visible = false
 	if Input.is_action_just_pressed("use") and position.distance_to(player.position) < 80:
-		print("opening ui")
 		if inv_ui.is_open:
 			inv_ui.close()
 		else:

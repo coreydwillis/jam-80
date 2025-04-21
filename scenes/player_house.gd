@@ -2,6 +2,12 @@ extends Node2D
 
 var player_near : bool = false
 
+func _ready():
+	SignalBus.day_started.connect(_on_day_start)
+
+func _on_day_start():
+	$Label.visible = false
+
 func _on_area_2d_body_entered(body):
 	if !Game.is_day and body.name == "Player":
 		$Label.visible = true

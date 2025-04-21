@@ -11,5 +11,3 @@ func _on_timer_timeout():
 		$GodotWildJamLogo.visible = false
 		$Wildcard.visible = true
 		firstPass = false
-	else:
-		$"."

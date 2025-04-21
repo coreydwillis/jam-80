@@ -103,19 +103,6 @@ func _process(delta):
 		player_audio.set_stream(PLAYER_LASSO)
 		player_audio.play()
 		SignalBus.lasso_not_ready.emit()
-		
-	if Input.is_action_just_pressed("consume"):
-		print("consumed")
-		pass
-		#player_audio.set_stream(PLAYER_DRINK)
-		#player_audio.play()
-		#SignalBus.lasso_not_ready.emit()
-		
-	if Input.is_action_just_pressed("consume_cycle"):
-		print("consumed cycle")
-		#player_audio.set_stream(PLAYER_DRINK)
-		#player_audio.play()
-		#SignalBus.lasso_not_ready.emit()
 	
 	if time_since_dash >= dash_cooldown:
 		SignalBus.dash_ready.emit()

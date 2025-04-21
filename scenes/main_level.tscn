@@ -577,8 +577,6 @@ texture = ExtResource("17_6nivd")
 wait_time = 10.0
 script = ExtResource("7_5fr2l")
 
-[node name="convert_csv" type="Node" parent="MainUI"]
-
 [node name="DashAbilityStatus" type="TextureRect" parent="MainUI"]
 material = SubResource("ShaderMaterial_kxeow")
 offset_left = -7.0

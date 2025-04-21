@@ -123,7 +123,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -108.0
-offset_top = -77.0
+offset_top = -83.0
 offset_right = 323.0
 offset_bottom = -14.0
 grow_horizontal = 2
@@ -133,11 +133,11 @@ color = Color(0.74978, 0.74978, 0.74978, 1)
 
 [node name="Description" type="Label" parent="NinePatchRect/ColorRect"]
 layout_mode = 2
-offset_left = 15.0
-offset_top = 4.0
-offset_right = 542.0
-offset_bottom = 53.0
-text = "Hover over an item to reveal a description."
+offset_left = 14.0
+offset_top = -1.0
+offset_right = 418.0
+offset_bottom = 68.0
+theme_override_constants/line_spacing = 0
 autowrap_mode = 3
 
 [node name="BunnyArt" type="TextureRect" parent="NinePatchRect"]

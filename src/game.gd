@@ -82,7 +82,7 @@ func get_column(db, id):
 	return arr
 
 func randname(db):
-	return str(get_column(db, "Name")[rng.rand_weighted(get_column(db, "Rarity"))])
+	return str(get_column(db, "Name")[rng.rand_weighted(get_column(db, "Rarity").map(func(x): return 1.0/x))])
 
 func _ready():
 	var first_names = name_db.filter(func(n): return n["NameType"] == "First")

@@ -42,7 +42,6 @@ func create_keybind_dict() -> Dictionary:
 		keybind_resource.ABILITY3 : keybind_resource.ability3_key,
 		keybind_resource.ABILITY4 : keybind_resource.ability4_key,
 		keybind_resource.CONSUME : keybind_resource.consume_key,
-		keybind_resource.CONSUME_CYCLE : keybind_resource.consume_cycle_key,
 		keybind_resource.USE : keybind_resource.use_key
 	}
 	return keybind_container_dict

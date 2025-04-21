@@ -36,20 +36,19 @@ func set_action_name() -> void:
 		"ability3":
 			label.text = "Use Ability 3"
 		"ability4":
-			label.text = "Use Ability 4"
+			label.text = "Use Lasso"
 		"consume":
 			label.text = "Consumable"
-		"consume_cycle":
-			label.text = "Cycle Consumables"
 		"jump":
 			label.text = "Dash"
 
 func set_text_for_key() -> void:
 	var action_events = InputMap.action_get_events(action_name)
 	var action_event = action_events[0]
-	var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
 	
-	button.text = "%s" % action_keycode
+	#var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
+	
+	button.text = action_event.as_text()
 
 func _on_button_toggled(toggled_on):
 	if toggled_on:

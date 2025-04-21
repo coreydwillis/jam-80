@@ -25,6 +25,7 @@ func update(new_slot: InvSlot):
 	if slot.item:
 		item_display.visible = true
 		item_display.texture = slot.item.texture
+		item_display.modulate = slot.item.tint
 		price_label.text = "$%2d" % slot.item.price
 		item_display.scale = slot.item.graphic_scale
 		if slot.amount > 1:
