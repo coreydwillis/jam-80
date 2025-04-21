@@ -1,11 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxroi0e1f7wuh"]
+[gd_scene load_steps=17 format=3 uid="uid://bxroi0e1f7wuh"]
 
 [ext_resource type="Script" uid="uid://4dju4l6a141n" path="res://scenes/menu/main_menu.gd" id="1_nl8w3"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_3rkf3"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="3_247la"]
 [ext_resource type="PackedScene" uid="uid://8lg3plf2v0jy" path="res://scenes/menu/credits/credits_menu.tscn" id="6_isoef"]
-[ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="6_qgo02"]
+[ext_resource type="Texture2D" uid="uid://bj8hg47g0a3pn" path="res://assets/sprites/bazaar/newspaceship1.png" id="6_qgo02"]
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="6_xn6kt"]
+[ext_resource type="Texture2D" uid="uid://bvphn25weuexl" path="res://assets/sprites/bazaar/newtent3.png" id="7_isoef"]
+[ext_resource type="Script" uid="uid://co0rdo72ri2s" path="res://scenes/menu/newspaceship.gd" id="7_prbor"]
+[ext_resource type="Texture2D" uid="uid://bv0d5b3tgg23r" path="res://assets/sprites/npcs/notarabbitidle.png" id="8_qgo02"]
+[ext_resource type="Texture2D" uid="uid://csdyhyi82jb8f" path="res://assets/sprites/objects/egg_rainbow.png" id="9_vovv2"]
+[ext_resource type="Texture2D" uid="uid://cvqirfdwhta1a" path="res://assets/sprites/objects/gravestones2.png" id="10_1k4da"]
+[ext_resource type="Texture2D" uid="uid://b2pejddlihmg6" path="res://assets/sprites/objects/gravestones3.png" id="11_bbqo6"]
+[ext_resource type="Texture2D" uid="uid://j4wgx3ai7bd3" path="res://assets/sprites/objects/egg3.png" id="12_d4hu8"]
+[ext_resource type="Texture2D" uid="uid://duhhfitykkr5x" path="res://assets/sprites/objects/hay.png" id="13_p1nwe"]
+[ext_resource type="Texture2D" uid="uid://2jpn20yif3nm" path="res://assets/sprites/objects/egg4.png" id="14_prbor"]
 
 [sub_resource type="SystemFont" id="SystemFont_hj162"]
 font_names = PackedStringArray("Impact")
@@ -25,7 +34,7 @@ offset_left = 12.0
 offset_top = 12.0
 offset_right = 1908.0
 offset_bottom = 1068.0
-color = Color(0.696576, 0.669386, 0.902739, 1)
+color = Color(0.527713, 0.805206, 0.808204, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -49,7 +58,7 @@ layout_mode = 2
 [node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_3rkf3")
-text = "Lagomorphicon"
+text = "Rabbit Rancher"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -99,11 +108,76 @@ text = "Exit"
 
 [node name="LongestRun" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.415086, 0.738331, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = SubResource("SystemFont_hj162")
-theme_override_font_sizes/font_size = 45
+theme_override_font_sizes/font_size = 55
 text = "Longest Run: 0
 Total Runs: 0"
 horizontal_alignment = 1
+
+[node name="Arts" type="Node2D" parent="."]
+
+[node name="Newtent3" type="Sprite2D" parent="Arts"]
+position = Vector2(265, 649)
+texture = ExtResource("7_isoef")
+
+[node name="Notarabbitidle" type="Sprite2D" parent="Arts"]
+position = Vector2(1678, 418)
+scale = Vector2(7.125, 7.125)
+texture = ExtResource("8_qgo02")
+hframes = 2
+
+[node name="Gravestones2" type="Sprite2D" parent="Arts"]
+position = Vector2(1207, 885)
+scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("10_1k4da")
+
+[node name="Gravestones3" type="Sprite2D" parent="Arts"]
+position = Vector2(707, 874)
+scale = Vector2(2.75, 2.75)
+texture = ExtResource("11_bbqo6")
+
+[node name="Egg3" type="Sprite2D" parent="Arts"]
+position = Vector2(1753, 485)
+scale = Vector2(0.51875, 0.51875)
+texture = ExtResource("12_d4hu8")
+
+[node name="Hay" type="Sprite2D" parent="Arts"]
+position = Vector2(1582, 489)
+scale = Vector2(0.6875, 0.6875)
+texture = ExtResource("13_p1nwe")
+
+[node name="EasterEgg" type="Sprite2D" parent="Arts"]
+visible = false
+position = Vector2(1565.5, 886.5)
+scale = Vector2(1.93125, 1.93125)
+texture = ExtResource("9_vovv2")
+
+[node name="Label" type="Label" parent="Arts/EasterEgg"]
+offset_left = -102.796
+offset_top = 57.6344
+offset_right = 95.2043
+offset_bottom = 80.6344
+text = "You found the Easter Egg!"
+horizontal_alignment = 1
+
+[node name="Egg4" type="Sprite2D" parent="Arts"]
+position = Vector2(177, 732)
+scale = Vector2(0.7125, 0.7125)
+texture = ExtResource("14_prbor")
+
+[node name="Spaceship" type="Sprite2D" parent="Arts"]
+scale = Vector2(0.657812, 0.657812)
+texture = ExtResource("6_qgo02")
+script = ExtResource("7_prbor")
+
+[node name="TextureButton" type="TextureButton" parent="Arts/Spaceship"]
+offset_left = -257.0
+offset_top = -150.0
+offset_right = 257.0
+offset_bottom = 135.0
 
 [node name="Options_Menu" parent="." instance=ExtResource("6_xn6kt")]
 visible = false
@@ -113,28 +187,8 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="Bunnies" type="Node2D" parent="."]
-
-[node name="Bunny" parent="Bunnies" instance=ExtResource("6_qgo02")]
-position = Vector2(140, 939)
-speed_mul = null
-delay_mul = null
-scared_radius = null
-escape_chance = null
-scared_speed = null
-scared_accel = null
-hop_delay = null
-hop_speed = null
-hop_duration = null
-enter_speed = null
-enter_duration = null
-escape_delay = null
-escape_speed = null
-roam_speed = null
-roam_on_duration = null
-roam_off_duration = null
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Credits_Button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Exit_Button" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Arts/Spaceship/TextureButton" to="Arts/Spaceship" method="_on_texture_button_pressed"]
