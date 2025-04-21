@@ -35,8 +35,6 @@ func set_action_name() -> void:
 			label.text = "Use Ability 2"
 		"ability3":
 			label.text = "Use Ability 3"
-		"ability4":
-			label.text = "Use Lasso"
 		"consume":
 			label.text = "Consumable"
 		"jump":
