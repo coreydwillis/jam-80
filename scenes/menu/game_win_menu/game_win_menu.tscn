@@ -1,0 +1,91 @@
+[gd_scene load_steps=7 format=3 uid="uid://ci2p2maigufey"]
+
+[ext_resource type="Script" uid="uid://bpt8pn1hrewrg" path="res://scenes/menu/game_win_menu/game_win_menu.gd" id="1_sgklo"]
+[ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_6kr1x"]
+[ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="3_p6t7g"]
+[ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="4_mr0dw"]
+
+[sub_resource type="SystemFont" id="SystemFont_g64rs"]
+font_names = PackedStringArray("Britannic")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv1r1"]
+
+[node name="Win_Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sgklo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.347561, 0.754479, 0.591617, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Seperator" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 64
+
+[node name="title" type="Label" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme = ExtResource("2_6kr1x")
+theme_override_font_sizes/font_size = 300
+text = "Worthy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="Label" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_g64rs")
+theme_override_font_sizes/font_size = 50
+text = "You have kept my children inside their pen. You will now lead my army in war against the aliens!"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Seperator"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gv1r1")
+
+[node name="Main_Button" type="Button" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("3_p6t7g")
+text = "Main Menu"
+
+[node name="Quit_Button" type="Button" parent="MarginContainer/Seperator"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("3_p6t7g")
+text = "Quit"
+
+[node name="Options_Menu" parent="." instance=ExtResource("4_mr0dw")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/Seperator/Main_Button" to="." method="_on_main_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Seperator/Quit_Button" to="." method="_on_quit_button_pressed"]

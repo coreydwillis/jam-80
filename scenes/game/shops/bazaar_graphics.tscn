@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ch8cw553ruqe8"]
+[gd_scene load_steps=18 format=3 uid="uid://ch8cw553ruqe8"]
 
 [ext_resource type="Script" uid="uid://dp8m5lv6rc61n" path="res://scenes/game/shops/bazaar_graphics.gd" id="1_tebg0"]
 [ext_resource type="Texture2D" uid="uid://c8ghj0ymblyyu" path="res://assets/sprites/bazaar/newtent1.png" id="2_8krt5"]
@@ -12,56 +12,133 @@
 [ext_resource type="PackedScene" uid="uid://br3pikum6q23q" path="res://scenes/game/characters/npcs/npc_ren_guy.tscn" id="11_7fh1g"]
 [ext_resource type="Texture2D" uid="uid://b18g48v8te01h" path="res://assets/sprites/bazaar/newspaceship2.png" id="11_8krt5"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8krt5"]
+size = Vector2(230.534, 141.985)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btjg5"]
+size = Vector2(123.077, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0fl87"]
+size = Vector2(113.208, 94.3396)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8krt5"]
+radius = 5.0712
+height = 21.5237
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cion4"]
+size = Vector2(230.534, 239.695)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7fh1g"]
+size = Vector2(230.534, 169.16)
+
 [node name="Bazaar" type="Node2D"]
+use_parent_material = true
 script = ExtResource("1_tebg0")
 
-[node name="Newtent1" type="Sprite2D" parent="."]
-position = Vector2(-200, -107)
+[node name="RenGuy" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Newtent1" type="Sprite2D" parent="RenGuy"]
+z_index = 22
+use_parent_material = true
+position = Vector2(-360, -175.2)
 scale = Vector2(0.655, 0.655)
 texture = ExtResource("2_8krt5")
 
-[node name="Newtent2" type="Sprite2D" parent="."]
-position = Vector2(-206, 59)
+[node name="StaticBody2D" type="StaticBody2D" parent="RenGuy/Newtent1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RenGuy/Newtent1/StaticBody2D"]
+position = Vector2(-3.8168, 40.458)
+shape = SubResource("RectangleShape2D_8krt5")
+
+[node name="Hay" type="Sprite2D" parent="RenGuy"]
+use_parent_material = true
+position = Vector2(-451, -115.2)
+scale = Vector2(0.325, 0.325)
+texture = ExtResource("5_x046a")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RenGuy/Hay"]
+position = Vector2(0, 0.615422)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RenGuy/Hay/StaticBody2D"]
+position = Vector2(-0.000366211, 0.615417)
+shape = SubResource("RectangleShape2D_btjg5")
+
+[node name="Pot" type="Sprite2D" parent="RenGuy"]
+z_index = 22
+use_parent_material = true
+position = Vector2(-288, -109)
+scale = Vector2(0.265, 0.265)
+texture = ExtResource("7_u7u5k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RenGuy/Pot"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RenGuy/Pot/StaticBody2D"]
+position = Vector2(-3.77368, 5.66037)
+shape = SubResource("RectangleShape2D_0fl87")
+
+[node name="NpcRenGuy" parent="RenGuy" instance=ExtResource("11_7fh1g")]
+position = Vector2(-250, -152)
+
+[node name="Alien" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Newspaceship2" type="Sprite2D" parent="Alien"]
+use_parent_material = true
+position = Vector2(-444, 148.8)
+scale = Vector2(0.203125, 0.189063)
+texture = ExtResource("11_8krt5")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Alien/Newspaceship2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Newspaceship2/StaticBody2D"]
+position = Vector2(-4.92308, -15.8678)
+rotation = 1.5708
+scale = Vector2(26.075, 26.075)
+shape = SubResource("CapsuleShape2D_8krt5")
+
+[node name="NpcAlien" parent="Alien" instance=ExtResource("9_8krt5")]
+position = Vector2(-229, 177.8)
+vendor = 1
+
+[node name="Newtent2" type="Sprite2D" parent="Alien"]
+use_parent_material = true
+position = Vector2(-321, 148.8)
 scale = Vector2(0.655, 0.655)
 texture = ExtResource("3_cion4")
 
-[node name="Newtent3" type="Sprite2D" parent="."]
-position = Vector2(207, -103)
+[node name="StaticBody2D" type="StaticBody2D" parent="Alien/Newtent2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alien/Newtent2/StaticBody2D"]
+position = Vector2(-5.34351, -9.92363)
+shape = SubResource("RectangleShape2D_cion4")
+
+[node name="BunnyLady" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Newtent3" type="Sprite2D" parent="BunnyLady"]
+use_parent_material = true
+position = Vector2(323.667, -176.2)
 scale = Vector2(0.655, 0.655)
 texture = ExtResource("4_7fh1g")
 flip_h = true
 
-[node name="Hay" type="Sprite2D" parent="."]
-position = Vector2(-204, -57)
-scale = Vector2(0.325, 0.325)
-texture = ExtResource("5_x046a")
+[node name="StaticBody2D" type="StaticBody2D" parent="BunnyLady/Newtent3"]
+use_parent_material = true
 
-[node name="Pitchfork" type="Sprite2D" parent="."]
-position = Vector2(131, -87)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BunnyLady/Newtent3/StaticBody2D"]
+use_parent_material = true
+position = Vector2(5.34357, 25.3436)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7fh1g")
+
+[node name="Pitchfork" type="Sprite2D" parent="BunnyLady"]
+use_parent_material = true
+position = Vector2(247.667, -160.2)
 rotation = -0.246506
 scale = Vector2(0.23, 0.23)
 texture = ExtResource("6_fwkk6")
 
-[node name="Pot" type="Sprite2D" parent="."]
-position = Vector2(-130, -59)
-scale = Vector2(0.265, 0.265)
-texture = ExtResource("7_u7u5k")
-
-[node name="NpcAlien" parent="." instance=ExtResource("9_8krt5")]
-position = Vector2(-174, 88)
-scale = Vector2(1.13, 1.13)
-vendor = 1
-
-[node name="NpcBunnyLady" parent="." instance=ExtResource("10_cion4")]
-position = Vector2(181, -76)
-scale = Vector2(2.91, 2.91)
+[node name="NpcBunnyLady" parent="BunnyLady" instance=ExtResource("10_cion4")]
+position = Vector2(203.667, -149.2)
 vendor = 2
-
-[node name="NpcRenGuy" parent="." instance=ExtResource("11_7fh1g")]
-position = Vector2(-170, -86)
-scale = Vector2(1.13, 1.13)
-
-[node name="Newspaceship2" type="Sprite2D" parent="."]
-position = Vector2(-305, 104)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("11_8krt5")

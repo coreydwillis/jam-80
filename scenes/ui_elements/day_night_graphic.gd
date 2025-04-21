@@ -6,8 +6,10 @@ func _ready():
 	
 func timeFlip():
 	if Game.is_day:
-		$Sprite2D.frame = 0
+		$Sun.visible = true
+		$Moon.visible = false
 	else:
-		$Sprite2D.frame = 1
+		$Sun.visible = false
+		$Moon.visible = true
 		if Game.bunnies_in_pen < Game.bunnies_needed:
 			SignalBus.game_over.emit()

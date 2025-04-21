@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3mwnv2p17h7c"
-path="res://.godot/imported/magnet.png-66c2c0788caf377bd06957f184d5c6f0.ctex"
+uid="uid://b254gp0llx203"
+path="res://.godot/imported/playershack2.png-b38ce9bb7061264465a2c1eadbe97685.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objects/magnet.png"
-dest_files=["res://.godot/imported/magnet.png-66c2c0788caf377bd06957f184d5c6f0.ctex"]
+source_file="res://assets/sprites/objects/playershack2.png"
+dest_files=["res://.godot/imported/playershack2.png-b38ce9bb7061264465a2c1eadbe97685.ctex"]
 
 [params]
 

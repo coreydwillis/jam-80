@@ -12,3 +12,4 @@ class_name InvItem
 @export var price: int
 @export var price_scaling: float = 1.0
 @export var rarity: float = 1
+@export var graphic_scale: Vector2 = Vector2(1, 1)

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd66ehfbgkdq0"]
+
+[ext_resource type="Script" uid="uid://cvx18iy7qd27k" path="res://scenes/player_house.gd" id="1_j6pox"]
+[ext_resource type="Texture2D" uid="uid://b254gp0llx203" path="res://assets/sprites/objects/playershack2.png" id="2_p2po0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eokwq"]
+size = Vector2(202, 180)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xgm4f"]
+radius = 200.003
+
+[node name="PlayerHouse" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_j6pox")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+use_parent_material = true
+offset_left = -163.0
+offset_top = -524.0
+offset_right = 157.0
+offset_bottom = -204.0
+texture = ExtResource("2_p2po0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TextureRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/StaticBody2D"]
+position = Vector2(159, 152)
+shape = SubResource("RectangleShape2D_eokwq")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-6, -361)
+shape = SubResource("CircleShape2D_xgm4f")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -190.0
+offset_top = -354.0
+offset_right = 191.0
+offset_bottom = -326.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Press the use key to end the night early"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

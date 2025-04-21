@@ -51,15 +51,15 @@ func night_music():
 func day_music():
 	fade_out(night_music_stream)
 	await get_tree().create_timer(2).timeout
-	day_music_stream.volume_db = 0.5
-	day_music_stream.volume_linear = 0.5
+	day_music_stream.volume_db = 0.3
+	day_music_stream.volume_linear = 0.3
 	day_music_stream.play()
 
 func end_menu():
 	fade_out(menu_music_stream)
 	#await get_tree().create_timer(2).timeout
-	day_music_stream.volume_db = 0.5
-	day_music_stream.volume_linear = 0.5
+	day_music_stream.volume_db = 0.3
+	day_music_stream.volume_linear = 0.3
 	day_music_stream.play()
 
 func danger_music():
@@ -71,8 +71,8 @@ func danger_music():
 	
 func end_danger_music():
 	fade_out(danger_music_stream, 1)
-	day_music_stream.volume_db = 0.5
-	day_music_stream.volume_linear = 0.5
+	day_music_stream.volume_db = 0.3
+	day_music_stream.volume_linear = 0.3
 	day_music_stream.play()
 
 func menu_music():

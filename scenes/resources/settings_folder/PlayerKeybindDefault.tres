@@ -1,50 +1,64 @@
-[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=11 format=3 uid="uid://08sf71m1farr"]
+[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=14 format=3 uid="uid://08sf71m1farr"]
 
 [ext_resource type="Script" uid="uid://8c8cchphfs8g" path="res://scenes/resources/settings_folder/PlayerKeybindResource.gd" id="1_4pckj"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_4pckj"]
 device = -1
-keycode = 4194325
+physical_keycode = 4194325
 
 [sub_resource type="InputEventKey" id="InputEventKey_4gmy3"]
 device = -1
-keycode = 69
+physical_keycode = 69
 unicode = 101
 
 [sub_resource type="InputEventKey" id="InputEventKey_tw72o"]
 device = -1
-keycode = 81
+physical_keycode = 81
 unicode = 113
+
+[sub_resource type="InputEventKey" id="InputEventKey_q6gd0"]
+device = -1
+physical_keycode = 4194326
+
+[sub_resource type="InputEventKey" id="InputEventKey_gwcne"]
+device = -1
+physical_keycode = 67
+unicode = 99
+
+[sub_resource type="InputEventKey" id="InputEventKey_ndvii"]
+device = -1
+physical_keycode = 4194309
 
 [sub_resource type="InputEventKey" id="InputEventKey_gtb0q"]
 device = -1
-keycode = 83
+physical_keycode = 83
 unicode = 115
 
 [sub_resource type="InputEventKey" id="InputEventKey_pfd0h"]
 device = -1
-keycode = 32
+physical_keycode = 32
 unicode = 32
 
 [sub_resource type="InputEventKey" id="InputEventKey_5wsgu"]
 device = -1
-keycode = 65
+physical_keycode = 65
 unicode = 97
 
 [sub_resource type="InputEventKey" id="InputEventKey_vkqhv"]
 device = -1
-keycode = 68
+physical_keycode = 68
 unicode = 100
 
 [sub_resource type="InputEventKey" id="InputEventKey_tihau"]
 device = -1
-keycode = 87
+physical_keycode = 87
 unicode = 119
 
 [sub_resource type="InputEventKey" id="InputEventKey_3vjk5"]
 device = -1
-keycode = 70
-unicode = 102
+shift_pressed = true
+physical_keycode = 70
+unicode = 70
 
 [resource]
 script = ExtResource("1_4pckj")
@@ -57,4 +71,7 @@ DEFAULT_USE_KEY = SubResource("InputEventKey_3vjk5")
 DEFAULT_ABILITY1_KEY = SubResource("InputEventKey_4pckj")
 DEFAULT_ABILITY2_KEY = SubResource("InputEventKey_4gmy3")
 DEFAULT_ABILITY3_KEY = SubResource("InputEventKey_tw72o")
+DEFAULT_ABILITY4_KEY = SubResource("InputEventKey_q6gd0")
+DEFAULT_CONSUME_KEY = SubResource("InputEventKey_ndvii")
+DEFAULT_CONSUME_CYCLE_KEY = SubResource("InputEventKey_gwcne")
 metadata/_custom_type_script = "uid://8c8cchphfs8g"

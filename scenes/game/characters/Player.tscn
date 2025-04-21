@@ -1,7 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7lkchv3axj1m"]
+[gd_scene load_steps=25 format=3 uid="uid://c7lkchv3axj1m"]
 
 [ext_resource type="Script" uid="uid://ccw8gjrqnul2p" path="res://scenes/game/characters/player.gd" id="1_pv13c"]
 [ext_resource type="Texture2D" uid="uid://caj0m6wlja2ms" path="res://assets/sprites/player/player.png" id="2_7eo70"]
+[ext_resource type="AudioStream" uid="uid://bcogkicp3f1q8" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass.wav" id="3_owoft"]
+[ext_resource type="AudioStream" uid="uid://d2m01hdmjtxx6" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass_Mono_48.wav" id="4_48pce"]
+[ext_resource type="AudioStream" uid="uid://db46w0tqpas3a" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass_Mono_49.wav" id="5_rgd4i"]
+[ext_resource type="AudioStream" uid="uid://03ms3nq7e0gr" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass_Mono_50.wav" id="6_dkg8v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eo70"]
 size = Vector2(20, 24.4725)
@@ -154,7 +158,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7eo70"]
+streams_count = 4
+stream_0/stream = ExtResource("3_owoft")
+stream_1/stream = ExtResource("4_48pce")
+stream_2/stream = ExtResource("5_rgd4i")
+stream_3/stream = ExtResource("6_dkg8v")
+
 [node name="Player" type="CharacterBody2D"]
+use_parent_material = true
 scale = Vector2(1.545, 1.545)
 motion_mode = 1
 script = ExtResource("1_pv13c")
@@ -164,8 +176,21 @@ position = Vector2(0, 5.76375)
 shape = SubResource("RectangleShape2D_7eo70")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(1, 1)
 scale = Vector2(1.875, 1.875)
 sprite_frames = SubResource("SpriteFrames_pv13c")
 animation = &"idle_front"
 autoplay = "idle_front"
+
+[node name="PlayerAudio" type="AudioStreamPlayer" parent="." groups=["Player"]]
+bus = &"SFX"
+
+[node name="PlayFootsteps" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_7eo70")
+volume_db = -1.0
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

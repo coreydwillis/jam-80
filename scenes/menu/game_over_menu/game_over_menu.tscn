@@ -10,7 +10,7 @@ font_names = PackedStringArray("Britannic")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv1r1"]
 
-[node name="Pause_Menu" type="Control"]
+[node name="Game_Over_Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -49,7 +49,7 @@ theme_override_constants/separation = 64
 layout_mode = 2
 theme = ExtResource("3_k5lcj")
 theme_override_font_sizes/font_size = 300
-text = "Game Over"
+text = "Unworthy"
 horizontal_alignment = 1
 vertical_alignment = 1
 

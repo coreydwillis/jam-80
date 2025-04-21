@@ -40,6 +40,9 @@ func create_keybind_dict() -> Dictionary:
 		keybind_resource.ABILITY1 : keybind_resource.ability1_key,
 		keybind_resource.ABILITY2 : keybind_resource.ability2_key,
 		keybind_resource.ABILITY3 : keybind_resource.ability3_key,
+		keybind_resource.ABILITY4 : keybind_resource.ability4_key,
+		keybind_resource.CONSUME : keybind_resource.consume_key,
+		keybind_resource.CONSUME_CYCLE : keybind_resource.consume_cycle_key,
 		keybind_resource.USE : keybind_resource.use_key
 	}
 	return keybind_container_dict
@@ -94,6 +97,12 @@ func get_keybinds(action : String):
 				return keybind_resource.DEFAULT_ABILITY2_KEY
 			keybind_resource.ABILITY3:
 				return keybind_resource.DEFAULT_ABILITY3_KEY
+			keybind_resource.ABILITY4:
+				return keybind_resource.DEFAULT_ABILITY4_KEY
+			keybind_resource.CONSUME:
+				return keybind_resource.DEFAULT_CONSUME_KEY
+			keybind_resource.CONSUME_CYCLE:
+				return keybind_resource.DEFAULT_CONSUME_CYCLE_KEY
 			keybind_resource.USE:
 				return keybind_resource.DEFAULT_USE_KEY
 	else:
@@ -114,6 +123,12 @@ func get_keybinds(action : String):
 				return keybind_resource.ability2_key
 			keybind_resource.ABILITY3:
 				return keybind_resource.ability3_key
+			keybind_resource.ABILITY4:
+				return keybind_resource.ability4_key
+			keybind_resource.CONSUME:
+				return keybind_resource.consume_key
+			keybind_resource.CONSUME_CYCLE:
+				return keybind_resource.consume_cycle_key
 			keybind_resource.USE:
 				return keybind_resource.use_key
 
@@ -153,9 +168,14 @@ func set_keybinds(action: String, event) -> void:
 			keybind_resource.ability2_key = event
 		keybind_resource.ABILITY3:
 			keybind_resource.ability3_key = event
+		keybind_resource.ABILITY4:
+			keybind_resource.ability4_key = event
+		keybind_resource.CONSUME:
+			keybind_resource.consume_key = event
+		keybind_resource.CONSUME_CYCLE:
+			keybind_resource.consume_cycle_key = event
 		keybind_resource.USE:
 			keybind_resource.use_key = event
-			
 	
 func on_keybinds_loaded(data : Dictionary) -> void:
 	var loaded_move_left = InputEventKey.new()
@@ -166,6 +186,9 @@ func on_keybinds_loaded(data : Dictionary) -> void:
 	var loaded_ability1 = InputEventKey.new()
 	var loaded_ability2 = InputEventKey.new()
 	var loaded_ability3 = InputEventKey.new()
+	var loaded_ability4 = InputEventKey.new()
+	var loaded_consume = InputEventKey.new()
+	var loaded_consume_cycle = InputEventKey.new()
 	var loaded_use = InputEventKey.new()
 	
 	loaded_move_left.set_physical_keycode(int(data.left))
@@ -176,6 +199,9 @@ func on_keybinds_loaded(data : Dictionary) -> void:
 	loaded_ability1.set_physical_keycode(int(data.ability1))
 	loaded_ability2.set_physical_keycode(int(data.ability2))
 	loaded_ability3.set_physical_keycode(int(data.ability3))
+	loaded_ability4.set_physical_keycode(int(data.ability4))
+	loaded_consume.set_physical_keycode(int(data.consume))
+	loaded_consume_cycle.set_physical_keycode(int(data.consume_cycle))
 	loaded_use.set_physical_keycode(int(data.use))
 	
 	keybind_resource.move_left_key = loaded_move_left
@@ -186,7 +212,11 @@ func on_keybinds_loaded(data : Dictionary) -> void:
 	keybind_resource.ability1_key = loaded_ability1
 	keybind_resource.ability2_key = loaded_ability2
 	keybind_resource.ability3_key = loaded_ability3
+	keybind_resource.ability4_key = loaded_ability4
+	keybind_resource.consume_key = loaded_consume
+	keybind_resource.consume_cycle_key = loaded_consume_cycle
 	keybind_resource.use_key = loaded_use
+	
 	
 func on_settings_data_loaded(data : Dictionary) -> void:
 	loaded_data = data

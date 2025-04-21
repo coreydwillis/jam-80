@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3rm2x55ooswe"
-path="res://.godot/imported/cape.png-ae0ebf10ced0eb0b8808660e1049e936.ctex"
+uid="uid://6uggtuampjhm"
+path="res://.godot/imported/hammer.png-647208c936d0d51d388d2bf879945d3c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objects/cape.png"
-dest_files=["res://.godot/imported/cape.png-ae0ebf10ced0eb0b8808660e1049e936.ctex"]
+source_file="res://assets/sprites/objects/upgrades/hammer.png"
+dest_files=["res://.godot/imported/hammer.png-647208c936d0d51d388d2bf879945d3c.ctex"]
 
 [params]
 

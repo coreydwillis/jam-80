@@ -26,10 +26,21 @@ animations = [{
 }]
 
 [node name="NpcBunnyLady" instance=ExtResource("1_rldt4")]
-scale = Vector2(2.5, 2.5)
+use_parent_material = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+use_parent_material = true
+scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_dk82g")
 animation = &"ide"
 autoplay = "ide"
 frame_progress = 0.408557
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-0.5, -2.5)
+
+[node name="OpenStoreText" parent="." index="2"]
+offset_left = -74.0
+offset_top = -59.0
+offset_right = 79.0
+offset_bottom = -36.0

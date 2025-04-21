@@ -35,8 +35,14 @@ func set_action_name() -> void:
 			label.text = "Use Ability 2"
 		"ability3":
 			label.text = "Use Ability 3"
+		"ability4":
+			label.text = "Use Ability 4"
+		"consume":
+			label.text = "Consumable"
+		"consume_cycle":
+			label.text = "Cycle Consumables"
 		"jump":
-			label.text = "Jump"
+			label.text = "Dash"
 
 func set_text_for_key() -> void:
 	var action_events = InputMap.action_get_events(action_name)

@@ -1,7 +1,8 @@
 extends Panel
 
 @onready var item_display = $CenterContainer/Panel/item_display
-@onready var amount_text = $CenterContainer/Panel/Label
+@onready var amount_text = $CenterContainer/Panel/QuantityLabel
+@onready var price_label = $CenterContainer/Panel/PriceLabel
 
 var slot: InvSlot = null
 var hovered = false
@@ -24,6 +25,8 @@ func update(new_slot: InvSlot):
 	if slot.item:
 		item_display.visible = true
 		item_display.texture = slot.item.texture
+		price_label.text = "$%2d" % slot.item.price
+		item_display.scale = slot.item.graphic_scale
 		if slot.amount > 1:
 			amount_text.visible = true
 			amount_text.text = str(slot.amount)

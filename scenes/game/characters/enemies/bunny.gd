@@ -25,6 +25,14 @@ var sprite_frames : SpriteFrames
 
 # Sound files
 const BUNNY_SCREAM = preload("res://assets/audio/sfx/rabbits/Bunny Scream.wav")
+const BUNNY_CONTENT = preload("res://assets/audio/sfx/rabbits/Bunny Contentment.wav")
+const BUNNY_GRR = preload("res://assets/audio/sfx/rabbits/Bunny Grr.wav")
+const BUNNY_GROWL = preload("res://assets/audio/sfx/rabbits/Monster Growl.wav")
+const MONSTER_JUMP = preload("res://assets/audio/sfx/rabbits/Monster Jump.wav")
+const BUNNY_BITE = preload("res://assets/audio/sfx/rabbits/MonsterBite.wav")
+const BUNNY_SCAPE = preload("res://assets/audio/sfx/rabbits/MonsterScrape.wav")
+const BUNNY_BOUNCE = preload("res://assets/audio/sfx/rabbits/Rabbit Bounce.wav")
+const BUNNY_STUNNED = preload("res://assets/audio/sfx/abilities/Electricity Zap.wav")
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
@@ -180,6 +188,8 @@ class StateFree extends State:
 		bunny = b
 	func _enter():
 		bunny.speed = 0
+		bunny.bunny_sounds.set_stream(BUNNY_CONTENT)
+		bunny.bunny_sounds.play()
 		bunny.set_animation("idle_side")
 	func _process(_delta):
 		if bunny.position.distance_to(bunny.player.position) <= bunny.scared_radius:
@@ -252,6 +262,8 @@ class StateExiting extends State:
 		state = BunnyState.EXITING
 		bunny = b
 	func _enter():
+		bunny.bunny_sounds.set_stream(BUNNY_BOUNCE)
+		bunny.bunny_sounds.play()
 		bunny.point_to_center(true)
 		bunny.speed = bunny.enter_speed
 		bunny.collision_mask = 0
@@ -267,6 +279,8 @@ class StateEscaping extends State:
 		state = BunnyState.ESCAPING
 		bunny = b
 	func _enter():
+		bunny.bunny_sounds.set_stream(BUNNY_BOUNCE)
+		bunny.bunny_sounds.play()
 		if bunny.type == BunnyType.MAGIC:
 			bunny.point_to_center(true)
 			bunny.position += bunny.direction * 80
@@ -297,6 +311,8 @@ class StateTrapped extends State:
 		state = BunnyState.TRAPPED
 		bunny = b
 	func _enter():
+		bunny.bunny_sounds.set_stream(BUNNY_GRR)
+		bunny.bunny_sounds.play()
 		bunny.point_to_center()
 		roam_timer = 0
 		roam_active = true
@@ -324,6 +340,8 @@ class StateStunned extends State:
 		state = BunnyState.STUNNED
 		bunny = b
 	func _enter():
+		bunny.bunny_sounds.set_stream(BUNNY_STUNNED)
+		bunny.bunny_sounds.play()
 		bunny.set_animation("idle_side")
 	
 	func _process(delta):

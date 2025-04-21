@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duec0umdu0eri"
-path="res://.godot/imported/lasso.png-f6f1817d11ee63b967b7e362847e3275.ctex"
+uid="uid://bl4oyxskx7f2w"
+path="res://.godot/imported/baby_bunny.png-4fe110d3953de4712608d410ba1098a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/objects/lasso.png"
-dest_files=["res://.godot/imported/lasso.png-f6f1817d11ee63b967b7e362847e3275.ctex"]
+source_file="res://assets/sprites/rabbits/baby_bunny.png"
+dest_files=["res://.godot/imported/baby_bunny.png-4fe110d3953de4712608d410ba1098a0.ctex"]
 
 [params]
 

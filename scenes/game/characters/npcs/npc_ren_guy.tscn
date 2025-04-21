@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://br3pikum6q23q"]
+[gd_scene load_steps=7 format=3 uid="uid://br3pikum6q23q"]
 
 [ext_resource type="PackedScene" uid="uid://0s7omtqifhkj" path="res://scenes/game/characters/npcs/npc.tscn" id="1_1vw60"]
 [ext_resource type="Texture2D" uid="uid://b00d3381eq06a" path="res://assets/sprites/npcs/renshopkeepidle.png" id="2_m4ue5"]
@@ -25,9 +25,18 @@ animations = [{
 "speed": 1.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vw60"]
+size = Vector2(26, 55)
+
 [node name="NpcRenGuy" instance=ExtResource("1_1vw60")]
+use_parent_material = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+use_parent_material = true
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_o5oh2")
 frame_progress = 0.457872
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-2, -2.5)
+shape = SubResource("RectangleShape2D_1vw60")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://0f8h2deu5bil"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_hnvfi"]
+[ext_resource type="Texture2D" uid="uid://cmv5663drl66e" path="res://assets/sprites/objects/upgrades/hammer_solo.png" id="2_hnvfi"]
+
+[resource]
+script = ExtResource("1_hnvfi")
+name = "Hammer"
+description = "Fix the fences!"
+texture = ExtResource("2_hnvfi")
+tint = Color(0.107001, 9.62615e-08, 0.712921, 1)
+vendor = 1
+min_night = 2
+max_owned = 1
+price = 25
+price_scaling = 1.2
+rarity = 1.0
+graphic_scale = Vector2(0.8, 0.8)
+metadata/_custom_type_script = "uid://d0ljahill12nl"
