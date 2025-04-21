@@ -184,7 +184,7 @@ class State:
 	func _enter():
 		pass
 	func _process(_delta):
-		print("A null state? in my bunny game? it's more likely than you think. free PC check")
+		pass
 
 class StateFree extends State:
 	func _init(b: Bunny):
@@ -237,7 +237,10 @@ class StateScared extends State:
 			bunny.speed += bunny.scared_accel * delta
 			if bunny.speed > bunny.scared_speed:
 				bunny.speed = bunny.scared_speed
-		bunny.direction = -bunny.position.direction_to(bunny.player.position)
+		if bunny.player.carrot_duration > 0:
+			bunny.direction = bunny.position.direction_to(bunny.player.position)
+		else:
+			bunny.direction = -bunny.position.direction_to(bunny.player.position)
 		for c in range(bunny.get_slide_collision_count()):
 			var collider = bunny.get_slide_collision(c).get_collider()
 			if collider.name.begins_with("Fence"): # if we hit a fence (should be a better way to do this but idk)
