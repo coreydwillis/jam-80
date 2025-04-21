@@ -102,14 +102,14 @@ func init(s: BunnyState, t: BunnyType):
 	#modulate = Game.bunny_colors[type]
 	match type:
 		BunnyType.KILLER:
-			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_anthro.tres")
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_bloody.tres")
 			animator.sprite_frames = sprite_frames
 			animator.play()
 			scared_radius *= 0.75
 			scared_speed *= 0.75
 			scared_accel *= 0.75
 		BunnyType.BUFF:
-			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_bloody.tres")
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_alien.tres")
 			animator.sprite_frames = sprite_frames
 			animator.play()
 			speed_mul = 0.7
@@ -119,6 +119,10 @@ func init(s: BunnyState, t: BunnyType):
 			animator.sprite_frames = sprite_frames
 			animator.play()
 			delay_mul = 2
+		BunnyType.GUNNER:
+			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_anthro.tres")
+			animator.sprite_frames = sprite_frames
+			animator.play()
 		BunnyType.HYPER:
 			sprite_frames = preload("res://scenes/game/characters/enemies/bunny_alien.tres")
 			animator.sprite_frames = sprite_frames

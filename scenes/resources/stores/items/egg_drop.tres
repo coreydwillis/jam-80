@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_xxvve")
 name = "Egg Drop Soup"
-description = "a"
+description = "Prithee, you must try this soup! It makes eggs drop from the sky!"
 texture = ExtResource("2_idy5o")
 tint = Color(1, 1, 1, 1)
 vendor = 0
