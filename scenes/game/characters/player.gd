@@ -34,6 +34,9 @@ var direction: Vector2
 var stunned = false
 var stun_duration = 0
 
+func _ready():
+	SignalBus.item_bought.connect(_on_item_bought)
+
 func _process(delta):
 	time_since_boombox += delta
 	time_since_dash += delta
@@ -166,3 +169,6 @@ func _process(delta):
 		velocity = direction * speed
 	
 	move_and_slide()
+
+func _on_item_bought(n: String):
+	pass

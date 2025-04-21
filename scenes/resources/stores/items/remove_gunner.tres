@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://ch77js0egyouk"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_a262f"]
+[ext_resource type="Texture2D" uid="uid://djoxoudgio74t" path="res://assets/sprites/rabbits/add_bunny.png" id="2_jdcth"]
+
+[resource]
+script = ExtResource("1_a262f")
+name = "Remove Magic Bunny"
+description = "I can turn one back into a normal bunny for you."
+texture = ExtResource("2_jdcth")
+tint = Color(1, 1, 1, 1)
+vendor = 2
+min_night = 2
+max_owned = -1
+price = 20
+price_scaling = 1.1
+rarity = 1.0
+graphic_scale = Vector2(6, 6)
+metadata/_custom_type_script = "uid://d0ljahill12nl"

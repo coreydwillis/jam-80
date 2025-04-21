@@ -4,6 +4,7 @@ var rng
 
 func _ready():
 	SignalBus.night_started.connect(breed)
+	SignalBus.item_bought.connect(_on_item_bought)
 	rng = RandomNumberGenerator.new()
 
 func breed():
@@ -29,3 +30,31 @@ func add_bunny(type: Bunny.BunnyType):
 	var baby = bunny_resource.instantiate()
 	add_child(baby)
 	baby.init(Bunny.BunnyState.SLEEPING, type)
+	
+func replace_bunny(type: Bunny.BunnyType):
+	var bunnies = get_children()
+	for bunny in bunnies:
+		if bunny.type == type:
+			bunny.queue_free()
+			add_bunny(Bunny.BunnyType.BASIC)
+			return
+
+func _on_item_bought(n: String):
+	match n:
+		"Add Bunny":
+			add_bunny(Bunny.BunnyType.BASIC)
+		"Add Golden":
+			add_bunny(Bunny.BunnyType.GOLDEN)
+		"More Mutations":
+			for t in [Bunny.BunnyType.HYPER, Bunny.BunnyType.GUNNER, Bunny.BunnyType.MAGIC, Bunny.BunnyType.BUFF, Bunny.BunnyType.KILLER]:
+				Game.mutation_rates[t] += 0.5
+		"Remove Buff Bunny":
+			replace_bunny(Bunny.BunnyType.BUFF)
+		"Remove Gunner Bunny":
+			replace_bunny(Bunny.BunnyType.GUNNER)
+		"Remove Magic Bunny":
+			replace_bunny(Bunny.BunnyType.MAGIC)
+		"Remove Hyper Bunny":
+			replace_bunny(Bunny.BunnyType.HYPER)
+		"Remove Killer Bunny":
+			replace_bunny(Bunny.BunnyType.KILLER)

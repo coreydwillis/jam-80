@@ -11,6 +11,7 @@ signal end_danger_time
 signal egg_count_change
 signal day_increment
 signal check_win
+signal item_bought(item_name: String)
 
 # Ability Signals
 signal dash_purchased

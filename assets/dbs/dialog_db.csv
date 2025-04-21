@@ -6,77 +6,77 @@ alien,1,1,1,I can't believe they made a Mineshaft movie. A new low for Hollywood
 alien,1,1,1,My favorite movie is Citizen Kane.
 alien,1,1,1,You should buy my memoire. It's called The Horrendous Hubris of Hollywood Hallucinations.
 alien,1,1,1,I remember when the Coen Brothers were good.
-alien,1,1,1,I've heard tales that {Game.renguy_name} is actually from the Renaissance period and traveled here using his time machine!
+alien,1,1,1,I've heard tales that {renguy} is actually from the Renaissance period and traveled here using his time machine!
 alien,1,1,6,"You've managed to fail more than five times, and yet, you persevere."
 alien,1,1,25,"Yikes, you've failed more than twenty-five times? That must sting."
 alien,1,1,50,Shouldn't you just give up already?
-alien,1,1,100,I'm surprised {Game.deity_name} hasn't buried you in the graveyard yet.
+alien,1,1,100,I'm surprised {deity} hasn't buried you in the graveyard yet.
 alien,1,1,500,Really? Just really...
-alien,1,1,1,"Today's a good day to stare at the sky and beg, why or why?"
+alien,1,1,1,"Today's a good day to stare at the sky and beg, why oh why?"
 alien,1,25,3,I think the writer of this game wrote so much random dialog that it would take an unreasonable amount of time to randomly encounter all of it.
-alien,1,1,1,"Is it just me, or does {Game.bunnylady_name} have very lovely ears for a human?"
+alien,1,1,1,"Is it just me, or does {bunnylady} have very lovely ears for a human?"
 alien,1,1,1,Did you know that David Lynch secrectly directed the original Wizard of Oz?
 alien,2,1,1,I can't even see the planet Glorpnorp from here.
 alien,2,1,5,"Believe me, dying isn't fun. I've tried it before. Zero stars."
 alien,2,1,2,Eraserhead is a masterpiece!
 alien,3,1,1,I can't believe she lied to me...
 alien,3,1,1,"When I look at the somber night sky, I feel an inescapable feeling of dread and despair."
-alien,3,1,1,{Game.bunnylady_name} has such beautiful eyes.
-alien,3,1,1,I wonder if {Game.bunnylady_name} even knows I exist.
+alien,3,1,1,{bunnylady} has such beautiful eyes.
+alien,3,1,1,I wonder if {bunnylady} even knows I exist.
 alien,3,1,1,Love shouldn't be this complicated.
-alien,3,1,1,"That {Game.renguy_name} fellow is a bit clueless, but there's a profound sadness in his eyes that are inescapable."
+alien,3,1,1,"That {renguy} fellow is a bit clueless, but there's a profound sadness in his eyes that are inescapable."
 alien,4,1,5,"Given the unpredictability of these timelines, I'm sure most of what I say makes no sense to you."
 alien,4,1,5,I wish I could tell my family that I love them.
 alien,4,1,1,I can't get her out of my head.
 alien,4,1,1,Was she just staring at me?
-alien,5,1,1,Has {Game.bunnylady_name} brought me up before?
-alien,5,1,1,"You'd think that if {Game.deity_name} really were a god, they would have destroyed us already."
-alien,5,1,1,"If {Game.deity_name} is really a god, why are there foxes in the world?"
-alien,5,1,1,The {Game.scripture_name} would be more believable if there weren't so many internal logic issues.
+alien,5,1,1,Has {bunnylady} brought me up before?
+alien,5,1,1,"You'd think that if {deity} really were a god, they would have destroyed us already."
+alien,5,1,1,"If {deity} is really a god, why are there foxes in the world?"
+alien,5,1,1,The Lagomorphicon would be more believable if there weren't so many internal logic issues.
 alien,5,1,1,I don't think I can keep my feelings a secret anymore.
-alien,10,1,1,I'm going to tell {Game.bunnylady_name} that I love her today. I'm going to do it!
+alien,10,1,1,I'm going to tell {bunnylady} that I love her today. I'm going to do it!
 bunnylady,1,1,1,Russian Roulette is still my favorite Red Velvet album.
 bunnylady,1,3,4,"Woman of few words, aren't you?"
 bunnylady,1,1,1,“Don't be pushed around by the fears in your mind. Be led by the dreams in your heart.” – Suho (EXO)
 bunnylady,1,1,1,"“You're an artwork, not a pair of eyes.” – Baekhyun (EXO)"
 bunnylady,1,1,1,“I need you like the air I breathe.” – Irene (Red Velvet)
 bunnylady,1,1,1,“Friends are our chosen family.” – RM (BTS)
-bunnylady,1,1,1,Can you believe that Citizen Kane is actually {Game.alien_name) favorite movie? Talk about predictable.
+bunnylady,1,1,1,Can you believe that Citizen Kane is actually {alien}’s favorite movie? Talk about predictable.
 bunnylady,1,1,1,"Who chooses a loser, college drop-out over me?"
 bunnylady,1,1,1,I have to just remember and repeat the words until they make sense.
 bunnylady,1,1,1,Did you know that Tim Burton secretly directed Mystery Men?
 bunnylady,1,1,1,What's your favorite conspiracy theory? Mine is the existence of empathy in the world today.
 bunnylady,1,1,1,I wish things could be different.
 bunnylady,2,5,1,I don't think I'll ever know what they see in you.
-bunnylady,2,1,1,"I told {Game.alien_name} that {Game.renguy_name} traveled here from the past, and I think he actually believed me."
+bunnylady,2,1,1,"I told {alien} that {renguy} traveled here from the past, and I think they actually believed me."
 bunnylady,2,1,1,I don't need to have it all figured out because I have faith.
-bunnylady,2,1,1,{Game.deity_name} dammit!
+bunnylady,2,1,1,{deity} dammit!
 bunnylady,3,1,1,Do you ever feel like your life is a lie?
 bunnylady,3,5,1,Do you think love can ever be wrong?
-bunnylady,3,1,1,{Game.alien_name} looks so handsome today...
-bunnylady,3,25,1,{Game.deity_name} brought low.
-bunnylady,4,1,1,I feel bad for lying to {Game.alien_name}. They're just so gullible and I love a good joke. I don't think they thought it was funny.
-bunnylady,4,25,2,How could {Game.deity_name} choose you over me?
-bunnylady,4,5,2,There are parts of the {Game.scripture_name} that seem downright immoral.
-bunnylady,5,1,1,Has {Game.alien_name} mentioned me?
-bunnylady,5,1,1,Sometimes I do have my doubts about the {Game.scripture_name}.
+bunnylady,3,1,1,{alien} looks so handsome today...
+bunnylady,3,25,1,{deity} brought low.
+bunnylady,4,1,1,I feel bad for lying to {alien}. They're just so gullible and I love a good joke. I don't think they thought it was funny.
+bunnylady,4,25,2,How could {deity} choose you over me?
+bunnylady,4,5,2,There are parts of the Lagomorphicon that seem downright immoral.
+bunnylady,5,1,1,Has {alien} mentioned me?
+bunnylady,5,1,1,Sometimes I do have my doubts about the Lagomorphicon.
 bunnylady,5,1,1,"Everyone has doubts sometimes, but that doesn't make my belief any weaker."
-bunnylady,5,1,1,I don't think {Game.alien_name} would still think I'm pretty without this disguise.
+bunnylady,5,1,1,I don't think {alien} would still think I'm pretty without this disguise.
 bunnylady,5,1,1,How can I love so much when I cannot love?
-bunnylady,6,1,1,"Not everything in the {Game.scripture_name} needs to be true for me to believe, right?"
+bunnylady,6,1,1,"Not everything in the Lagomorphicon needs to be true for me to believe, right?"
 bunnylady,6,1,1,I just gave them a mixtape of all my favorite Kpop groups... I'm nervous.
 bunnylady,7,1,1,"Those parts are outdated and meaningless today, anyway."
-bunnylady,7,1,1,They told me he likes at least a few of the songs!
+bunnylady,7,1,1,They told me they like at least a few of the songs!
 bunnylady,8,1,1,Life really can be whatever I want it to be.
 renguy,1,1,1,"“Art is never finished, only abandoned.” – Leonardo da Vinci"
 renguy,1,1,1,“The art of medicine consists of amusing the patient while nature cures the disease.” – Galileo Galilei
 renguy,1,1,1,"“The artist is nothing without the gift, but the gift is nothing without work.” – Emile Zola"
 renguy,1,1,1,“The only way to do great work is to love what you do.” – Steve Jobs
-renguy,1,1,1,Welcome! Welcome! One and all to The Nighfaire!
-renguy,1,1,1,What doth the rabbits have to do with {Game.bazaar_name}?
+renguy,1,1,1,Welcome! Welcome! One and all to The Nightfaire!
+renguy,1,1,1,What doth the rabbits have to do with The Nightfaire?
 renguy,1,25,1,Where am I? What am I doing here?
 renguy,1,15,1,Aaaaahhh!!!!
-renguy,1,1,1,{Game.alien_name} must have bought their costume online...
+renguy,1,1,1,{alien} must have bought their costume online...
 renguy,1,1,1,Well met!
 renguy,1,1,1,"Anon, good lady!"
 renguy,1,1,1,"Pray, proceed!"
@@ -84,18 +84,18 @@ renguy,1,100,1,Hold up... are neither of the other shopkeepers human?
 renguy,2,1,1,"Good morrow, my lady!"
 renguy,3,1,1,"I don't mean to judge, but there's something off about the other vendors here."
 renguy,3,25,2,"I should call him. No, he wouldn't answer."
-renguy,3,1,1,Have you seen the way that {Game.alien_name} and {Game.bunnylady_name} look at each other?
+renguy,3,1,1,Have you seen the way that {alien} and {bunnylady} look at each other?
 renguy,3,1,1,"By my troth, hast though seen the why these two gock at onst another?"
 renguy,4,1,1,Why don't they just kiss already?
-renguy,4,1,1,"I really should bring my popcorn to {Game.bazaar_name}. The forbidden, yet steamy romance between {Game.alien_name} and {Game.bunnylady_name} is invigorating."
+renguy,4,1,1,"I really should bring my popcorn to The Nightfaire. The forbidden, yet steamy romance between {alien} and {bunnylady} is invigorating."
 renguy,5,25,3,I hope my son is doing okay.
-renguy,5,1,1,They pretended like they weren't talking to each other when I walked up on them earlier.
+renguy,5,1,1,They pretended like they weren't talking to each other when I walked up to them earlier.
 renguy,6,1,1,"Oh my god, the tea. Have you heard that they're breaking up?"
 renguy,7,1,1,"The drama, oh god, I love the drama."
 renguy,8,1,1,You don't realize how important things are until you make mistakes that take them away.
 renguy,8,1,1,It's much easier to admit I was wrong now than it was then.
 renguy,8,1,1,Do you have kids?
-renguy,8,1,1,I cannot believe {Game.alien_name} said that to her.
+renguy,8,1,1,I cannot believe {alien} said that to her.
 renguy,6,1,1,I hope they find the love I lost out on.
 renguy,8,1,1,"Today you are radiant, my liege!"
 renguy,8,1,1,How art thou this fine... oh screw it. I'm getting very tired of this accent.

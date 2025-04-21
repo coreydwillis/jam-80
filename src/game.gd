@@ -38,12 +38,12 @@ var egg_rates = {
 	Bunny.BunnyType.GOLDEN: 5
 }
 var mutation_rates = {
-	Bunny.BunnyType.BASIC: 0.5,
-	Bunny.BunnyType.KILLER: 0.1,
-	Bunny.BunnyType.BUFF: 0.1,
-	Bunny.BunnyType.MAGIC: 0.1,
-	Bunny.BunnyType.GUNNER: 0.1,
-	Bunny.BunnyType.HYPER: 0.1,
+	Bunny.BunnyType.BASIC: 6,
+	Bunny.BunnyType.KILLER: 1,
+	Bunny.BunnyType.BUFF: 1,
+	Bunny.BunnyType.MAGIC: 1,
+	Bunny.BunnyType.GUNNER: 1,
+	Bunny.BunnyType.HYPER: 1,
 	Bunny.BunnyType.GOLDEN: 0
 }
 var bunny_colors = { # TEMP
@@ -68,6 +68,7 @@ var renguy_name: String
 var deity_name: String
 var scripture_name = "Lagomorphicon"
 var bazaar_name = "The Nightfaire"
+var names_dict = {}
 
 var name_resource = preload("res://assets/dbs/names_db.csv")
 var dialog_resource = preload("res://assets/dbs/dialog_db.csv")
@@ -111,3 +112,10 @@ func _ready():
 	if rng.randf() < 0.5:
 		deity_name += " " + randname(middle_names)
 	deity_name += " " + randname(last_names)
+	
+	names_dict = {
+		"deity": deity_name,
+		"alien": alien_name,
+		"renguy": renguy_name,
+		"bunnylady": bunnylady_name
+	}

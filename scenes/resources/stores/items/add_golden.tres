@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://8rhnuoe3v0qe"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_jnrnr"]
+[ext_resource type="Texture2D" uid="uid://djoxoudgio74t" path="res://assets/sprites/rabbits/add_bunny.png" id="2_1ll3w"]
+
+[resource]
+script = ExtResource("1_jnrnr")
+name = "Add Golden Bunny"
+description = "The Lagomorphicon speaks of a golden bunny... it brings riches to those who can capture it."
+texture = ExtResource("2_1ll3w")
+tint = Color(0.88, 0.762667, 0.176, 1)
+vendor = 2
+min_night = 3
+max_owned = 5
+price = 25
+price_scaling = 1.05
+rarity = 3.0
+graphic_scale = Vector2(6, 6)
+metadata/_custom_type_script = "uid://d0ljahill12nl"

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://dcm64xh0u25ug"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_xxvve"]
+[ext_resource type="Texture2D" uid="uid://dajpafwgm3hsb" path="res://assets/sprites/objects/food/soup.png" id="2_idy5o"]
+
+[resource]
+script = ExtResource("1_xxvve")
+name = "Egg Drop Soup"
+description = "a"
+texture = ExtResource("2_idy5o")
+tint = Color(1, 1, 1, 1)
+vendor = 0
+min_night = 2
+max_owned = 10
+price = 25
+price_scaling = 1.0
+rarity = 1.0
+graphic_scale = Vector2(1, 1)
+metadata/_custom_type_script = "uid://d0ljahill12nl"

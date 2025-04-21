@@ -6,14 +6,14 @@
 [resource]
 script = ExtResource("1_apmjy")
 name = "Cape"
-description = "Makes you go zoom!"
+description = "You know that dash thing you can do? I can make it faster and recharge quicker."
 texture = ExtResource("2_apmjy")
-tint = Color(0.107001, 9.62615e-08, 0.712921, 1)
+tint = Color(1, 1, 1, 1)
 vendor = 1
 min_night = 1
-max_owned = 1
+max_owned = 2
 price = 25
-price_scaling = 1.2
+price_scaling = 2.0
 rarity = 1.0
 graphic_scale = Vector2(0.5, 0.5)
 metadata/_custom_type_script = "uid://d0ljahill12nl"

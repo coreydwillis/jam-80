@@ -7,7 +7,6 @@ var is_open = false
 const PATH = "res://scenes/resources/stores/items/"
 var all_items: Array[InvItem] = [
 	preload(PATH+"add_bunny.tres"),
-	preload(PATH+"baby_bunny.tres"),
 	preload(PATH+"cape.tres"),
 	preload(PATH+"carrot.tres"),
 	preload(PATH+"coffee.tres"),
@@ -24,6 +23,7 @@ var shops = {
 	Game.Vendor.BUNNYGIRL: Shop.new(Game.Vendor.BUNNYGIRL, all_items, self)
 }
 var shop = shops[vendor]
+@onready var con_ui = $"/root/Main/MainUI/ConsumablesUI"
 
 class Shop:
 	var inv: Inv
@@ -68,15 +68,17 @@ class Shop:
 		)
 		var rarities = Game.get_column(options, "rarity").map(func(i): return 1.0/i)
 		var text = Game.get_column(options, "dialog")
-		flavor_text = text[Game.rng.rand_weighted(rarities)]
+		flavor_text = text[Game.rng.rand_weighted(rarities)].format(Game.names_dict)
 	
 	func attempt_buy(slot: InvSlot):
 		if Game.eggs < slot.item.price: return
 		Game.eggs -= slot.item.price
 		slot.amount -= 1
 		slot.item.max_owned -= 1
-		slot.item.price *= slot.item.price_scaling
+		slot.item.price = floor(slot.item.price * slot.item.price_scaling)
 		invui.update_slots()
+		SignalBus.egg_count_change.emit()
+		SignalBus.item_bought.emit(slot.item.name)
 
 func switch_shop(v: Game.Vendor):
 	vendor = v

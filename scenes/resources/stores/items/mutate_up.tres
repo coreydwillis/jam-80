@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://f4hjpudo10q2"]
+
+[ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_bssj7"]
+[ext_resource type="Texture2D" uid="uid://bl4oyxskx7f2w" path="res://assets/sprites/rabbits/baby_bunny.png" id="2_bssj7"]
+
+[resource]
+script = ExtResource("1_bssj7")
+name = "More Mutations"
+description = "If you're confident enough, I can help the bunnies grow... they'll give you more eggs if they're stronger."
+texture = ExtResource("2_bssj7")
+tint = Color(1, 1, 1, 1)
+vendor = 2
+min_night = 1
+max_owned = 10
+price = 10
+price_scaling = 1.0
+rarity = 1.0
+graphic_scale = Vector2(6, 6)
+metadata/_custom_type_script = "uid://d0ljahill12nl"
