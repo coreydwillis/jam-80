@@ -15,6 +15,8 @@ signal item_bought(item_name: String)
 signal splash_done
 signal reset_game_vars
 signal reset_names
+signal player_drink
+signal player_eat
 
 # Ability Signals
 signal dash_purchased

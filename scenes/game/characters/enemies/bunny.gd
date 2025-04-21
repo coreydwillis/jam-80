@@ -30,9 +30,11 @@ const BUNNY_GRR = preload("res://assets/audio/sfx/rabbits/Bunny Grr.wav")
 const BUNNY_GROWL = preload("res://assets/audio/sfx/rabbits/Monster Growl.wav")
 const MONSTER_JUMP = preload("res://assets/audio/sfx/rabbits/Monster Jump.wav")
 const BUNNY_BITE = preload("res://assets/audio/sfx/rabbits/MonsterBite.wav")
-const BUNNY_SCAPE = preload("res://assets/audio/sfx/rabbits/MonsterScrape.wav")
+const BUNNY_SCRAPE = preload("res://assets/audio/sfx/rabbits/MonsterScrape.wav")
 const BUNNY_BOUNCE = preload("res://assets/audio/sfx/rabbits/Rabbit Bounce.wav")
 const BUNNY_STUNNED = preload("res://assets/audio/sfx/abilities/Electricity Zap.wav")
+const BUNNY_MAGIC = preload("res://assets/audio/sfx/abilities/Magic Whoosher.wav")
+const BUNNY_BULLET = preload("res://assets/audio/sfx/abilities/magic2.wav")
 
 @onready var ray = $RayCast2D
 @onready var player = $"/root/Main/World/Player"
@@ -102,6 +104,10 @@ func _process(delta):
 		if bullet_timer >= 4:
 			bullet_timer = 0
 			var bullet = GUNNER_PROJECTILE.instantiate()
+			$ShootSound.set_stream(BUNNY_BULLET)
+			$ShootSound.volume_db = 0.1
+			$ShootSound.volume_linear = 0.1
+			$ShootSound.play()
 			$"/root/Main".add_child(bullet)
 			bullet.position = position
 			bullet.velocity = position.direction_to(player.position) * 200
@@ -170,6 +176,10 @@ func process_collision(collider):
 			else:
 				if type == BunnyType.BUFF:
 					collider.damage(20)
+					$ShootSound.set_stream(BUNNY_SCRAPE)
+					$ShootSound.volume_db = 0.2
+					$ShootSound.volume_linear = 0.2
+					$ShootSound.play()
 					if collider.is_broken:
 						switch_state(BunnyState.EXITING)
 						return
@@ -326,6 +336,8 @@ class StateEscaping extends State:
 		if bunny.type == BunnyType.MAGIC:
 			bunny.point_to_center(true)
 			bunny.position += bunny.direction * 80
+			bunny.bunny_sounds.set_stream(BUNNY_MAGIC)
+			bunny.bunny_sounds.play()
 			bunny.switch_state(BunnyState.FREE)
 		else:
 			bunny.point_random()
