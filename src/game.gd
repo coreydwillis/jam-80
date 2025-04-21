@@ -10,6 +10,9 @@ const BUNNIES_NEEDED_DEFAULT = 2
 const TOTAL_BUNNIES_DEFAULT = 5
 const BUNNIES_IN_PEN_DEFAULT = 5
 
+# Menu Vars
+var splash_done: bool = false
+
 #Gameplay Vars
 var game_over: bool = false
 var danger_time: bool = false
