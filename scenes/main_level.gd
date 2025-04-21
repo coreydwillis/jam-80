@@ -40,7 +40,7 @@ func _on_save_btn_test_pressed():
 	SaveLoad._save()
 
 func increase_requirement():
-	Game.bunnies_needed = Game.bunnies_needed + Game.bunnies_needed_inc
+	Game.bunnies_needed = Game.bunnies_needed * Game.bunnies_needed_inc
 
 func night_shader_enable():
 	material.set_shader_parameter("light_mul", 0.6)
