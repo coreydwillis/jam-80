@@ -28,6 +28,7 @@ SettingsDataContainer="*res://src/settings_data_container.gd"
 SignalBusSettings="*res://src/signal_bus_settings.gd"
 SaveManager="*res://src/save_manager.gd"
 MusicPlayer="*res://src/music_player.gd"
+ResetVars="*res://src/reset_vars.gd"
 
 [display]
 
