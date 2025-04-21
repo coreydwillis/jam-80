@@ -156,10 +156,6 @@ action_name = "ability2"
 layout_mode = 2
 action_name = "ability3"
 
-[node name="HotkeyRebindButton10" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
-layout_mode = 2
-action_name = "ability4"
-
 [node name="HotkeyRebindButton11" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
 layout_mode = 2
 action_name = "consume"

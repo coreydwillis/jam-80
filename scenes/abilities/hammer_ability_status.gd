@@ -10,6 +10,7 @@ func hammer_off():
 
 func hammer_on():
 	material.set_shader_parameter("light_mul", 1.2)
+	$"../AbilityResetSound".play()
 
 func enable_ability():
 	visible = true

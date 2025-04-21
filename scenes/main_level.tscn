@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=54 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -27,17 +27,18 @@
 [ext_resource type="Texture2D" uid="uid://g5o21p66bfdo" path="res://assets/sprites/objects/gravestones.png" id="16_iycfq"]
 [ext_resource type="Texture2D" uid="uid://cvgj4c401bqds" path="res://assets/sprites/rainbow.png" id="17_6nivd"]
 [ext_resource type="Texture2D" uid="uid://3rm2x55ooswe" path="res://assets/sprites/objects/upgrades/cape.png" id="26_cssx7"]
-[ext_resource type="Shader" path="res://scenes/menu/dash.gdshader" id="26_pfmml"]
+[ext_resource type="Shader" uid="uid://0wgc01h1cmnp" path="res://scenes/menu/dash.gdshader" id="26_pfmml"]
 [ext_resource type="Script" uid="uid://bojxd7dl3rdl7" path="res://scenes/abilities/dash_ability_status.gd" id="27_1irq3"]
 [ext_resource type="Texture2D" uid="uid://b3mwnv2p17h7c" path="res://assets/sprites/objects/upgrades/magnet.png" id="28_gr2jy"]
 [ext_resource type="Script" uid="uid://ccj3wxjed518b" path="res://scenes/abilities/magnet_ability_status.gd" id="28_iycfq"]
 [ext_resource type="Texture2D" uid="uid://dnmiwp84t0vmr" path="res://assets/sprites/objects/upgrades/boombox.png" id="29_hdbb3"]
 [ext_resource type="Shader" uid="uid://cjpcgjatqqkq" path="res://scenes/menu/magnet.gdshader" id="29_kxeow"]
 [ext_resource type="Script" uid="uid://cmmcfwgud2roa" path="res://scenes/abilities/hammer_ability_status.gd" id="29_rcrbw"]
-[ext_resource type="Shader" path="res://scenes/menu/boombox.gdshader" id="29_uxuvg"]
+[ext_resource type="Shader" uid="uid://de80lfyxg12bd" path="res://scenes/menu/boombox.gdshader" id="29_uxuvg"]
 [ext_resource type="Script" uid="uid://xke6t7o3dc85" path="res://scenes/abilities/boombox_ability_status.gd" id="29_yl4j0"]
 [ext_resource type="Texture2D" uid="uid://cmv5663drl66e" path="res://assets/sprites/objects/upgrades/hammer_solo.png" id="30_3iae7"]
-[ext_resource type="Shader" path="res://scenes/menu/hammer.gdshader" id="32_gwyuf"]
+[ext_resource type="Shader" uid="uid://dio2emc4iy3cy" path="res://scenes/menu/hammer.gdshader" id="32_gwyuf"]
+[ext_resource type="AudioStream" uid="uid://d378hhyul2as5" path="res://assets/audio/sfx/other/UI Select.wav" id="39_hdbb3"]
 [ext_resource type="PackedScene" uid="uid://cts6i3ccps4cc" path="res://scenes/consumables_ui.tscn" id="41_eokwq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
@@ -615,6 +616,11 @@ script = ExtResource("29_rcrbw")
 
 [node name="ConsumablesUI" parent="MainUI" instance=ExtResource("41_eokwq")]
 position = Vector2(1843, 995)
+
+[node name="AbilityResetSound" type="AudioStreamPlayer" parent="MainUI"]
+stream = ExtResource("39_hdbb3")
+volume_db = 4.0
+bus = &"SFX"
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
