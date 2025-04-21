@@ -29,7 +29,7 @@ offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
+current_tab = 2
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
 visible = false
@@ -65,6 +65,7 @@ layout_mode = 2
 bus_name = "SFX"
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -94,7 +95,6 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -140,6 +140,10 @@ action_name = "right"
 layout_mode = 2
 action_name = "use"
 
+[node name="HotkeyRebindButton9" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
+layout_mode = 2
+action_name = "jump"
+
 [node name="HotkeyRebindButton6" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
 layout_mode = 2
 action_name = "ability1"
@@ -152,9 +156,13 @@ action_name = "ability2"
 layout_mode = 2
 action_name = "ability3"
 
-[node name="HotkeyRebindButton9" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
+[node name="HotkeyRebindButton10" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
 layout_mode = 2
-action_name = "jump"
+action_name = "ability4"
+
+[node name="HotkeyRebindButton11" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("2_goocv")]
+layout_mode = 2
+action_name = "consume"
 
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2

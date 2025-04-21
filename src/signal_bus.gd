@@ -28,6 +28,8 @@ signal hammer_not_ready
 signal lasso_purchased
 signal lasso_ready
 signal lasso_not_ready
+signal consume_item
+signal cycle_consume
 
 # Bunny Signals
 signal bunny_count_change
