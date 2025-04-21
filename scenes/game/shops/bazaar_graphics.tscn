@@ -129,7 +129,6 @@ use_parent_material = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BunnyLady/Newtent3/StaticBody2D"]
 use_parent_material = true
 position = Vector2(5.34357, 25.3436)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7fh1g")
 
 [node name="Pitchfork" type="Sprite2D" parent="BunnyLady"]

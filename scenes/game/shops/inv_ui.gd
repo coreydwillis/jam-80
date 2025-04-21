@@ -19,9 +19,9 @@ var all_items: Array[InvItem] = [
 	preload(PATH+"turkey_leg.tres")
 ]
 var shops = {
-	Game.Vendor.RENGUY: Shop.new(Game.Vendor.RENGUY, all_items),
-	Game.Vendor.ALIEN: Shop.new(Game.Vendor.ALIEN, all_items),
-	Game.Vendor.BUNNYGIRL: Shop.new(Game.Vendor.BUNNYGIRL, all_items)
+	Game.Vendor.RENGUY: Shop.new(Game.Vendor.RENGUY, all_items, self),
+	Game.Vendor.ALIEN: Shop.new(Game.Vendor.ALIEN, all_items, self),
+	Game.Vendor.BUNNYGIRL: Shop.new(Game.Vendor.BUNNYGIRL, all_items, self)
 }
 var shop = shops[vendor]
 
@@ -31,8 +31,10 @@ class Shop:
 	var vendor_name: String
 	var flavor_text: String = ""
 	var stock: Array[InvItem]
+	var invui
 	
-	func _init(v: Game.Vendor, items: Array[InvItem]):
+	func _init(v: Game.Vendor, items: Array[InvItem], iu):
+		invui = iu
 		vendor = v
 		inv = Inv.new()
 		match v:
@@ -67,6 +69,14 @@ class Shop:
 		var rarities = Game.get_column(options, "rarity").map(func(i): return 1.0/i)
 		var text = Game.get_column(options, "dialog")
 		flavor_text = text[Game.rng.rand_weighted(rarities)]
+	
+	func attempt_buy(slot: InvSlot):
+		if Game.eggs < slot.item.price: return
+		Game.eggs -= slot.item.price
+		slot.amount -= 1
+		slot.item.max_owned -= 1
+		slot.item.price *= slot.item.price_scaling
+		invui.update_slots()
 
 func switch_shop(v: Game.Vendor):
 	vendor = v

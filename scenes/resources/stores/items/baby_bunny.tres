@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://bdvrw1s8mx3xd"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://do8mstmkm65lk"]
 
 [ext_resource type="Script" uid="uid://d0ljahill12nl" path="res://scenes/resources/stores/store_item.gd" id="1_132bw"]
 [ext_resource type="Texture2D" uid="uid://bl4oyxskx7f2w" path="res://assets/sprites/rabbits/baby_bunny.png" id="2_jsgad"]
