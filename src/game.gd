@@ -14,7 +14,7 @@ const DANGER_TIME_DEFAULT = false
 const DAYS_DEFAULT = 1
 const IS_DAY_DEFAULT = true
 const GAME_STARTED_DEFAULT = false
-const BUNNIES_NEEDED_INC_DEFAULT = 1
+const BUNNIES_NEEDED_INC_DEFAULT = 2
 const EGGS_DEFAULT = 0
 
 # Menu Vars
@@ -58,18 +58,9 @@ var mutation_rates = {
 	Bunny.BunnyType.KILLER: 1,
 	Bunny.BunnyType.BUFF: 1,
 	Bunny.BunnyType.MAGIC: 1,
-	Bunny.BunnyType.GUNNER: 100,
+	Bunny.BunnyType.GUNNER: 1,
 	Bunny.BunnyType.HYPER: 1,
 	Bunny.BunnyType.GOLDEN: 0
-}
-var bunny_colors = { # TEMP
-	Bunny.BunnyType.BASIC: Color(1, 1, 1),
-	Bunny.BunnyType.KILLER: Color(0.9, 0.2, 0.2),
-	Bunny.BunnyType.BUFF: Color(0.1, 0.7, 0.7),
-	Bunny.BunnyType.MAGIC: Color(0.8, 0, 0.7),
-	Bunny.BunnyType.GUNNER: Color(1, 0.5, 0.1),
-	Bunny.BunnyType.HYPER: Color(0.1, 0.8, 0.2),
-	Bunny.BunnyType.GOLDEN: Color(0.8, 0.7, 0.1)
 }
 var rng = RandomNumberGenerator.new()
 

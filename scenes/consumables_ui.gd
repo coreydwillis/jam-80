@@ -60,8 +60,8 @@ var tints = {
 	Consumable.CARROT: $Carrot,
 	Consumable.GOLDEN_CARROT: $Carrot
 }
-var types_owned = 2
-var selected = Consumable.EGG_DROP
+var types_owned = 0
+var selected = null
 @onready var player = $"/root/Main/World/Player"
 var egg_painted = preload("res://scenes/game/objects/egg_pickup_painted_var.tscn")
 var egg_gold = preload("res://scenes/game/objects/egg_pickup_gold.tscn")

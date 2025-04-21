@@ -17,6 +17,7 @@ signal reset_game_vars
 signal reset_names
 signal player_drink
 signal player_eat
+signal magnet_activated(mult: float)
 
 # Ability Signals
 signal dash_purchased

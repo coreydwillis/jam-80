@@ -16,6 +16,7 @@ func _on_area_2d_body_entered(_body):
 	Game.eggs += egg_value
 	SignalBus.egg_count_change.emit()
 	$EggSound.play()
+	$EggSound.finished.connect(removeEgg)
 
 func removeEgg():
 	queue_free()

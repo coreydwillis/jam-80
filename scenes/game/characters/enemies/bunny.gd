@@ -89,6 +89,7 @@ func _ready():
 	Game.total_bunnies += 1
 	SignalBus.day_started.connect(stop_sleeping)
 	SignalBus.night_started.connect(start_sleeping)
+	SignalBus.magnet_activated.connect(on_magnet)
 	init(BunnyState.ESCAPING, BunnyType.BASIC)
 
 func _process(delta):
@@ -374,6 +375,7 @@ class StateTrapped extends State:
 
 class StateStunned extends State:
 	var knockback_strength = 0
+	var magnet_strength = 0
 	var knockback_decay = 0
 	var stun_duration = 0
 	func _init(b: Bunny):
@@ -383,7 +385,6 @@ class StateStunned extends State:
 		bunny.bunny_sounds.set_stream(BUNNY_STUNNED)
 		bunny.bunny_sounds.play()
 		bunny.set_animation("idle_side")
-	
 	func _process(delta):
 		var sd = stun_duration
 		if bunny.type == BunnyType.BUFF: sd /= 2.0
@@ -398,6 +399,14 @@ class StateStunned extends State:
 		if kb > 0:
 			bunny.speed = kb
 			knockback_strength -= delta * knockback_decay
+		if magnet_strength > 0:
+			bunny.direction = bunny.position.direction_to(bunny.player.position)
+			bunny.speed = magnet_strength
+	func _exit():
+		knockback_strength = 0
+		magnet_strength = 0
+		knockback_decay = 0
+		stun_duration = 0
 
 class StateSleeping extends State:
 	func _init(b: Bunny):
@@ -410,6 +419,11 @@ class StateSleeping extends State:
 	func _process(_delta):
 		if bunny.speed > 0 and bunny.timer >= bunny.roam_on_duration * 2:
 			bunny.speed = 0
+
+func on_magnet(mult: float):
+	switch_state(BunnyState.STUNNED)
+	state_obj.stun_duration = 2 * mult
+	state_obj.magnet_strength = 30 * mult
 
 func start_sleeping():
 	if state_id in IN_PEN_STATES:

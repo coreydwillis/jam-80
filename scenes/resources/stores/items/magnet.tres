@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_38vv2")
 name = "Magnet"
-description = "Apparently these bunnies and their eggs are magnetic... suspicious. This electromagnet should help collect them."
+description = "Apparently these bunnies are magnetic... suspicious. This electromagnet should help collect them."
 texture = ExtResource("2_38vv2")
 tint = Color(1, 1, 1, 1)
 vendor = 1

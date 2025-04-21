@@ -135,6 +135,7 @@ func _process(delta):
 		player_audio.set_stream(PLAYER_MAGNET)
 		player_audio.play()
 		magnet_reset = true
+		SignalBus.magnet_activated.emit(magnet_multiplier)
 		SignalBus.magnet_not_ready.emit()
 	
 	# Hammer
