@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://cmv5663drl66e" path="res://assets/sprites/objects/upgrades/hammer_solo.png" id="30_3iae7"]
 [ext_resource type="Shader" path="res://scenes/menu/hammer.gdshader" id="32_gwyuf"]
 [ext_resource type="PackedScene" uid="uid://cts6i3ccps4cc" path="res://scenes/consumables_ui.tscn" id="41_eokwq"]
+[ext_resource type="AudioStream" uid="uid://d378hhyul2as5" path="res://assets/audio/sfx/other/UI Select.wav" id="41_nk5s2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
 shader = ExtResource("1_u2c82")

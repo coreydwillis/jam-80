@@ -14,3 +14,4 @@ func hammer_on():
 func enable_ability():
 	visible = true
 	Game.hammer_enabled = true
+	
