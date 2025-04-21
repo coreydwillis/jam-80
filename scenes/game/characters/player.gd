@@ -33,6 +33,11 @@ var dashing = false
 var direction: Vector2
 var stun_duration = 0
 
+var dash_reset: bool = true
+var magnet_reset: bool = true
+var hammer_reset: bool = true
+var boombox_reset: bool = true
+
 var strong_coffee = false
 var carrot_duration = 0
 var coffee_duration = 0
@@ -59,21 +64,26 @@ func _process(delta):
 	coffee_duration -= delta
 	meat_duration -= delta
 	pizza_duration -= delta
-		
-	if time_since_boombox >= boombox_cooldown:
-		SignalBus.boombox_ready.emit()
 	
-	if time_since_dash >= dash_cooldown:
+		
+	if time_since_boombox >= boombox_cooldown and boombox_reset:
+		SignalBus.boombox_ready.emit()
+		boombox_reset = false
+	
+	if time_since_dash >= dash_cooldown and dash_reset:
 		SignalBus.dash_ready.emit()
+		dash_reset = false
 		
-	if time_since_magnet >= magnet_cooldown:
+	if time_since_magnet >= magnet_cooldown and magnet_reset:
 		SignalBus.magnet_ready.emit()
+		magnet_reset = false
 		
-	if time_since_hammer >= hammer_cooldown:
+	if time_since_hammer >= hammer_cooldown and hammer_reset:
 		SignalBus.hammer_ready.emit()
+		hammer_reset = false
 		
-	if time_since_lasso >= lasso_cooldown:
-		SignalBus.lasso_ready.emit()
+	#if time_since_lasso >= lasso_cooldown and dash_reset:
+		#SignalBus.lasso_ready.emit()
 	
 	if meat_duration > 0:
 		stun_duration = 0
@@ -95,6 +105,7 @@ func _process(delta):
 		time_since_dash = 0
 		player_audio.set_stream(PLAYER_DASH)
 		player_audio.play()
+		dash_reset = true
 		SignalBus.dash_not_ready.emit()
 		
 	# Boombox
@@ -103,6 +114,7 @@ func _process(delta):
 		time_since_boombox = 0
 		player_audio.set_stream(BOOM_BOX)
 		player_audio.play()
+		boombox_reset = true
 		SignalBus.boombox_not_ready.emit()
 		
 	# Magnet
@@ -110,6 +122,7 @@ func _process(delta):
 		time_since_magnet = 0
 		player_audio.set_stream(PLAYER_MAGNET)
 		player_audio.play()
+		magnet_reset = true
 		SignalBus.magnet_not_ready.emit()
 	
 	# Hammer
@@ -117,6 +130,7 @@ func _process(delta):
 		time_since_hammer = 0
 		player_audio.set_stream(FENCE_REPAIR)
 		player_audio.play()
+		hammer_reset = true
 		SignalBus.hammer_not_ready.emit()
 		
 	# Lasso
