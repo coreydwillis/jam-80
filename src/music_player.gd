@@ -4,6 +4,7 @@ const MUSIC_MAIN = preload("res://assets/audio/music/menu_music.mp3")
 const DAY_TIME = preload("res://assets/audio/music/day_music.mp3")
 const NIGHT_TIME = preload("res://assets/audio/music/night_music.ogg")
 const DANGER_TIME = preload("res://assets/audio/music/InDanger.wav")
+const DAY_COMPLETE = preload("res://assets/audio/sfx/jingles/DayComplete1.wav")
 
 #audio transition vars
 @export var transition_duration = 10.00
@@ -13,6 +14,7 @@ var menu_music_stream = AudioStreamPlayer.new()
 var day_music_stream = AudioStreamPlayer.new()
 var night_music_stream = AudioStreamPlayer.new()
 var danger_music_stream = AudioStreamPlayer.new()
+var day_start = AudioStreamPlayer.new()
 
 func _ready():
 	setup_tracks()
@@ -28,16 +30,17 @@ func setup_tracks():
 	add_child(menu_music_stream)
 	day_music_stream.set_stream(DAY_TIME)
 	add_child(day_music_stream)
+	day_start.set_stream(DAY_COMPLETE)
+	add_child(day_start)
 	night_music_stream.set_stream(NIGHT_TIME)
 	add_child(night_music_stream)
 	danger_music_stream.set_stream(DANGER_TIME)
 	add_child(danger_music_stream)
 	setup_audio_settings(menu_music_stream)
 	setup_audio_settings(day_music_stream)
+	setup_audio_settings(day_start)
 	setup_audio_settings(night_music_stream)
 	setup_audio_settings(danger_music_stream)
-	
-	menu_music_stream.play()
 
 func night_music():
 	await get_tree().create_timer(0.5).timeout
@@ -50,7 +53,9 @@ func night_music():
 	
 func day_music():
 	fade_out(night_music_stream)
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(1).timeout
+	day_start.play()
+	await get_tree().create_timer(1).timeout
 	day_music_stream.volume_db = 0.3
 	day_music_stream.volume_linear = 0.3
 	day_music_stream.play()

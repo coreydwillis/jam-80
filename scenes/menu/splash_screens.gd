@@ -12,5 +12,4 @@ func _on_timer_timeout():
 		$Wildcard.visible = true
 		firstPass = false
 	else:
-		$Wildcard.visible = false
-		get_tree().change_scene_to_file("uid://bxroi0e1f7wuh")
+		$"."

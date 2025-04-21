@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkq4uxka87wmh"]
+[gd_scene load_steps=5 format=3 uid="uid://dkq4uxka87wmh"]
 
 [ext_resource type="Script" uid="uid://bqrw4wah4l0jg" path="res://scenes/menu/splash_screens.gd" id="1_7dgi7"]
 [ext_resource type="Texture2D" uid="uid://s7omhv3wpx4j" path="res://assets/logos/godot_wild_jam_logo.svg" id="2_rqvx7"]
 [ext_resource type="Texture2D" uid="uid://cefgybp6jc5ed" path="res://assets/logos/wildcards/wildcard.png" id="3_kskso"]
+[ext_resource type="AudioStream" uid="uid://c6miyehcn2qbi" path="res://assets/audio/sfx/jingles/DayComplete1.wav" id="4_rqvx7"]
 
 [node name="SplashScreens" type="Node2D"]
 script = ExtResource("1_7dgi7")
@@ -42,3 +43,7 @@ texture = ExtResource("3_kskso")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_rqvx7")
+autoplay = true
