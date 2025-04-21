@@ -13,6 +13,7 @@ signal day_increment
 signal check_win
 signal item_bought(item_name: String)
 signal splash_done
+signal reset_game_vars
 
 # Ability Signals
 signal dash_purchased
