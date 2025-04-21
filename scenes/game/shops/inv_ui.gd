@@ -10,7 +10,7 @@ var all_items: Array[InvItem] = [
 	preload(PATH+"cape.tres"), preload(PATH+"carrot.tres"), preload(PATH+"chicken_leg.tres"),
 	preload(PATH+"coffee.tres"), preload(PATH+"egg_drop.tres"), preload(PATH+"espresso.tres"),
 	preload(PATH+"fence.tres"), preload(PATH+"golden_carrot.tres"), preload(PATH+"hammer.tres"),
-	preload(PATH+"lasso.tres"), preload(PATH+"magnet.tres"), preload(PATH+"mutate_up.tres"),
+	preload(PATH+"magnet.tres"), preload(PATH+"mutate_up.tres"),
 	preload(PATH+"pizza.tres"), preload(PATH+"remove_buff.tres"), preload(PATH+"remove_gunner.tres"),
 	preload(PATH+"remove_hyper.tres"), preload(PATH+"remove_killer.tres"), preload(PATH+"remove_magic.tres"),
 	preload(PATH+"straciatella.tres"), preload(PATH+"turkey_leg.tres")

@@ -25,6 +25,5 @@ func _process(delta):
 func start_moving_func():
 	start_moving = true
 
-
 func _on_texture_button_pressed():
 	$"../EasterEgg".visible = true
