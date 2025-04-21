@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=54 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -38,6 +38,7 @@
 [ext_resource type="Script" uid="uid://xke6t7o3dc85" path="res://scenes/abilities/boombox_ability_status.gd" id="29_yl4j0"]
 [ext_resource type="Texture2D" uid="uid://cmv5663drl66e" path="res://assets/sprites/objects/upgrades/hammer_solo.png" id="30_3iae7"]
 [ext_resource type="Shader" uid="uid://dio2emc4iy3cy" path="res://scenes/menu/hammer.gdshader" id="32_gwyuf"]
+[ext_resource type="AudioStream" uid="uid://d378hhyul2as5" path="res://assets/audio/sfx/other/UI Select.wav" id="39_hdbb3"]
 [ext_resource type="PackedScene" uid="uid://cts6i3ccps4cc" path="res://scenes/consumables_ui.tscn" id="41_eokwq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k5pu3"]
@@ -615,6 +616,11 @@ script = ExtResource("29_rcrbw")
 
 [node name="ConsumablesUI" parent="MainUI" instance=ExtResource("41_eokwq")]
 position = Vector2(1843, 995)
+
+[node name="AbilityResetSound" type="AudioStreamPlayer" parent="MainUI"]
+stream = ExtResource("39_hdbb3")
+volume_db = 4.0
+bus = &"SFX"
 
 [node name="PauseMenuCanvas" type="CanvasLayer" parent="."]
 
