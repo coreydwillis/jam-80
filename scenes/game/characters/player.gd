@@ -98,7 +98,7 @@ func _process(delta):
 		SignalBus.dash_not_ready.emit()
 		
 	# Boombox
-	if Input.is_action_just_pressed("ability1") and time_since_boombox >= boombox_cooldown:
+	if Input.is_action_just_pressed("ability1") and Game.boombox_enabled and time_since_boombox >= boombox_cooldown:
 		add_child(boombox_projectile.instantiate())
 		time_since_boombox = 0
 		player_audio.set_stream(BOOM_BOX)
@@ -106,25 +106,25 @@ func _process(delta):
 		SignalBus.boombox_not_ready.emit()
 		
 	# Magnet
-	if Input.is_action_just_pressed("ability2") and time_since_magnet >= magnet_cooldown:
+	if Input.is_action_just_pressed("ability2") and Game.magnet_enabled and time_since_magnet >= magnet_cooldown:
 		time_since_magnet = 0
 		player_audio.set_stream(PLAYER_MAGNET)
 		player_audio.play()
 		SignalBus.magnet_not_ready.emit()
 	
 	# Hammer
-	if Input.is_action_just_pressed("ability3") and time_since_hammer >= hammer_cooldown:
+	if Input.is_action_just_pressed("ability3") and Game.hammer_enabled and time_since_hammer >= hammer_cooldown:
 		time_since_hammer = 0
 		player_audio.set_stream(FENCE_REPAIR)
 		player_audio.play()
 		SignalBus.hammer_not_ready.emit()
 		
 	# Lasso
-	if Input.is_action_just_pressed("ability4") and time_since_lasso >= lasso_cooldown:
-		time_since_lasso = 0
-		player_audio.set_stream(PLAYER_LASSO)
-		player_audio.play()
-		SignalBus.lasso_not_ready.emit()
+	#if Input.is_action_just_pressed("ability4") and time_since_lasso >= lasso_cooldown:
+		#time_since_lasso = 0
+		#player_audio.set_stream(PLAYER_LASSO)
+		#player_audio.play()
+		#SignalBus.lasso_not_ready.emit()
 	
 	if dashing:
 		if coffee_duration > 0:

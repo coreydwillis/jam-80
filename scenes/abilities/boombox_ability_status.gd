@@ -13,3 +13,4 @@ func boombox_on():
 
 func enable_ability():
 	visible = true
+	Game.boombox_enabled = true

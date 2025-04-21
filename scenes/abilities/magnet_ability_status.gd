@@ -13,3 +13,4 @@ func magnet_on():
 
 func enable_ability():
 	visible = true
+	Game.magnet_enabled = true

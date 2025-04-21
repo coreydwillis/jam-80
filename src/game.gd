@@ -20,6 +20,11 @@ const EGGS_DEFAULT = 0
 # Menu Vars
 var splash_done: bool = false
 
+# Ability Vars
+var hammer_enabled: bool = false
+var boombox_enabled: bool = false
+var magnet_enabled: bool = false
+
 #Gameplay Vars
 var game_over: bool = GAME_OVER_DEFAULT
 var danger_time: bool = DANGER_TIME_DEFAULT

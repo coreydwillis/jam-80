@@ -14,3 +14,6 @@ func reset_var_func():
 	Game.bunnies_needed = Game.BUNNIES_NEEDED_DEFAULT
 	Game.bunnies_needed_inc = Game.BUNNIES_NEEDED_INC_DEFAULT
 	Game.eggs = Game.EGGS_DEFAULT
+	Game.hammer_enabled = false
+	Game.boombox_enabled = false
+	Game.magnet_enabled = false
