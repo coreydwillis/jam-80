@@ -58,6 +58,13 @@ class Shop:
 		var rarities = Game.get_column(options, "rarity").map(func(i): return 1.0/i)
 		var text = Game.get_column(options, "dialog")
 		flavor_text = text[Game.rng.rand_weighted(rarities)]
+	
+	func attempt_buy(slot: InvSlot):
+		if Game.eggs < slot.item.price: return
+		Game.eggs -= slot.item.price
+		slot.amount -= 1
+		slot.item.max_owned -= 1
+		slot.item.price *= slot.item.price_scaling
 
 func switch_shop(v: Game.Vendor):
 	vendor = v
