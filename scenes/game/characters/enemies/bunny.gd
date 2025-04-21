@@ -232,7 +232,10 @@ class StateHopping extends State:
 		state = BunnyState.HOPPING
 		bunny = b
 	func _enter():
-		bunny.point_random()
+		if bunny.type == BunnyType.KILLER:
+			bunny.direction = bunny.position.direction_to(bunny.player.position)
+		else:
+			bunny.point_random()
 		if bunny.type == BunnyType.MAGIC:
 			bunny.position += bunny.direction * bunny.hop_speed * bunny.hop_duration
 			bunny.switch_state(BunnyState.FREE)
@@ -300,7 +303,7 @@ class StateExiting extends State:
 		bunny.collision_mask = 1
 	func _process(_delta):
 		if bunny.timer >= bunny.enter_duration:
-			bunny.switch_state(BunnyState.FREE)
+			bunny.switch_state(BunnyState.HOPPING)
 
 class StateEscaping extends State:
 	func _init(b: Bunny):

@@ -39,6 +39,11 @@ var coffee_duration = 0
 var meat_duration = 0
 var pizza_duration = 0
 
+var dash_level = 1
+var boombox_level = 0
+var magnet_level = 0
+var hammer_level = 0
+
 func _ready():
 	SignalBus.item_bought.connect(_on_item_bought)
 
@@ -180,4 +185,18 @@ func _process(delta):
 	move_and_slide()
 
 func _on_item_bought(n: String):
-	pass
+	match n:
+		"Cape":
+			dash_level += 1
+		"Hammer":
+			if hammer_level == 0:
+				SignalBus.hammer_purchased.emit()
+			hammer_level += 1
+		"Magnet":
+			if magnet_level == 0:
+				SignalBus.magnet_purchased.emit()
+			magnet_level += 1
+		"Boombox":
+			if boombox_level == 0:
+				SignalBus.boombox_purchased.emit()
+			boombox_level += 1

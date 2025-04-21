@@ -28,9 +28,6 @@ signal magnet_not_ready
 signal hammer_purchased
 signal hammer_ready
 signal hammer_not_ready
-signal lasso_purchased
-signal lasso_ready
-signal lasso_not_ready
 signal consume_item
 signal cycle_consume
 
