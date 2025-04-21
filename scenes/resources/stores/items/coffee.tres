@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_2jmdy")
-name = "Coffee"
-description = "a"
+name = "Cup of Coffee"
+description = "For when you need a pick-me-up, or a speed boost to help you catch rabbits, for some reason. I won't pry..."
 texture = ExtResource("2_2jmdy")
 tint = Color(1, 1, 1, 1)
 vendor = 0
