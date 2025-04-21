@@ -139,11 +139,17 @@ func _process(delta):
 	
 	# Hammer
 	if Input.is_action_just_pressed("ability3") and Game.hammer_enabled and time_since_hammer >= hammer_cooldown:
-		time_since_hammer = 0
-		player_audio.set_stream(FENCE_REPAIR)
-		player_audio.play()
-		hammer_reset = true
-		SignalBus.hammer_not_ready.emit()
+		$RayCast2D.rotation = position.angle_to(Game.centerpoint)
+		$RayCast2D.force_raycast_update()
+		if $RayCast2D.is_colliding():
+			var collider = $RayCast2D.get_collider()
+			if collider.name.begins_with("Fence"):
+				collider.repair(hammer_efficacy)
+				time_since_hammer = 0
+				player_audio.set_stream(FENCE_REPAIR)
+				player_audio.play()
+				hammer_reset = true
+				SignalBus.hammer_not_ready.emit()
 	
 	if dashing:
 		if coffee_duration > 0:

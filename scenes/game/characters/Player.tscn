@@ -185,6 +185,9 @@ sprite_frames = SubResource("SpriteFrames_pv13c")
 animation = &"idle_front"
 autoplay = "idle_front"
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(50, 0)
+
 [node name="PlayerAudio" type="AudioStreamPlayer" parent="." groups=["Player"]]
 bus = &"SFX"
 
