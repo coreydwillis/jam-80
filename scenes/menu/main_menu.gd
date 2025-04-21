@@ -1,16 +1,32 @@
 extends Control
 
 @onready var longest_run = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LongestRun
+var splash_screen_menu = load("uid://dkq4uxka87wmh")
+var splash_screen_menu_instance
 
 func _ready():
-	await get_tree().create_timer(10).timeout
+	visible = true
+	$ColorRect.visible = true
+	$MarginContainer.visible = true
+	if !Game.splash_done:
+		SignalBus.splash_done.connect(initial_setup)
+		splash_screen_menu_instance = splash_screen_menu.instantiate()
+		add_child(splash_screen_menu_instance)
+	if Game.splash_done:
+		SignalBus.main_menu.emit()
+
+	
+func initial_setup():
 	$ColorRect.visible = true
 	$MarginContainer.visible = true
 	reset_vars()
 	SignalBus.main_menu.emit()
 	longest_run.text = "Longest Run: %d\nTotal Runs: %d" % [Game.longest_run, Game.runs]
 	Game.game_started = false
-	print("false")
+	if !Game.splash_done:
+		splash_screen_menu_instance.visible = false
+		Game.splash_done = true
+		SignalBus.main_menu.emit()
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("uid://cacgvoe8aqiva")
