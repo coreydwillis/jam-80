@@ -60,9 +60,12 @@ var tints = {
 	Consumable.CARROT: $Carrot,
 	Consumable.GOLDEN_CARROT: $Carrot
 }
-var types_owned = 0
-var selected = null
+var types_owned = 2
+var selected = Consumable.EGG_DROP
 @onready var player = $"/root/Main/World/Player"
+var egg_painted = preload("res://scenes/game/objects/egg_pickup_painted_var.tscn")
+var egg_gold = preload("res://scenes/game/objects/egg_pickup_gold.tscn")
+var egg_rainbow = preload("res://scenes/game/objects/egg_pickup_rainbow.tscn")
 
 func _ready():
 	SignalBus.item_bought.connect(_on_item_bought)
@@ -94,8 +97,10 @@ func _process(_delta):
 					player.strong_coffee = true
 				Consumable.EGG_DROP:
 					SignalBus.player_drink.emit()
+					do_eggdrop()
 				Consumable.STRACIATELLA:
 					SignalBus.player_eat.emit()
+					do_eggdrop(true)
 				Consumable.CARROT:
 					SignalBus.player_eat.emit()
 					player.carrot_duration = 4
@@ -121,6 +126,18 @@ func remove_item():
 			select_next()
 	inventory[s] -= 1
 	update_ui()
+
+func do_eggdrop(extreme = false):
+	var egg_count = 5
+	if extreme: egg_count = 10
+	var eggs = [egg_gold.instantiate()]
+	for i in range(egg_count):
+		eggs.append(egg_painted.instantiate())
+	if extreme:
+		eggs.append(egg_rainbow.instantiate())
+	for egg in eggs:
+		$"/root/Main/World/Eggs".add_child(egg)
+		egg.position = Vector2((randf() * 1500) - 750, (randf() * 1500) - 750) + Game.centerpoint
 
 func select_next(reverse = false):
 	var inv_filtered = inventory.keys().filter(func(i): return inventory[i] != 0)
