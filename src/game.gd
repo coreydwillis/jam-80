@@ -15,7 +15,7 @@ const DAYS_DEFAULT = 1
 const IS_DAY_DEFAULT = true
 const GAME_STARTED_DEFAULT = false
 const BUNNIES_NEEDED_INC_DEFAULT = 1
-const EGGS_DEFAULT = 1000
+const EGGS_DEFAULT = 0
 
 # Menu Vars
 var splash_done: bool = false
@@ -39,8 +39,8 @@ var total_bunnies: int = TOTAL_BUNNIES_DEFAULT
 var bunnies_needed: int = BUNNIES_NEEDED_DEFAULT
 var bunnies_needed_inc: int = BUNNIES_NEEDED_INC_DEFAULT
 var night_length: int = 60
-var day_length_base: int = 1
-var day_length_inc: int = 3
+var day_length_base: int = 30
+var day_length_inc: int = 30
 var centerpoint = Vector2(0,0)
 var pen_radius = 80
 var bunny_breed_rate = 2.5
