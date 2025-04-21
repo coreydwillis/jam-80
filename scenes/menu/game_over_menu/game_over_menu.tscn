@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cuxauu0yk4tcp"]
+[gd_scene load_steps=13 format=3 uid="uid://cuxauu0yk4tcp"]
 
 [ext_resource type="Script" uid="uid://g7yynt6vykxy" path="res://scenes/menu/game_over_menu/game_over_menu.gd" id="1_gv1r1"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="3_k5lcj"]
@@ -7,11 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="5_whxtc"]
 [ext_resource type="Texture2D" uid="uid://b2pejddlihmg6" path="res://assets/sprites/objects/gravestones3.png" id="6_8fprv"]
 [ext_resource type="Texture2D" uid="uid://g5o21p66bfdo" path="res://assets/sprites/objects/gravestones.png" id="7_whxtc"]
+[ext_resource type="AudioStream" uid="uid://bcm5b8jatv1tr" path="res://assets/audio/sfx/jingles/DayFailed1.wav" id="8_whxtc"]
+[ext_resource type="AudioStream" uid="uid://c5djs1w3pvhjg" path="res://assets/audio/sfx/jingles/DayFailed2.wav" id="9_d2c67"]
 
 [sub_resource type="SystemFont" id="SystemFont_g64rs"]
 font_names = PackedStringArray("Britannic")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gv1r1"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oyb1v"]
+streams_count = 2
+stream_0/stream = ExtResource("8_whxtc")
+stream_1/stream = ExtResource("9_d2c67")
 
 [node name="Game_Over_Menu" type="Control"]
 process_mode = 3
@@ -121,6 +128,9 @@ texture = ExtResource("7_whxtc")
 position = Vector2(458, 772)
 scale = Vector2(4.35625, 4.35625)
 texture = ExtResource("7_whxtc")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_oyb1v")
 
 [connection signal="pressed" from="MarginContainer/Seperator/NewRun_Button" to="." method="_on_new_run_button_pressed"]
 [connection signal="pressed" from="MarginContainer/Seperator/Main_Button" to="." method="_on_main_button_pressed"]

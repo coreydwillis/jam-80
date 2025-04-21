@@ -2,9 +2,12 @@ extends Control
 
 @onready var longest_run = $MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/LongestRun
 
-
 func _ready():
+	await get_tree().create_timer(10).timeout
+	$ColorRect.visible = true
+	$MarginContainer.visible = true
 	reset_vars()
+	SignalBus.main_menu.emit()
 	longest_run.text = "Longest Run: %d\nTotal Runs: %d" % [Game.longest_run, Game.runs]
 	Game.game_started = false
 	print("false")

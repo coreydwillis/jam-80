@@ -28,7 +28,7 @@ func set_action_name() -> void:
 		"right":
 			label.text = "Move Right"
 		"use":
-			label.text = "Interact"
+			label.text = "Use"
 		"ability1":
 			label.text = "Use Ability 1"
 		"ability2":

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=14 format=3 uid="uid://08sf71m1farr"]
+[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=13 format=3 uid="uid://08sf71m1farr"]
 
 [ext_resource type="Script" uid="uid://8c8cchphfs8g" path="res://scenes/resources/settings_folder/PlayerKeybindResource.gd" id="1_4pckj"]
 
@@ -54,12 +54,6 @@ device = -1
 physical_keycode = 87
 unicode = 119
 
-[sub_resource type="InputEventKey" id="InputEventKey_3vjk5"]
-device = -1
-shift_pressed = true
-physical_keycode = 70
-unicode = 70
-
 [resource]
 script = ExtResource("1_4pckj")
 DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_5wsgu")
@@ -67,7 +61,6 @@ DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_vkqhv")
 DEFAULT_UP_KEY = SubResource("InputEventKey_tihau")
 DEFAULT_DOWN_KEY = SubResource("InputEventKey_gtb0q")
 DEFAULT_JUMP_KEY = SubResource("InputEventKey_pfd0h")
-DEFAULT_USE_KEY = SubResource("InputEventKey_3vjk5")
 DEFAULT_ABILITY1_KEY = SubResource("InputEventKey_4pckj")
 DEFAULT_ABILITY2_KEY = SubResource("InputEventKey_4gmy3")
 DEFAULT_ABILITY3_KEY = SubResource("InputEventKey_tw72o")
