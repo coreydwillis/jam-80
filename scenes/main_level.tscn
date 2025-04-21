@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://dup0vwkmki6wl"]
+[gd_scene load_steps=58 format=4 uid="uid://dup0vwkmki6wl"]
 
 [ext_resource type="Script" uid="uid://be52wet8m0rpg" path="res://scenes/main_level.gd" id="1_qmak7"]
 [ext_resource type="Shader" uid="uid://bjj0kra61cmfs" path="res://scenes/menu/dark.gdshader" id="1_u2c82"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="3_bq26l"]
 [ext_resource type="Texture2D" uid="uid://bbq2at2o8000y" path="res://assets/tilemap_packed.png" id="4_u2c82"]
 [ext_resource type="PackedScene" uid="uid://ckwvwbktb0s43" path="res://scenes/game/fence.tscn" id="5_bq26l"]
+[ext_resource type="Texture2D" uid="uid://b254gp0llx203" path="res://assets/sprites/objects/playershack2.png" id="5_eokwq"]
 [ext_resource type="Script" uid="uid://dlwu1jth0nyyf" path="res://scenes/fluffle.gd" id="5_ff0s2"]
 [ext_resource type="Script" uid="uid://b4gaxdcot35yr" path="res://scenes/main_ui.gd" id="7_5fr2l"]
 [ext_resource type="Script" uid="uid://bnti8uhsme7wu" path="res://scenes/danger_mode.gd" id="8_ff0s2"]
@@ -322,6 +323,9 @@ texture = ExtResource("4_u2c82")
 [sub_resource type="TileSet" id="TileSet_o6xl0"]
 sources/0 = SubResource("TileSetAtlasSource_tefeu")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eokwq"]
+size = Vector2(202, 180)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cssx7"]
 size = Vector2(59, 71.5)
 
@@ -377,6 +381,21 @@ tile_set = SubResource("TileSet_o6xl0")
 [node name="Player" parent="World" instance=ExtResource("2_8ra5a")]
 z_index = 21
 position = Vector2(0, -146)
+
+[node name="PlayerHouse" type="Node2D" parent="World"]
+
+[node name="TextureRect" type="TextureRect" parent="World/PlayerHouse"]
+offset_left = -163.0
+offset_top = -524.0
+offset_right = 157.0
+offset_bottom = -204.0
+texture = ExtResource("5_eokwq")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="World/PlayerHouse/TextureRect"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/PlayerHouse/TextureRect/StaticBody2D"]
+position = Vector2(159, 152)
+shape = SubResource("RectangleShape2D_eokwq")
 
 [node name="Bunnies" type="Node2D" parent="World"]
 use_parent_material = true
