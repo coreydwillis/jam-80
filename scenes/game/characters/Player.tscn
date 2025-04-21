@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://c7lkchv3axj1m"]
+[gd_scene load_steps=27 format=3 uid="uid://c7lkchv3axj1m"]
 
 [ext_resource type="Script" uid="uid://ccw8gjrqnul2p" path="res://scenes/game/characters/player.gd" id="1_pv13c"]
 [ext_resource type="Texture2D" uid="uid://caj0m6wlja2ms" path="res://assets/sprites/player/player.png" id="2_7eo70"]
@@ -6,6 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://d2m01hdmjtxx6" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass_Mono_48.wav" id="4_48pce"]
 [ext_resource type="AudioStream" uid="uid://db46w0tqpas3a" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass_Mono_49.wav" id="5_rgd4i"]
 [ext_resource type="AudioStream" uid="uid://03ms3nq7e0gr" path="res://assets/audio/sfx/player/Footsteps_Walk_Grass_Mono_50.wav" id="6_dkg8v"]
+[ext_resource type="AudioStream" uid="uid://bwpp7pe43f122" path="res://assets/audio/sfx/abilities/drink.wav" id="7_48pce"]
+[ext_resource type="AudioStream" uid="uid://bkx6212g7b3wv" path="res://assets/audio/sfx/rabbits/MonsterBite.wav" id="7_rgd4i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7eo70"]
 size = Vector2(20, 24.4725)
@@ -194,3 +196,9 @@ bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Eat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rgd4i")
+
+[node name="Drink" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_48pce")

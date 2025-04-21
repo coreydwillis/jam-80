@@ -17,12 +17,15 @@ func _ready():
 func dayAudioStart():
 	var birbsStreamAsset = load("res://assets/audio/sfx/env/day/Birbs.wav")
 	createAudioStreamPlayer(birbsStreamAsset, true, true, true, true, false, 0.1, 1, "SFX")
+	var windStreamAsset = load("res://assets/audio/sfx/env/daytime/Wind.wav")
+	createAudioStreamPlayer(windStreamAsset, true, true, true, true, false, 1, 1, "SFX")
+	
 	
 func nightAudioStart():
 	await get_tree().create_timer(0.1).timeout
 	if !Game.game_over:
 		var owl1StreamAsset = load("res://assets/audio/sfx/env/night/Owl Call 1.wav")
-		createAudioStreamPlayer(owl1StreamAsset, false, false, false, true, false, 10.0, 1.0, "SFX")
+		createAudioStreamPlayer(owl1StreamAsset, false, false, false, true, false, 5.0, 1.0, "SFX")
 		var clothStreamAsset = load("res://assets/audio/sfx/env/night/Cloth Flapping.wav")
 		createAudioStreamPlayer(clothStreamAsset, false, false, true, true, false, 1, 1.0, "SFX")
 		var crowdStreamAsset = load("res://assets/audio/sfx/env/night/Crowd.wav")
@@ -37,7 +40,6 @@ func nightAudioStart():
 		createAudioStreamPlayer(twig2StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
 		var twig3StreamAsset = load("res://assets/audio/sfx/env/night/Twigs1.wav")
 		createAudioStreamPlayer(twig3StreamAsset, false, false, false, true, false, 1, 1.0, "SFX")
-	
 	
 func timePeriodAudioEnd():
 	isDayTime = !isDayTime

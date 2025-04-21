@@ -73,26 +73,34 @@ func _process(_delta):
 			remove_item()
 			match selected:
 				Consumable.CHICKEN:
+					SignalBus.player_eat.emit()
 					player.meat_duration = 10
 				Consumable.TURKEY:
+					SignalBus.player_eat.emit()
 					player.meat_duration = 30
 				Consumable.PIZZA:
+					SignalBus.player_eat.emit()
 					player.pizza_duration = 15
 				Consumable.COMBO:
+					SignalBus.player_eat.emit()
 					player.pizza_duration = 60
 				Consumable.COFFEE:
+					SignalBus.player_drink.emit()
 					player.coffee_duration = 10
 					player.strong_coffee = false
 				Consumable.ESPRESSO:
+					SignalBus.player_drink.emit()
 					player.coffee_duration = 20
 					player.strong_coffee = true
 				Consumable.EGG_DROP:
-					pass
+					SignalBus.player_drink.emit()
 				Consumable.STRACIATELLA:
-					pass
+					SignalBus.player_eat.emit()
 				Consumable.CARROT:
+					SignalBus.player_eat.emit()
 					player.carrot_duration = 4
 				Consumable.GOLDEN_CARROT:
+					SignalBus.player_eat.emit()
 					player.carrot_duration = 12
 	if Input.is_action_just_pressed("scroll_up"):
 		if types_owned > 1:
