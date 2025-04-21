@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxroi0e1f7wuh"]
+[gd_scene load_steps=8 format=3 uid="uid://bxroi0e1f7wuh"]
 
 [ext_resource type="Script" uid="uid://4dju4l6a141n" path="res://scenes/menu/main_menu.gd" id="1_nl8w3"]
 [ext_resource type="Theme" uid="uid://dwlxe2w7oyyuk" path="res://assets/themes/main_titles.tres" id="2_3rkf3"]
 [ext_resource type="Theme" uid="uid://tt3lcvk2vksd" path="res://assets/themes/button_theme.tres" id="3_247la"]
 [ext_resource type="PackedScene" uid="uid://8lg3plf2v0jy" path="res://scenes/menu/credits/credits_menu.tscn" id="6_isoef"]
+[ext_resource type="PackedScene" uid="uid://dnvpseuy58pf0" path="res://scenes/game/characters/enemies/Bunny.tscn" id="6_qgo02"]
 [ext_resource type="PackedScene" uid="uid://wm20d5epi3ac" path="res://scenes/menu/options_menus/options_menu.tscn" id="6_xn6kt"]
 
 [sub_resource type="SystemFont" id="SystemFont_hj162"]
@@ -19,7 +20,6 @@ grow_vertical = 2
 script = ExtResource("1_nl8w3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 2
 offset_left = 12.0
 offset_top = 12.0
@@ -28,7 +28,6 @@ offset_bottom = 1068.0
 color = Color(0.696576, 0.669386, 0.902739, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -113,6 +112,27 @@ layout_mode = 1
 [node name="Credits_Menu" parent="." instance=ExtResource("6_isoef")]
 visible = false
 layout_mode = 1
+
+[node name="Bunnies" type="Node2D" parent="."]
+
+[node name="Bunny" parent="Bunnies" instance=ExtResource("6_qgo02")]
+position = Vector2(140, 939)
+speed_mul = null
+delay_mul = null
+scared_radius = null
+escape_chance = null
+scared_speed = null
+scared_accel = null
+hop_delay = null
+hop_speed = null
+hop_duration = null
+enter_speed = null
+enter_duration = null
+escape_delay = null
+escape_speed = null
+roam_speed = null
+roam_on_duration = null
+roam_off_duration = null
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Play_Button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Options_Button" to="." method="_on_options_button_pressed"]
