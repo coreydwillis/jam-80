@@ -14,7 +14,7 @@ func _ready():
 		add_child(splash_screen_menu_instance)
 	if Game.splash_done:
 		SignalBus.main_menu.emit()
-
+	SignalBus.reset_names.emit()
 	
 func initial_setup():
 	$ColorRect.visible = true

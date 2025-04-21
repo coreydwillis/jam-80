@@ -99,7 +99,7 @@ func get_column(db, id):
 func randname(db):
 	return str(get_column(db, "Name")[rng.rand_weighted(get_column(db, "Rarity").map(func(x): return 1.0/x))])
 
-func _ready():
+func _name_generation():
 	var first_names = name_db.filter(func(n): return n["NameType"] == "First")
 	var middle_names = name_db.filter(func(n): return n["NameType"] == "Middle")
 	var last_names = name_db.filter(func(n): return n["NameType"] == "Last")
@@ -134,3 +134,7 @@ func _ready():
 		"renguy": renguy_name,
 		"bunnylady": bunnylady_name
 	}
+
+func _ready():
+	_name_generation()
+	SignalBus.reset_names.connect(_name_generation)

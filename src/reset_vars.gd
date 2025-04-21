@@ -2,6 +2,7 @@ extends Node
 
 func _ready():
 	SignalBus.reset_game_vars.connect(reset_var_func)
+	SignalBus.reset_names.emit()
 	
 func reset_var_func():
 	Game.game_over = Game.GAME_OVER_DEFAULT
