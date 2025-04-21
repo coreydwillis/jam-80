@@ -75,7 +75,7 @@ var rng = RandomNumberGenerator.new()
 
 # Accessibility Vars
 var night_timer: bool = true
-
+ 
 # Character/Story Vars
 var alien_name: String
 var bunnylady_name: String

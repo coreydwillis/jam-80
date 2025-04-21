@@ -12,6 +12,7 @@ func _on_resume_button_pressed():
 func _on_main_button_pressed():
 	get_tree().paused = false
 	viewport.canvas_transform = Transform2D(0, Vector2(0,0))
+	Game.game_started = false
 	get_tree().change_scene_to_file("uid://bxroi0e1f7wuh")
 
 func _on_quit_button_pressed():

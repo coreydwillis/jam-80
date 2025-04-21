@@ -18,3 +18,4 @@ func reset_var_func():
 	Game.hammer_enabled = false
 	Game.boombox_enabled = false
 	Game.magnet_enabled = false
+	Game.game_started = false
