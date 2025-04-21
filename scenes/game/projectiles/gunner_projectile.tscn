@@ -6,6 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_21q7l"]
 
 [node name="GunnerProjectile" type="Area2D"]
+z_index = 15
+scale = Vector2(2, 2)
 script = ExtResource("1_buw76")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

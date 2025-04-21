@@ -58,7 +58,7 @@ var mutation_rates = {
 	Bunny.BunnyType.KILLER: 1,
 	Bunny.BunnyType.BUFF: 1,
 	Bunny.BunnyType.MAGIC: 1,
-	Bunny.BunnyType.GUNNER: 1,
+	Bunny.BunnyType.GUNNER: 100,
 	Bunny.BunnyType.HYPER: 1,
 	Bunny.BunnyType.GOLDEN: 0
 }

@@ -97,13 +97,14 @@ func _process(delta):
 		animator.flip_h = false
 	elif direction.x > 0:
 		animator.flip_h = true
-	if type == BunnyType.GUNNER:
+	if Game.is_day and type == BunnyType.GUNNER:
 		bullet_timer += delta
 		if bullet_timer >= 4:
 			bullet_timer = 0
 			var bullet = GUNNER_PROJECTILE.instantiate()
+			$"/root/Main".add_child(bullet)
 			bullet.position = position
-			bullet.velocity = position.direction_to(player.position) * 120
+			bullet.velocity = position.direction_to(player.position) * 200
 	move_and_slide()
 	for c in range(get_slide_collision_count()):
 		process_collision(get_slide_collision(c).get_collider())

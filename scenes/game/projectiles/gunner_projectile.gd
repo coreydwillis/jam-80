@@ -6,7 +6,7 @@ var velocity = Vector2(0, 0)
 func _process(delta):
 	position += velocity * delta
 	age += delta
-	if age >= 2:
+	if age >= 1.2:
 		queue_free()
 
 func _on_body_entered(body: Node2D):
@@ -15,3 +15,4 @@ func _on_body_entered(body: Node2D):
 		queue_free()
 	elif body.name.begins_with("Fence"):
 		body.damage(20)
+		queue_free()
