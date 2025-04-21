@@ -31,8 +31,13 @@ const PLAYER_LASSO = preload("res://assets/audio/sfx/abilities/whip.wav")
 
 var dashing = false
 var direction: Vector2
-var stunned = false
 var stun_duration = 0
+
+var strong_coffee = false
+var carrot_duration = 0
+var coffee_duration = 0
+var meat_duration = 0
+var pizza_duration = 0
 
 func _ready():
 	SignalBus.item_bought.connect(_on_item_bought)
@@ -43,29 +48,46 @@ func _process(delta):
 	time_since_magnet += delta
 	time_since_hammer += delta
 	time_since_lasso += delta
+	if pizza_duration > 0:
+		time_since_boombox += delta
+		time_since_dash += delta
+		time_since_magnet += delta
+		time_since_hammer += delta
+		time_since_lasso += delta
 	
-	#if not Game.is_day and Input.is_action_just_pressed("skip"):
-		#Game.is_day = true
-		#Game.days += 1
-		#SignalBus.day_started.emit()
-		#$/root/Main/MainUI/DayTimer.start(Game.day_length_base + (Game.days * Game.day_length_inc))
+	carrot_duration -= delta
+	coffee_duration -= delta
+	meat_duration -= delta
+	pizza_duration -= delta
+		
+	if time_since_boombox >= boombox_cooldown:
+		SignalBus.boombox_ready.emit()
 	
-	if stunned:
+	if time_since_dash >= dash_cooldown:
+		SignalBus.dash_ready.emit()
+		
+	if time_since_magnet >= magnet_cooldown:
+		SignalBus.magnet_ready.emit()
+		
+	if time_since_hammer >= hammer_cooldown:
+		SignalBus.hammer_ready.emit()
+		
+	if time_since_lasso >= lasso_cooldown:
+		SignalBus.lasso_ready.emit()
+	
+	if meat_duration > 0:
+		stun_duration = 0
+	
+	if stun_duration > 0:
 		## Enable this somewhere to play a zip sound when stunned
 		#player_audio.set_stream(PLAYER_ZAP)
 		#player_audio.play()
 		stun_duration -= delta
 		return
 		
-	if velocity.length() == 0:
-		pass
-	else:
-		if $Timer.time_left <= 0:
-			$PlayFootsteps.play()
-			$Timer.start(0.8)
-		
-	if time_since_boombox >= boombox_cooldown:
-		SignalBus.boombox_ready.emit()
+	if velocity.length() > 0 and $Timer.time_left <= 0:
+		$PlayFootsteps.play()
+		$Timer.start(0.8)
 		
 	# Dash
 	if Input.is_action_just_pressed("jump") and time_since_dash >= dash_cooldown:
@@ -104,20 +126,14 @@ func _process(delta):
 		player_audio.play()
 		SignalBus.lasso_not_ready.emit()
 	
-	if time_since_dash >= dash_cooldown:
-		SignalBus.dash_ready.emit()
-		
-	if time_since_magnet >= magnet_cooldown:
-		SignalBus.magnet_ready.emit()
-		
-	if time_since_hammer >= hammer_cooldown:
-		SignalBus.hammer_ready.emit()
-		
-	if time_since_lasso >= lasso_cooldown:
-		SignalBus.lasso_ready.emit()
-	
 	if dashing:
-		velocity = direction * dash_speed
+		if coffee_duration > 0:
+			if strong_coffee:
+				velocity = direction * dash_speed * 1.5
+			else:
+				velocity = direction * dash_speed * 1.25
+		else:
+			velocity = direction * dash_speed
 		if time_since_dash >= dash_duration:
 			dashing = false
 	else:
@@ -153,7 +169,13 @@ func _process(delta):
 				animator.play("idle_back")
 				animator.flip_h = false
 		direction = new_direction
-		velocity = direction * speed
+		if coffee_duration > 0:
+			if strong_coffee:
+				velocity = direction * speed * 1.5
+			else:
+				velocity = direction * speed * 1.25
+		else:
+			velocity = direction * speed
 	
 	move_and_slide()
 

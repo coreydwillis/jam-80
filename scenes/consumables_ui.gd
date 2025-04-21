@@ -25,16 +25,16 @@ var consumable_names = {
 	"Golden Carrot": Consumable.GOLDEN_CARROT
 }
 var inventory = {
-	Consumable.CHICKEN: 0,
-	Consumable.TURKEY: 0,
-	Consumable.PIZZA: 0,
-	Consumable.COMBO: 0,
-	Consumable.COFFEE: 0,
-	Consumable.ESPRESSO: 0,
+	Consumable.CHICKEN: 10,
+	Consumable.TURKEY: 10,
+	Consumable.PIZZA: 10,
+	Consumable.COMBO: 10,
+	Consumable.COFFEE: 10,
+	Consumable.ESPRESSO: 10,
 	Consumable.EGG_DROP: 0,
 	Consumable.STRACIATELLA: 0,
-	Consumable.CARROT: 0,
-	Consumable.GOLDEN_CARROT: 0
+	Consumable.CARROT: 10,
+	Consumable.GOLDEN_CARROT: 10
 }
 var tints = {
 	Consumable.CHICKEN: Color(1,1,1),
@@ -60,8 +60,9 @@ var tints = {
 	Consumable.CARROT: $Carrot,
 	Consumable.GOLDEN_CARROT: $Carrot
 }
-var types_owned = 0
-var selected = null
+var types_owned = 8
+var selected = Consumable.CHICKEN
+@onready var player = $"/root/Main/World/Player"
 
 func _ready():
 	SignalBus.item_bought.connect(_on_item_bought)
@@ -70,6 +71,29 @@ func _process(_delta):
 	if Input.is_action_just_pressed("consume"):
 		if selected != null:
 			remove_item()
+			match selected:
+				Consumable.CHICKEN:
+					player.meat_duration = 10
+				Consumable.TURKEY:
+					player.meat_duration = 30
+				Consumable.PIZZA:
+					player.pizza_duration = 15
+				Consumable.COMBO:
+					player.pizza_duration = 60
+				Consumable.COFFEE:
+					player.coffee_duration = 10
+					player.strong_coffee = false
+				Consumable.ESPRESSO:
+					player.coffee_duration = 20
+					player.strong_coffee = true
+				Consumable.EGG_DROP:
+					pass
+				Consumable.STRACIATELLA:
+					pass
+				Consumable.CARROT:
+					player.carrot_duration = 4
+				Consumable.GOLDEN_CARROT:
+					player.carrot_duration = 12
 	if Input.is_action_just_pressed("scroll_up"):
 		if types_owned > 1:
 			select_next(true)
