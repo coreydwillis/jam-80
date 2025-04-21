@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=13 format=3 uid="uid://08sf71m1farr"]
+[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=14 format=3 uid="uid://08sf71m1farr"]
 
 [ext_resource type="Script" uid="uid://8c8cchphfs8g" path="res://scenes/resources/settings_folder/PlayerKeybindResource.gd" id="1_4pckj"]
 
@@ -19,6 +19,11 @@ unicode = 113
 [sub_resource type="InputEventKey" id="InputEventKey_q6gd0"]
 device = -1
 physical_keycode = 4194326
+
+[sub_resource type="InputEventKey" id="InputEventKey_gwcne"]
+device = -1
+physical_keycode = 67
+unicode = 99
 
 [sub_resource type="InputEventKey" id="InputEventKey_ndvii"]
 device = -1
@@ -68,4 +73,5 @@ DEFAULT_ABILITY2_KEY = SubResource("InputEventKey_4gmy3")
 DEFAULT_ABILITY3_KEY = SubResource("InputEventKey_tw72o")
 DEFAULT_ABILITY4_KEY = SubResource("InputEventKey_q6gd0")
 DEFAULT_CONSUME_KEY = SubResource("InputEventKey_ndvii")
+DEFAULT_CONSUME_CYCLE_KEY = SubResource("InputEventKey_gwcne")
 metadata/_custom_type_script = "uid://8c8cchphfs8g"

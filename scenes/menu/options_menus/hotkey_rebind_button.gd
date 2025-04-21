@@ -39,6 +39,8 @@ func set_action_name() -> void:
 			label.text = "Use Ability 4"
 		"consume":
 			label.text = "Consumable"
+		"consume_cycle":
+			label.text = "Cycle Consumables"
 		"jump":
 			label.text = "Dash"
 

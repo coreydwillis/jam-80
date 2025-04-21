@@ -13,6 +13,7 @@ const ABILITY2 : String = "ability2"
 const ABILITY3 : String = "ability3"
 const ABILITY4 : String = "ability4"
 const CONSUME : String = "consume"
+const CONSUME_CYCLE : String = "consume_cycle"
 
 @export var DEFAULT_MOVE_LEFT_KEY = InputEventKey.new()
 @export var DEFAULT_MOVE_RIGHT_KEY = InputEventKey.new()
@@ -25,6 +26,7 @@ const CONSUME : String = "consume"
 @export var DEFAULT_ABILITY3_KEY = InputEventKey.new()
 @export var DEFAULT_ABILITY4_KEY = InputEventKey.new()
 @export var DEFAULT_CONSUME_KEY = InputEventKey.new()
+@export var DEFAULT_CONSUME_CYCLE_KEY = InputEventKey.new()
 
 var move_left_key = InputEventKey.new()
 var move_right_key = InputEventKey.new()
@@ -37,3 +39,4 @@ var ability2_key = InputEventKey.new()
 var ability3_key = InputEventKey.new()
 var ability4_key = InputEventKey.new()
 var consume_key = InputEventKey.new()
+var consume_cycle_key = InputEventKey.new()

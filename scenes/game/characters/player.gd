@@ -26,8 +26,8 @@ const PLAYER_DASH = preload("res://assets/audio/sfx/abilities/vanilla whoosh.wav
 const BOOM_BOX = preload("res://assets/audio/sfx/abilities/JoJo_s Bizarre Boombox (Base).wav")
 const DRINK = preload("res://assets/audio/sfx/abilities/drink.wav")
 const FENCE_REPAIR = preload("res://assets/audio/sfx/abilities/Fence Repair.wav")
-#const PLAYER_MAGNET = preload("res://assets/audio/sfx/abilities/magnet.wav")
-#const PLAYER_LASSO = preload("res://assets/audio/sfx/abilities/lasso.wav")
+const PLAYER_MAGNET = preload("res://assets/audio/sfx/abilities/magnet.wav")
+const PLAYER_LASSO = preload("res://assets/audio/sfx/abilities/whip.wav")
 
 var dashing = false
 var direction: Vector2
@@ -83,8 +83,8 @@ func _process(delta):
 	# Magnet
 	if Input.is_action_just_pressed("ability2") and time_since_magnet >= magnet_cooldown:
 		time_since_magnet = 0
-		#player_audio.set_stream(PLAYER_MAGNET)
-		#player_audio.play()
+		player_audio.set_stream(PLAYER_MAGNET)
+		player_audio.play()
 		SignalBus.magnet_not_ready.emit()
 	
 	# Hammer
@@ -97,9 +97,22 @@ func _process(delta):
 	# Lasso
 	if Input.is_action_just_pressed("ability4") and time_since_lasso >= lasso_cooldown:
 		time_since_lasso = 0
-		#player_audio.set_stream(PLAYER_LASSO)
-		#player_audio.play()
+		player_audio.set_stream(PLAYER_LASSO)
+		player_audio.play()
 		SignalBus.lasso_not_ready.emit()
+		
+	if Input.is_action_just_pressed("consume"):
+		print("consumed")
+		pass
+		#player_audio.set_stream(PLAYER_DRINK)
+		#player_audio.play()
+		#SignalBus.lasso_not_ready.emit()
+		
+	if Input.is_action_just_pressed("consume_cycle"):
+		print("consumed cycle")
+		#player_audio.set_stream(PLAYER_DRINK)
+		#player_audio.play()
+		#SignalBus.lasso_not_ready.emit()
 	
 	if time_since_dash >= dash_cooldown:
 		SignalBus.dash_ready.emit()
