@@ -7,24 +7,31 @@ enum Vendor {
 }
 
 const BUNNIES_NEEDED_DEFAULT = 2
-const TOTAL_BUNNIES_DEFAULT = 5
-const BUNNIES_IN_PEN_DEFAULT = 5
+const TOTAL_BUNNIES_DEFAULT = 0
+const BUNNIES_IN_PEN_DEFAULT = 0
+const GAME_OVER_DEFAULT = false
+const DANGER_TIME_DEFAULT = false
+const DAYS_DEFAULT = 1
+const IS_DAY_DEFAULT = true
+const GAME_STARTED_DEFAULT = false
+const BUNNIES_NEEDED_INC_DEFAULT = 1
+const EGGS_DEFAULT = 0
 
 # Menu Vars
 var splash_done: bool = false
 
 #Gameplay Vars
-var game_over: bool = false
-var danger_time: bool = false
-var days: int = 1
-var is_day = true
-var game_started: bool = false
+var game_over: bool = GAME_OVER_DEFAULT
+var danger_time: bool = DANGER_TIME_DEFAULT
+var days: int = DAYS_DEFAULT
+var is_day = IS_DAY_DEFAULT
+var game_started: bool = GAME_STARTED_DEFAULT
 var runs: int = 1
 var longest_run: int
-var bunnies_in_pen: int = 0
-var total_bunnies: int = 0
-var bunnies_needed: int = 2
-var bunnies_needed_inc: int = 1
+var bunnies_in_pen: int = BUNNIES_IN_PEN_DEFAULT
+var total_bunnies: int = TOTAL_BUNNIES_DEFAULT
+var bunnies_needed: int = BUNNIES_NEEDED_DEFAULT
+var bunnies_needed_inc: int = BUNNIES_NEEDED_INC_DEFAULT
 var night_length: int = 60
 var day_length_base: int = 30
 var day_length_inc: int = 30
@@ -59,7 +66,7 @@ var bunny_colors = { # TEMP
 	Bunny.BunnyType.GOLDEN: Color(0.8, 0.7, 0.1)
 }
 var rng = RandomNumberGenerator.new()
-var eggs = 0
+var eggs = EGGS_DEFAULT
 
 # Accessibility Vars
 var night_timer: bool = true

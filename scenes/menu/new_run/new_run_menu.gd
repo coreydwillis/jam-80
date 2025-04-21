@@ -4,10 +4,12 @@ class_name NewRun
 
 @onready var verse_text = $MarginContainer/HBoxContainer/VBoxContainer/VerseText
 @export var verse_text_strings: Array[String] = []
+var first_run: bool = true
 
 func _ready():
 	fill_verse_array()
 	set_verse()
+	SignalBus.reset_game_vars.emit()
 
 func _on_play_button_pressed():
 	get_tree().change_scene_to_file("uid://dup0vwkmki6wl")
