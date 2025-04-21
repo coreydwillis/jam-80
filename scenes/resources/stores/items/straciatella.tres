@@ -15,5 +15,5 @@ max_owned = 3
 price = 75
 price_scaling = 1.0
 rarity = 1.0
-graphic_scale = Vector2(1, 1)
+graphic_scale = Vector2(0.7, 0.7)
 metadata/_custom_type_script = "uid://d0ljahill12nl"
