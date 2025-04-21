@@ -153,9 +153,7 @@ func is_in_pen():
 
 func process_collision(collider):
 	if collider.name.begins_with("Fence"):
-		if is_in_pen():
-			switch_state(BunnyState.ENTERING)
-		elif state_id == BunnyState.ESCAPING:
+		if state_id == BunnyState.ESCAPING:
 			if collider.is_broken or randf() < escape_chance - collider.escape_reduction:
 				switch_state(BunnyState.EXITING)
 			else:
@@ -165,6 +163,8 @@ func process_collision(collider):
 						switch_state(BunnyState.EXITING)
 						return
 				switch_state(BunnyState.TRAPPED)
+		elif not is_in_pen():
+			switch_state(BunnyState.ENTERING)
 	elif collider.name == "Player":
 		if type == BunnyType.KILLER:
 			collider.stun_duration = 5

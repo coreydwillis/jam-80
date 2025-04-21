@@ -36,7 +36,7 @@ var night_length: int = 60
 var day_length_base: int = 30
 var day_length_inc: int = 30
 var centerpoint = Vector2(0,0)
-var pen_radius = 40.0
+var pen_radius = 80
 var bunny_breed_rate = 2.5
 var egg_rates = {
 	Bunny.BunnyType.BASIC: 1,
