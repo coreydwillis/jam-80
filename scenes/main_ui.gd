@@ -36,5 +36,6 @@ func start_night():
 func start_day():
 	Game.is_day = true
 	Game.days += 1
+	Game.ramp_difficulty()
 	SignalBus.day_increment.emit()
 	start(Game.day_length_base + (Game.days * Game.day_length_inc))

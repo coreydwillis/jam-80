@@ -126,6 +126,24 @@ func _name_generation():
 		"bunnylady": bunnylady_name
 	}
 
+func ramp_difficulty():
+	# Gradually increase difficulty as days progress
+	# Early days: easier, slow ramp
+	# Later days: faster ramp
+	var day = days
+	# Bunny breed rate starts low, ramps up
+	bunny_breed_rate = 1.2 + min(2.0, 0.15 * (day-1)) # e.g. 1.2 on day 1, 2.7 on day 10, max 3.2
+	# Mutation rates: rare bunnies become more likely as days increase
+	# Start with mostly BASIC, slowly increase others
+	mutation_rates[Bunny.BunnyType.BASIC] = max(2, 6 - int(day/2)) # 6 on day 1, 5 on day 3, 2 on day 9+
+	mutation_rates[Bunny.BunnyType.KILLER] = min(3, 1 + int(day/4))
+	mutation_rates[Bunny.BunnyType.BUFF] = min(3, 1 + int(day/5))
+	mutation_rates[Bunny.BunnyType.MAGIC] = min(3, 1 + int(day/6))
+	mutation_rates[Bunny.BunnyType.GUNNER] = min(3, 1 + int(day/7))
+	mutation_rates[Bunny.BunnyType.HYPER] = min(3, 1 + int(day/8))
+	# GOLDEN stays rare
+	mutation_rates[Bunny.BunnyType.GOLDEN] = 0
+
 func _ready():
 	_name_generation()
 	SignalBus.reset_names.connect(_name_generation)
