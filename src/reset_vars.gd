@@ -19,3 +19,7 @@ func reset_var_func():
 	Game.boombox_enabled = false
 	Game.magnet_enabled = false
 	Game.game_started = false
+	
+	# Reset difficulty scaling variables
+	Game.bunny_breed_rate = Game.base_bunny_breed_rate
+	Game.mutation_rates = Game.base_mutation_rates.duplicate()

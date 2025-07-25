@@ -14,12 +14,18 @@ func breed():
 			bunnies.erase(b)
 	var new_count = floor(len(bunnies) * Game.bunny_breed_rate)
 	var current_count = len(bunnies)
+	
+	# Early game: reduce special bunny breeding
+	var breeding_special_chance = 1 if Game.days <= 2 else 2
+	if Game.days > 4:
+		breeding_special_chance = 2  # Normal special breeding later
+		
 	for bunny in bunnies:
 		match bunny.type:
 			Bunny.BunnyType.BASIC, Bunny.BunnyType.GOLDEN:
 				pass
 			_:
-				for i in range(2):
+				for i in range(breeding_special_chance):
 					if current_count < new_count:
 						add_bunny(bunny.type)
 						current_count += 1

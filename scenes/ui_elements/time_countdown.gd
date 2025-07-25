@@ -19,10 +19,18 @@ func increment_time(time_left_for_clock):
 	minutes = fmod(time, 3600) / 60
 	seconds_label.text = "%02d:" % minutes
 	seconds_label.text = "%02d" % seconds
-	if time <= 30 and (Game.bunnies_needed > Game.bunnies_in_pen) and !Game.danger_time:
+	
+	# Scale danger time threshold based on difficulty - easier early on
+	var danger_threshold = 30
+	if Game.days <= 2:
+		danger_threshold = 15  # Less pressure early game
+	elif Game.days <= 4:
+		danger_threshold = 25  # Medium pressure
+	
+	if time <= danger_threshold and (Game.bunnies_needed > Game.bunnies_in_pen) and !Game.danger_time:
 		SignalBus.danger_time.emit()
 		Game.danger_time = true
-	if time <= 30 and (Game.bunnies_needed <= Game.bunnies_in_pen) and Game.danger_time:
+	if time <= danger_threshold and (Game.bunnies_needed <= Game.bunnies_in_pen) and Game.danger_time:
 		SignalBus.end_danger_time.emit()
 		Game.danger_time = false
 

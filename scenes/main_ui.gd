@@ -3,7 +3,9 @@ extends Timer
 var firstPass = true
 
 func _ready():
-	start(Game.day_length_base + (Game.days * Game.day_length_inc))
+	# Give bonus time for first day too
+	var day_time_bonus = 20 if Game.days <= 2 else (10 if Game.days <= 4 else 0)
+	start(Game.day_length_base + (Game.days * Game.day_length_inc) + day_time_bonus)
 	timeout.connect(_on_timer_timeout)
 	SignalBus.night_started.connect(start_night)
 	SignalBus.day_started.connect(start_day)
@@ -37,4 +39,12 @@ func start_day():
 	Game.is_day = true
 	Game.days += 1
 	SignalBus.day_increment.emit()
-	start(Game.day_length_base + (Game.days * Game.day_length_inc))
+	
+	# Give more time in early days
+	var day_time_bonus = 0
+	if Game.days <= 2:
+		day_time_bonus = 20  # Extra 20 seconds for first 2 days
+	elif Game.days <= 4:
+		day_time_bonus = 10  # Extra 10 seconds for days 3-4
+	
+	start(Game.day_length_base + (Game.days * Game.day_length_inc) + day_time_bonus)

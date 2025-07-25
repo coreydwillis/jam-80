@@ -44,6 +44,7 @@ var day_length_inc: int = 30
 var centerpoint = Vector2(0,0)
 var pen_radius = 80
 var bunny_breed_rate = 2.5
+var base_bunny_breed_rate = 2.5
 var egg_rates = {
 	Bunny.BunnyType.BASIC: 1,
 	Bunny.BunnyType.KILLER: 2,
@@ -54,12 +55,21 @@ var egg_rates = {
 	Bunny.BunnyType.GOLDEN: 5
 }
 var mutation_rates = {
-	Bunny.BunnyType.BASIC: 6,
-	Bunny.BunnyType.KILLER: 1,
-	Bunny.BunnyType.BUFF: 1,
-	Bunny.BunnyType.MAGIC: 1,
-	Bunny.BunnyType.GUNNER: 1,
-	Bunny.BunnyType.HYPER: 1,
+	Bunny.BunnyType.BASIC: 8,
+	Bunny.BunnyType.KILLER: 0.5,
+	Bunny.BunnyType.BUFF: 0.5,
+	Bunny.BunnyType.MAGIC: 0.5,
+	Bunny.BunnyType.GUNNER: 0.5,
+	Bunny.BunnyType.HYPER: 0.5,
+	Bunny.BunnyType.GOLDEN: 0
+}
+var base_mutation_rates = {
+	Bunny.BunnyType.BASIC: 8,
+	Bunny.BunnyType.KILLER: 0.5,
+	Bunny.BunnyType.BUFF: 0.5,
+	Bunny.BunnyType.MAGIC: 0.5,
+	Bunny.BunnyType.GUNNER: 0.5,
+	Bunny.BunnyType.HYPER: 0.5,
 	Bunny.BunnyType.GOLDEN: 0
 }
 var rng = RandomNumberGenerator.new()
@@ -126,6 +136,51 @@ func _name_generation():
 		"bunnylady": bunnylady_name
 	}
 
+func get_difficulty_multiplier():
+	# Gradual difficulty scaling based on day
+	# Days 1-2: Easy (0.5x to 0.75x difficulty)
+	# Days 3-4: Normal (0.75x to 1.0x difficulty)  
+	# Days 5-8: Hard (1.0x to 2.0x difficulty)
+	if days <= 2:
+		return 0.5 + (days - 1) * 0.25  # 0.5x to 0.75x
+	elif days <= 4:
+		return 0.75 + (days - 3) * 0.25  # 0.75x to 1.0x
+	else:
+		return 1.0 + (days - 5) * 0.25  # 1.0x to 1.75x for days 5-8
+
+func update_difficulty_scaling():
+	var difficulty_mult = get_difficulty_multiplier()
+	
+	# Scale breeding rate (more bunnies = harder to manage)
+	bunny_breed_rate = base_bunny_breed_rate * difficulty_mult
+	
+	# Scale mutation rates for dangerous bunnies
+	mutation_rates[Bunny.BunnyType.BASIC] = base_mutation_rates[Bunny.BunnyType.BASIC] / difficulty_mult
+	mutation_rates[Bunny.BunnyType.KILLER] = base_mutation_rates[Bunny.BunnyType.KILLER] * difficulty_mult
+	mutation_rates[Bunny.BunnyType.BUFF] = base_mutation_rates[Bunny.BunnyType.BUFF] * difficulty_mult
+	mutation_rates[Bunny.BunnyType.MAGIC] = base_mutation_rates[Bunny.BunnyType.MAGIC] * difficulty_mult
+	mutation_rates[Bunny.BunnyType.GUNNER] = base_mutation_rates[Bunny.BunnyType.GUNNER] * difficulty_mult
+	mutation_rates[Bunny.BunnyType.HYPER] = base_mutation_rates[Bunny.BunnyType.HYPER] * difficulty_mult
+
+func get_scaled_bunny_requirement():
+	# More gradual scaling of bunny requirements
+	var base_requirement = BUNNIES_NEEDED_DEFAULT
+	var difficulty_mult = get_difficulty_multiplier()
+	
+	if days == 1:
+		return base_requirement  # Start with 2 bunnies
+	elif days <= 3:
+		# Days 2-3: Add 1-2 bunnies per day
+		return base_requirement + (days - 1)
+	elif days <= 5:
+		# Days 4-5: Add 2-3 bunnies per day
+		return base_requirement + 2 + (days - 3) * 2
+	else:
+		# Days 6-8: Exponential growth but capped
+		var exponential_base = 1.5 * difficulty_mult
+		return int(base_requirement * pow(exponential_base, days - 1))
+
 func _ready():
 	_name_generation()
 	SignalBus.reset_names.connect(_name_generation)
+	SignalBus.day_started.connect(update_difficulty_scaling)
